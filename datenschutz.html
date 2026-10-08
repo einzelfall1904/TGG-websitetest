@@ -12,9 +12,7 @@
     <meta name="description" content="Datenschutzerklärung und rechtliche Hinweise der TG Gold-Weiß Gelsenkirchen.">
     <meta name="theme-color" content="#13263A">
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap">
+    <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/style.css">
     <script>document.documentElement.classList.add('js')</script>
     <noscript>
@@ -131,16 +129,8 @@
             <p>Die Karte wird nicht automatisch geladen. Erst wenn Sie auf „Karte laden“ klicken, stellt Ihr Browser eine Verbindung zu Google her. Dabei werden insbesondere Ihre IP-Adresse und Informationen zu Ihrem Besuch an Google übertragen; Google kann dabei auch Cookies setzen. Es ist möglich, dass Daten auf Servern der Google LLC in den USA verarbeitet werden. Die Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert.</p>
             <p><strong>Rechtsgrundlage:</strong> Ihre Einwilligung durch Klick auf „Karte laden“ (Art.&nbsp;6 Abs.&nbsp;1&nbsp;lit.&nbsp;a DSGVO, §&nbsp;25 Abs.&nbsp;1 TDDDG). Die Einwilligung gilt nur für den aktuellen Seitenaufruf; beim nächsten Besuch wird die Karte wieder erst nach erneutem Klick&nbsp;geladen.</p>
             <p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.</p>
-            <h3 id="fonts">5.2 Google Fonts (Schrift)</h3>
-            <p>Für eine einheitliche Darstellung nutzt diese Website die Schriftart „Archivo“ von Google Fonts. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Die Schrift wird beim Aufruf jeder Seite von den Servern von Google (fonts.googleapis.com und fonts.gstatic.com) geladen. Dabei wird Ihre IP-Adresse an Google übertragen. Eine Verarbeitung in den USA ist möglich; die Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert.</p>
-            <p><strong>Rechtsgrundlage:</strong> Art.&nbsp;6 Abs.&nbsp;1&nbsp;lit.&nbsp;f DSGVO. Unser berechtigtes Interesse liegt in einer einheitlichen und ansprechenden Darstellung unserer&nbsp;Website.</p>
-            <p>Weitere Informationen: <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">Google Fonts&nbsp;– Datenschutz</a> und <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.</p>
-            <h3 id="unsplash">5.3 Bilder von Unsplash</h3>
-            <p>Auf der Seite „Probetraining“ verwenden wir ein lizenzfreies Foto der Bilddatenbank Unsplash (Unsplash Inc., Kanada). Das Bild wird von den Servern von Unsplash (images.unsplash.com) geladen; dabei wird Ihre IP-Adresse an Unsplash übertragen. Für Kanada besteht ein Angemessenheitsbeschluss der EU-Kommission.</p>
-            <p><strong>Rechtsgrundlage:</strong> Art.&nbsp;6 Abs.&nbsp;1&nbsp;lit.&nbsp;f DSGVO. Unser berechtigtes Interesse liegt in einer ansprechenden Gestaltung der Website. Weitere Informationen: <a href="https://unsplash.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Unsplash</a>.</p>
-            <h3 id="jsdelivr">5.4 Animationsbibliothek GSAP (jsDelivr)</h3>
-            <p>Für die Animationen der Website verwenden wir die Programmbibliothek GSAP. Sie wird über das Content-Delivery-Netzwerk jsDelivr (cdn.jsdelivr.net) geladen. Dabei wird Ihre IP-Adresse an die Server von jsDelivr übertragen, damit die Dateien ausgeliefert werden können. Eine Speicherung von Cookies findet dabei nach unserer Kenntnis nicht&nbsp;statt.</p>
-            <p><strong>Rechtsgrundlage:</strong> Art.&nbsp;6 Abs.&nbsp;1&nbsp;lit.&nbsp;f DSGVO. Unser berechtigtes Interesse liegt in einer schnellen, zuverlässigen und ansprechenden Darstellung der Website. Weitere Informationen: <a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">Datenschutzhinweise von jsDelivr</a>.</p>
+            <h3 id="lokal">5.2 Schrift, Animationen und Bilder</h3>
+            <p>Die Schriftart „Archivo“, die Animationsbibliothek GSAP sowie alle Fotos und Grafiken liegen direkt auf unserem eigenen Webspace. Beim Aufruf der Website werden dafür keine Verbindungen zu Servern Dritter wie Google Fonts oder Content-Delivery-Netzwerken&nbsp;aufgebaut.</p>
             <h2 id="social">6. Social Media</h2>
             <p>Unsere Website enthält Links zu unseren Social-Media-Profilen (Facebook, Instagram). Beim Besuch unserer Website werden <strong>keine Daten automatisch an diese Dienste übertragen</strong>. Erst durch aktives Anklicken des Links verlassen Sie unsere&nbsp;Seite.</p>
             <h2 id="links">7. Externe Links</h2>
@@ -173,7 +163,7 @@
             <p>Die Darstellung dieser Website in fremden Frames ist nur mit schriftlicher Erlaubnis zulässig.</p>
             <h3>§&nbsp;4 Besondere Nutzungs&shy;bedingungen</h3>
             <p>Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorgenannten Paragraphen abweichen, wird an entsprechender Stelle ausdrücklich darauf hingewiesen. In diesem Falle gelten im jeweiligen Einzelfall die besonderen Nutzungsbedingungen.</p>
-            <p class="stamp">Stand: September&nbsp;2026</p>
+            <p class="stamp">Stand: Oktober&nbsp;2026</p>
           </div>
         </div>
       </section>
@@ -231,9 +221,9 @@
       </div>
     </footer>
     <script src="js/main.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+    <script src="js/vendor/gsap.min.js" defer></script>
+    <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+    <script src="js/vendor/SplitText.min.js" defer></script>
     <script src="js/motion.js" defer></script>
   </body>
 </html>

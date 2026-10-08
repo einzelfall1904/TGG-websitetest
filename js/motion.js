@@ -58,7 +58,10 @@
       var h1 = one('.hero h1');
       if (h1 && Split) {
         var s = Split.create(h1, { type: 'words,chars', mask: 'words' });
-        tl.from(s.chars, { yPercent: 115, rotate: 8, duration: 0.9, stagger: 0.022 }, 0.15);
+        // Weiches Trennzeichen (&shy;) würde als eigener Buchstabe eine Lücke reißen –
+        // während der Animation ausblenden, danach den Originaltext wiederherstellen.
+        s.chars.forEach(function (c) { if (c.textContent === '­') c.style.display = 'none'; });
+        tl.from(s.chars, { yPercent: 115, rotate: 8, duration: 0.9, stagger: 0.022, onComplete: function () { s.revert(); } }, 0.15);
       } else if (h1) { tl.add(revealBlock(h1), 0.15); }
       tl.from($('.kicker i'), { scaleX: 0, transformOrigin: 'left center', duration: 0.7 }, 0.1)
         .from($('.kicker span, .hero .lead'), { autoAlpha: 0, y: 18, duration: 0.7, stagger: 0.1 }, 0.35)

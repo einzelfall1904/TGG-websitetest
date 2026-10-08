@@ -12,9 +12,7 @@
     <meta name="description" content="Die Clubanlage der TG Gold-Weiß: 6 Sandplätze am Rande des Waldes Nienhausenbusch.">
     <meta name="theme-color" content="#13263A">
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap">
+    <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/style.css">
     <script>document.documentElement.classList.add('js')</script>
     <noscript>
@@ -85,7 +83,7 @@
       <!-- ============ Tennis am Nienhausen&shy;busch ============ -->
       <section>
         <div class="wrap">
-          <img class="banner" src="https://tg-gold-weiss.de/wp-content/uploads/2019/02/TGG-Banner-01-1400x370-1024x271.jpg" alt="Banner der Clubanlage">
+          <img class="banner" src="fotos/2019_02_TGG-Banner-01-1400x370-1024x271.jpg" alt="Banner der Clubanlage">
           <div class="split top">
             <h2>Tennis am Nienhausen&shy;busch</h2>
             <ul class="tick">
@@ -95,14 +93,14 @@
             </ul>
           </div>
           <div class="gallery">
-            <img src="https://tg-gold-weiss.de/wp-content/uploads/2022/09/signal-2022-08-28-12-45-22-667-12-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 1" loading="lazy">
-            <img src="https://tg-gold-weiss.de/wp-content/uploads/2022/09/Uesignal-2022-08-28-12-45-22-667-18-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 2" loading="lazy">
-            <img src="https://tg-gold-weiss.de/wp-content/uploads/2022/09/signal-2022-08-28-12-46-14-029-4-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 3" loading="lazy">
-            <img src="https://tg-gold-weiss.de/wp-content/uploads/2022/09/signal-2022-08-28-12-46-14-029-7-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 4" loading="lazy">
-            <img src="https://tg-gold-weiss.de/wp-content/uploads/2022/09/signal-2022-08-28-12-45-22-667-2-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 5" loading="lazy">
-            <img src="https://tg-gold-weiss.de/wp-content/uploads/2022/09/signal-2022-08-28-12-46-14-029-12-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 6" loading="lazy">
-            <img src="https://tg-gold-weiss.de/wp-content/uploads/2022/09/Ue_signal-2022-08-28-12-45-22-667-13-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 7" loading="lazy">
-            <img src="https://tg-gold-weiss.de/wp-content/uploads/2022/09/signal-2022-08-28-12-46-14-029-15-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 8" loading="lazy">
+            <img src="fotos/2022_09_signal-2022-08-28-12-45-22-667-12-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 1" loading="lazy">
+            <img src="fotos/2022_09_Uesignal-2022-08-28-12-45-22-667-18-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 2" loading="lazy">
+            <img src="fotos/2022_09_signal-2022-08-28-12-46-14-029-4-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 3" loading="lazy">
+            <img src="fotos/2022_09_signal-2022-08-28-12-46-14-029-7-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 4" loading="lazy">
+            <img src="fotos/2022_09_signal-2022-08-28-12-45-22-667-2-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 5" loading="lazy">
+            <img src="fotos/2022_09_signal-2022-08-28-12-46-14-029-12-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 6" loading="lazy">
+            <img src="fotos/2022_09_Ue_signal-2022-08-28-12-45-22-667-13-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 7" loading="lazy">
+            <img src="fotos/2022_09_signal-2022-08-28-12-46-14-029-15-1024x768.jpg" alt="TG Gold-Weiss Gelsenkirchen – Clubanlage 8" loading="lazy">
           </div>
           <p class="center"><a class="btn lg" href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">Platz online buchen<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
         </div>
@@ -161,9 +159,9 @@
       </div>
     </footer>
     <script src="js/main.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+    <script src="js/vendor/gsap.min.js" defer></script>
+    <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+    <script src="js/vendor/SplitText.min.js" defer></script>
     <script src="js/motion.js" defer></script>
   </body>
 </html>

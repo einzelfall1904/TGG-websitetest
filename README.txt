@@ -19,10 +19,9 @@ Plakate:  Ankündigungsplakate liegen in img/events/. Neues oder ausgetauschtes 
             python3 plakat-einbinden.py <Originaldatei> <name>
           Das erzeugt Vorschaubild und Großansicht; der Copyright-Hinweis wird dabei fest in die
           Großansicht gesetzt. Auf den Vorschaubildern blendet die Website ihn automatisch ein.
-Animationen: js/motion.js (GSAP 3.13, wird von cdn.jsdelivr.net geladen). Ohne Internet bzw. ohne GSAP
-          erscheint die Seite einfach ohne Animation. Wer „Bewegung reduzieren“ eingestellt hat, sieht keine Bewegung.
-Schrift:  Archivo (Google Fonts, wird online geladen; ohne Internet greift Arial/Helvetica).
-Ordner:   css/ (Design) · img/ (Logo, Icons als SVG) · js/ (Menü, Turnier-Einbettung)
-Fotos:    Die Vereinsfotos werden direkt von tg-gold-weiss.de geladen. Für eine komplett eigenständige
-          Seite einmal 'python3 bilder-herunterladen.py' ausführen (lädt alle Fotos nach fotos/).
-Rechtliches: impressum.html und datenschutz.html enthalten Platzhalter – bitte mit den echten Texten füllen.
+Animationen: js/motion.js mit GSAP 3.13 (liegt lokal in js/vendor/). Ohne GSAP erscheint die Seite
+          einfach ohne Animation. Wer „Bewegung reduzieren“ eingestellt hat, sieht keine Bewegung.
+Schrift:  Archivo (liegt lokal in fonts/, eingebunden oben in css/style.css).
+Ordner:   css/ (Design) · fonts/ (Schrift) · img/ (Logo, Icons, Plakate) · fotos/ (Vereinsfotos) · js/ (Menü, Animationen)
+Fotos:    Alle Fotos liegen in fotos/. Die Seite lädt nichts von fremden Servern, nur Google Maps
+          nach Klick auf „Karte laden“.
