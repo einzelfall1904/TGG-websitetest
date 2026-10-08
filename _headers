@@ -1,0 +1,4 @@
+# Nur für Netlify: Testseite nicht in Suchmaschinen aufnehmen.
+# Auf dem späteren Vereins-Hoster wird diese Datei ignoriert.
+/*
+  X-Robots-Tag: noindex, nofollow
