@@ -216,7 +216,7 @@ const icon = (d, size) => `<svg class="ic" width="${size}" height="${size}" view
 
 /* ---------- Beispieldaten (bis Supabase angebunden ist) ---------- */
 const EVENTS = [
-  { id: 'e1', cat: 'Clubleben', title: 'Saisonabschlussfeier', day: '07', month: 'Nov', long: 'Samstag, 7. November 2026', time: '19:00 Uhr', place: 'Clubanlage, Feldmarkstraße 200', spots: 0, note: 'Anmeldung bis 31.10.', desc: 'Für gute Stimmung und Musik ist gesorgt – die Tanzfläche ist frei! Dazu Currywurst, Würstchen, Salate und kühle Getränke. Anmeldung bis 31.10. über den Aushang am Clubhaus oder per WhatsApp an den Festausschuss.' },
+  { id: 'e1', cat: 'Clubleben', title: 'Saisonabschlussfeier', date: '2026-11-07', day: '07', month: 'Nov', long: 'Samstag, 7. November 2026', time: '19:00 Uhr', place: 'Clubanlage, Feldmarkstraße 200', spots: 0, note: 'Anmeldung bis 31.10.', desc: 'Für gute Stimmung und Musik ist gesorgt – die Tanzfläche ist frei! Dazu Currywurst, Würstchen, Salate und kühle Getränke. Anmeldung bis 31.10. über den Aushang am Clubhaus oder per WhatsApp an den Festausschuss.' },
   { id: 'e2', cat: 'Verein', title: 'Jahreshauptversammlung', day: '–', month: 'Ende 2026', long: 'Ende 2026 – genaues Datum folgt', time: 'Uhrzeit folgt', place: 'Clubanlage, Feldmarkstraße 200', spots: 0, note: 'Datum folgt', desc: 'Jahreshauptversammlung der Tennisgesellschaft Gold-Weiß Gelsenkirchen 1932 e.V. Das genaue Datum geben wir rechtzeitig bekannt.' },
   { id: 'e3', cat: 'Training', title: 'Kostenloses Probetraining', day: '18', month: 'Apr', long: 'So, 18. und 25. April 2027', time: 'Uhrzeit folgt', place: 'Tennisanlage, Gelsenkirchen', spots: 0, noSignup: true, note: 'Für Interessierte', desc: '3 Stunden Tennis, kostenlos und unverbindlich – für Groß und Klein, Einsteiger und Wiedereinsteiger. Eine kurze E-Mail an info@tg-gold-weiss.de genügt. Danach startest du auf Wunsch ins Schnupperjahr zum reduzierten Beitrag.' }
 ];
@@ -251,7 +251,7 @@ const INSTALL_STEPS = [
   ['3', 'Hinzufügen', 'Öffne die App danach vom Home-Bildschirm']
 ];
 const FEED_FILTERS = [['Alle', 'Alle'], ['Website', 'Website'], ['News', 'News'], ['Aktion', 'Aktionen']];
-const CATS = ['Alle', 'Clubleben', 'Verein', 'Arbeitsstunden'];
+const CATS = ['Alle', 'Clubleben', 'Verein', 'Arbeitsstunden', 'Goldweiße Hilfe'];
 // Training (Probetraining) ist nur für Interessierte und erscheint deshalb nicht unter „Termine“.
 const HIDDEN_CATS = ['Training'];
 // Zurück-Knopf der Detailseite: dorthin, woher man kam.
@@ -317,15 +317,16 @@ function shortName(nr) {
 function workEvents() {
   const m = me();
   return (S.db.work || []).map(w => {
-    const mine = !!m && w.signups.includes(m.nummer);
+    // Arbeitsstunden sind Pflicht (Ersatzbetrag bei Abmeldung), „Goldweiße Hilfe“ ist freiwillig. Alte Einträge ohne kind = Pflicht.
+    const fee = w.kind !== 'hilfe', mine = !!m && w.signups.includes(m.nummer);
     const taken = w.signups.filter(n => !m || n !== m.nummer).length;
     return {
-      id: 'w_' + w.id, wid: w.id, work: true, date: w.date, mine, signups: w.signups, cat: 'Arbeitsstunden', title: w.title,
+      id: 'w_' + w.id, wid: w.id, work: true, fee, date: w.date, mine, signups: w.signups, cat: fee ? 'Arbeitsstunden' : 'Goldweiße Hilfe', title: w.title,
       day: w.date.slice(8), month: MON3[+w.date.slice(5, 7) - 1],
       long: new Date(w.date + 'T12:00:00').toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
       time: w.time || 'Uhrzeit folgt', place: w.place, spots: w.spots || 0, taken,
       note: w.spots ? Math.max(0, w.spots - taken - (mine ? 1 : 0)) + ' Plätze frei' : 'Anmeldung offen',
-      desc: (w.desc || '') + ' ' + WORK_FEE_NOTE
+      desc: fee ? (w.desc || '') + ' ' + WORK_FEE_NOTE : (w.desc || '') + ' Freiwillige Hilfe – jede Hand zählt!'
     };
   });
 }
@@ -340,7 +341,7 @@ function webSignupEvents() {
   const known = EVENTS.map(e => e.id), today = todayKey();
   return S.web.filter(w => w.signup && !known.includes(w.signup) && !(w.ende && w.ende < today)).map(w => {
     const k = sortKey(w.date), later = /ende\s+\d{4}/i.test(w.date), time = (w.date.match(/(\d{1,2}:\d{2})\s*Uhr/) || [])[1];
-    return { id: w.signup, cat: 'Clubleben', title: w.title, day: k && !later ? k.slice(8) : '–', month: k ? (later ? 'Ende ' + k.slice(0, 4) : MON3[+k.slice(5, 7) - 1]) : '',
+    return { id: w.signup, cat: 'Clubleben', title: w.title, date: k && !later ? k : null, day: k && !later ? k.slice(8) : '–', month: k ? (later ? 'Ende ' + k.slice(0, 4) : MON3[+k.slice(5, 7) - 1]) : '',
       long: w.date || 'Datum folgt', time: time ? time + ' Uhr' : 'Uhrzeit folgt', place: w.place || 'Clubanlage, Feldmarkstraße 200', spots: 0, note: 'Anmeldung offen',
       desc: [...new Set([w.sub, w.text].filter(Boolean))].join(' ') };
   });
@@ -353,11 +354,17 @@ function allEvents() {
   });
 }
 function findEvent(id) { const all = allEvents(); return all.find(e => e.id === id) || all[0]; }
+// „Nächster Termin“ oben im Feed: der früheste kommende Termin mit festem Datum (Feiern, Arbeitsstunden, Hilfe-Aufrufe …).
+function nextEvent() {
+  const today = todayKey();
+  return allEvents().filter(e => e.date && e.date >= today && !e.noSignup && !HIDDEN_CATS.includes(e.cat))
+    .sort((a, b) => a.date.localeCompare(b.date))[0];
+}
 function regLabel(e) { return e.noSignup ? 'Info' : e.mine ? 'Angemeldet' : e.spots ? (e.taken >= e.spots ? 'Ausgebucht' : (e.spots - e.taken) + ' frei') : 'Anmelden'; }
 function notifications() {
   const work = S.db.work || [];
   const pushes = (S.db.pushes || []).map(p => {
-    const w = /^Arbeitseinsatz/.test(p.title) ? work.find(x => 'Arbeitseinsatz: ' + x.title === p.title) : null;
+    const w = work.find(x => p.title === 'Arbeitseinsatz: ' + x.title || p.title === 'Goldweiße Hilfe: ' + x.title);
     return { id: p.id, kind: p.auto ? 'Neu' : 'Mitteilung', when: deD(p.date), title: p.title, text: p.text, ev: w ? 'w_' + w.id : undefined };
   });
   return [...pushes, ...NOTIFS];
@@ -397,7 +404,7 @@ function feedItems() {
           end: n.orig ? (w && w.ende) || sortKey(n.when || '', (n.date || '').slice(0, 4) || year, true) : null, ...(n.orig ? webLink(w) : {}) };
       }) : NEWS.map(n => ({ ...n, k: sortKey(n.when, year) }))),
     // Aufrufe zur Mithilfe (Arbeitseinsätze, Putzaktionen, Gastro-Hilfe …) aus der Verwaltung, mit Anmeldung.
-    ...workEvents().map(e => ({ kind: 'Aktion', when: e.long + (e.time ? ', ' + e.time : ''), title: e.title, text: e.desc, k: e.date, end: e.date, ev: e.id }))
+    ...workEvents().map(e => ({ kind: 'Aktion', label: e.cat, when: e.long + (e.time ? ', ' + e.time : ''), title: e.title, text: e.desc, k: e.date, end: e.date, ev: e.id }))
   ];
   // Alle Beiträge (Website, News, Aktionen) zeitlich aufsteigend wie auf der Startseite; Einträge ohne Datum (z. B. „Immer“) ans Ende.
   return items.filter(upcoming).map((n, i) => ({ n, i }))
@@ -446,20 +453,20 @@ function vOnboarding() {
 }
 
 function vHome() {
-  const m = me(), e1 = findEvent('e1');
+  const m = me(), e1 = nextEvent();
   return `<div class="scroll">
     <div class="home-head">
       <div><div class="hello">Hallo, ${esc(m.name.split(' ')[0])}</div><h1 class="h1-l">Aktuelles</h1></div>
       <div class="avatar-sm hd">${esc(initials(m))}</div>
     </div>
-    <div class="card next" data-act="open" data-id="e1">
+    ${e1 ? `<div class="card next" data-act="open" data-id="${esc(e1.id)}">
       <div class="eyebrow-sm">Nächster Termin</div>
       <div class="next-row">
         <div class="next-date"><div class="hd next-day">${esc(e1.day)}</div><div class="next-mon">${esc(e1.month)}</div></div>
         <div style="flex:1"><div class="hd next-title">${esc(e1.title)}</div><div class="meta" style="margin-top:3px">${esc(e1.time)} · ${esc(e1.place)}</div></div>
       </div>
       <div class="next-foot"><span class="meta">${e1.mine ? 'Du bist angemeldet' : esc(e1.note)}</span><b>Details →</b></div>
-    </div>
+    </div>` : ''}
     <div class="seg">${FEED_FILTERS.map(([k, l]) => `<button class="${S.feed === k ? 'on' : ''}" data-act="feed" data-id="${k}">${l}</button>`).join('')}</div>
     <div class="feed">${feedItems().map(vPost).join('')}</div>
   </div>`;
@@ -467,7 +474,7 @@ function vHome() {
 
 function vPost(n) {
   const body = `${n.img ? `<img src="${esc(n.img)}" alt="" loading="lazy">` : ''}
-        <div class="post-meta label-xs"><span>${esc(n.kind)}</span><span>${esc(n.when)}</span></div>
+        <div class="post-meta label-xs"><span>${esc(n.label || n.kind)}</span><span>${esc(n.when)}</span></div>
         <div class="hd post-title">${esc(n.title)}</div>
         <div class="post-text">${esc(n.text)}</div>`;
   if (n.ev) {
@@ -604,7 +611,7 @@ function toggleReg() {
   if (e.work) {
     const w = (db.work || []).find(x => x.id === e.wid);
     if (!w) return;
-    if (reg && !confirm('Abmeldung vom Arbeitseinsatz\n\n' + WORK_FEE_NOTE + ' Trotzdem abmelden?')) return;
+    if (reg && e.fee && !confirm('Abmeldung vom Arbeitseinsatz\n\n' + WORK_FEE_NOTE + ' Trotzdem abmelden?')) return;
     saveDb({ ...db, work: db.work.map(x => x.id === w.id ? { ...x, signups: reg ? x.signups.filter(n => n !== m.nummer) : [...x.signups, m.nummer] } : x) });
   } else {
     const cur = (db.regs || {})[e.id] || [];
