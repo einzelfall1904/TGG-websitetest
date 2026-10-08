@@ -112,7 +112,8 @@
     gsap.set(items, { autoAlpha: 0, y: 32 });
     ST.batch(items, {
       start: 'top 90%', once: true,
-      onEnter: function (batch) { gsap.to(batch, { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.07, ease: 'power3.out', overwrite: true }); }
+      // overwrite 'auto': nur gleiche Eigenschaften überschreiben – sonst würde z. B. die Gold-Linie der Siegerkarten abgebrochen
+      onEnter: function (batch) { gsap.to(batch, { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.07, ease: 'power3.out', overwrite: 'auto' }); }
     });
 
     // Gold-Linie über den Siegerkarten wächst
