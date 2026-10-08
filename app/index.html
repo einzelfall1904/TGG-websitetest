@@ -211,7 +211,7 @@ const icon = (d, size) => `<svg class="ic" width="${size}" height="${size}" view
 const EVENTS = [
   { id: 'e1', cat: 'Clubleben', title: 'Saisonabschlussfeier', day: '07', month: 'Nov', long: 'Samstag, 7. November 2026', time: '19:00 Uhr', place: 'Clubanlage, Feldmarkstraße 200', spots: 0, note: 'Anmeldung bis 31.10.', desc: 'Für gute Stimmung und Musik ist gesorgt – die Tanzfläche ist frei! Dazu Currywurst, Würstchen, Salate und kühle Getränke. Anmeldung bis 31.10. über den Aushang am Clubhaus oder per WhatsApp an den Festausschuss.' },
   { id: 'e2', cat: 'Verein', title: 'Jahreshauptversammlung', day: '–', month: 'Ende 2026', long: 'Ende 2026 – genaues Datum folgt', time: 'Uhrzeit folgt', place: 'Clubanlage, Feldmarkstraße 200', spots: 0, note: 'Datum folgt', desc: 'Jahreshauptversammlung der Tennisgesellschaft Gold-Weiß Gelsenkirchen 1932 e.V. Das genaue Datum geben wir rechtzeitig bekannt.' },
-  { id: 'e3', cat: 'Training', title: 'Kostenloses Probetraining', day: '18', month: 'Apr', long: 'So, 18. und 25. April 2027', time: 'Uhrzeit folgt', place: 'Tennisanlage, Gelsenkirchen', spots: 0, note: 'Anmeldung per E-Mail', desc: '3 Stunden Tennis, kostenlos und unverbindlich – für Groß und Klein, Einsteiger und Wiedereinsteiger. Eine kurze E-Mail an info@tg-gold-weiss.de genügt. Danach startest du auf Wunsch ins Schnupperjahr zum reduzierten Beitrag.' }
+  { id: 'e3', cat: 'Training', title: 'Kostenloses Probetraining', day: '18', month: 'Apr', long: 'So, 18. und 25. April 2027', time: 'Uhrzeit folgt', place: 'Tennisanlage, Gelsenkirchen', spots: 0, noSignup: true, note: 'Für Interessierte', desc: '3 Stunden Tennis, kostenlos und unverbindlich – für Groß und Klein, Einsteiger und Wiedereinsteiger. Eine kurze E-Mail an info@tg-gold-weiss.de genügt. Danach startest du auf Wunsch ins Schnupperjahr zum reduzierten Beitrag.' }
 ];
 const NEWS = [
   { kind: 'News', when: '3. Okt', title: 'Pumuckl-Turnier 2026 abgeschlossen', text: 'Jung trifft Alt im Generationen-Doppel – die Sieger aller Kategorien sind online.' },
@@ -221,7 +221,7 @@ const NEWS = [
 ];
 const NOTIFS = [
   { id: 1, kind: 'Aktion', when: '09:12', title: 'Saisonabschlussfeier: Anmeldung bis 31.10.', text: 'Über den Aushang am Clubhaus oder per WhatsApp an den Festausschuss.', ev: 'e1' },
-  { id: 2, kind: 'Termin', when: 'Gestern', title: 'Probetraining 18. und 25. April 2027', text: 'Kostenlos für Groß und Klein – Anmeldung per E-Mail.', ev: 'e3' },
+  { id: 2, kind: 'Termin', when: 'Gestern', title: 'Probetraining 18. und 25. April 2027', text: 'Kostenlos für Interessierte, die noch kein Mitglied sind – gern weitersagen.', ev: 'e3' },
   { id: 3, kind: 'News', when: '3. Okt', title: 'Pumuckl-Turnier: Sieger online', text: 'Alle Kategorien sind eingetragen.' },
   { id: 4, kind: 'Verein', when: '27. Sep', title: 'Jahreshauptversammlung', text: 'Das genaue Datum geben wir rechtzeitig bekannt.', ev: 'e2' }
 ];
@@ -234,7 +234,7 @@ const MEMBERS = [
 const WORK0 = [{ id: 'w1', title: 'Herbstputz der Anlage', date: '2026-10-17', time: '09:00 Uhr', place: 'Clubanlage, Feldmarkstraße 200', desc: 'Plätze abziehen, Laub entfernen, Hecken schneiden. Werkzeug ist vorhanden, Handschuhe bitte mitbringen.', spots: 12, signups: ['1002'] }];
 const ONBOARDING = [
   { t: 'Tennis seit 1932', x: 'News, Termine und Mitteilungen der TG Gold-Weiß – immer in deiner Tasche.', p: 'Sandplätze' },
-  { t: 'Termine & Aktionen', x: 'Feiern, Turniere und Probetraining finden und mit einem Tipp anmelden.', p: 'Turnier' },
+  { t: 'Termine & Aktionen', x: 'Feiern, Turniere und Arbeitseinsätze finden und mit einem Tipp anmelden.', p: 'Turnier' },
   { t: 'Gemeinsam spielen', x: 'Sieh, wer dabei ist, und bleib mit anderen Mitgliedern in Kontakt.', p: 'Mitglieder' },
   { t: 'Als App installieren', x: 'Kein Store nötig – lege die TGG-App auf deinen Home-Bildschirm.', p: '' }
 ];
@@ -248,6 +248,8 @@ const CATS = ['Alle', 'Clubleben', 'Verein', 'Training', 'Arbeitsstunden'];
 const TABS = [['start', 'Start', IC.home], ['events', 'Termine', IC.search], ['notif', 'Mitteilungen', IC.bell], ['profile', 'Profil', IC.user]];
 const MON3 = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
 const BOARD_MAIL = 'info@tg-gold-weiss.de';
+// Probetraining ist nur für künftige Mitglieder – Mitglieder können sich in der App nicht anmelden.
+const NO_SIGNUP_NOTE = 'Das Probetraining ist für Interessierte, die noch kein Mitglied sind. Eine Anmeldung über die App ist daher nicht möglich – sag es gern weiter!';
 const WORK_FEE_NOTE = 'Bei Abmeldung wird ein Ersatzbetrag von 25 € in Rechnung gestellt.';
 
 /* ---------- Hilfsfunktionen ---------- */
@@ -316,11 +318,12 @@ function workEvents() {
 }
 function staticEvent(e) {
   const m = me(), su = (S.db.regs || {})[e.id] || [];
+  if (e.noSignup) return { ...e, signups: [], mine: false, taken: 0 };
   return { ...e, signups: su, mine: !!m && su.includes(m.nummer), taken: su.filter(n => !m || n !== m.nummer).length };
 }
 function allEvents() { return [...EVENTS.map(staticEvent), ...workEvents()]; }
 function findEvent(id) { const all = allEvents(); return all.find(e => e.id === id) || all[0]; }
-function regLabel(e) { return e.mine ? 'Angemeldet' : e.spots ? (e.taken >= e.spots ? 'Ausgebucht' : (e.spots - e.taken) + ' frei') : 'Anmelden'; }
+function regLabel(e) { return e.noSignup ? 'Info' : e.mine ? 'Angemeldet' : e.spots ? (e.taken >= e.spots ? 'Ausgebucht' : (e.spots - e.taken) + ' frei') : 'Anmelden'; }
 function notifications() {
   const work = S.db.work || [];
   const pushes = (S.db.pushes || []).map(p => {
@@ -456,13 +459,13 @@ function vDetail() {
         <div>${icon(IC.pin, 20)}${esc(e.place)}</div>
       </div>
       <p class="desc">${esc(e.desc)}</p>
-      <div class="cap">
+      ${e.noSignup ? `<div class="cap" style="font-size:14px;line-height:1.45;color:var(--color-neutral-800)">${NO_SIGNUP_NOTE}</div>` : `<div class="cap">
         <div class="cap-row"><span>Teilnehmer</span><span>${e.spots ? taken + ' / ' + e.spots : taken + ' angemeldet'}</span></div>
         <div class="bar"><div style="width:${pct}%"></div></div>
         <div class="people">${e.signups.length ? e.signups.map(nr => `<div class="person">${esc(shortName(nr))}</div>`).join('') : '<span class="none">Noch keine Anmeldungen</span>'}</div>
-      </div>
+      </div>`}
     </div>
-    <div class="action-bar"><button class="btn-reg hd${reg ? ' out' : ''}" data-act="toggleReg">${reg ? 'Abmelden' : full ? 'Auf Warteliste' : 'Jetzt anmelden'}</button></div>
+    ${e.noSignup ? '' : `<div class="action-bar"><button class="btn-reg hd${reg ? ' out' : ''}" data-act="toggleReg">${reg ? 'Abmelden' : full ? 'Auf Warteliste' : 'Jetzt anmelden'}</button></div>`}
   </div>`;
 }
 
@@ -537,7 +540,7 @@ function doLogin() {
 }
 function toggleReg() {
   const e = findEvent(S.sel), m = me(), db = S.db, reg = e.mine;
-  if (!m) return;
+  if (!m || e.noSignup) return;
   if (e.work) {
     const w = (db.work || []).find(x => x.id === e.wid);
     if (!w) return;
