@@ -5,6 +5,9 @@
    3. Kopfzeile beim Scrollen
    4. Eingebettete Inhalte (Ladeanzeige)
    5. Google Maps und Bildergalerien erst nach Klick laden (Zwei-Klick-Lösung)
+   6. Turnierbäume: Reiter für die Altersklassen
+   7. Plakate in Großansicht (Lightbox)
+   8. Vergangene Termine ausblenden
    ===================================================================== */
 (function () {
   var menu   = document.getElementById('menu');
@@ -163,4 +166,15 @@
   // Klick neben das Plakat schließt die Ansicht
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
   dlg.addEventListener('close', function () { img.removeAttribute('src'); });
+})();
+
+/* ---------- 8. Vergangene Termine ausblenden ----------
+   Jeder Termin unter „Was bei uns ansteht“ trägt sein letztes Datum: <article class="event" data-ende="2026-10-10">.
+   Ab dem Folgetag wird er automatisch ausgeblendet. Termine ohne data-ende (z. B. „Datum folgt“) bleiben stehen. */
+(function () {
+  var heute = new Date();
+  var stichtag = heute.getFullYear() + '-' + ('0' + (heute.getMonth() + 1)).slice(-2) + '-' + ('0' + heute.getDate()).slice(-2);
+  [].forEach.call(document.querySelectorAll('.event[data-ende]'), function (ev) {
+    if (ev.getAttribute('data-ende') < stichtag) ev.remove();
+  });
 })();
