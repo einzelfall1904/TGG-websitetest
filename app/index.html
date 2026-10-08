@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="TGG">
+<meta name="theme-color" content="#ffffff">
+<title>TGG</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2313263A'/%3E%3Ctext x='50' y='62' font-size='34' font-weight='700' text-anchor='middle' fill='%23DDBE7A' font-family='Arial'%3ETGG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<style>
+:root{
+  --color-bg:#FFFFFF;--color-surface:#F1F4F7;--color-text:#0E1A24;--color-divider:#DCE3EA;
+  --color-accent:#13263A;--color-accent-100:#F6EEDB;--color-accent-200:#EBDCB4;--color-accent-600:#1D3A55;
+  --color-accent-700:#94742C;--color-accent-800:#13263A;
+  --color-neutral-300:#DCE3EA;--color-neutral-400:#B8C3CE;--color-neutral-600:#7A8793;--color-neutral-700:#55626E;--color-neutral-800:#3A4752;
+  --color-error:#9B2C2C;
+  --font-heading:Archivo,system-ui,sans-serif;--font-body:Archivo,system-ui,sans-serif;
+  --font-mono:ui-monospace,Menlo,monospace;
+  --radius-card:16px;--radius-button:12px;
+  --safe-bottom:env(safe-area-inset-bottom);
+}
+html,body{margin:0;height:100%}
+body{background:var(--color-bg);overflow:hidden;font-family:var(--font-body);color:var(--color-text);-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;border-radius:var(--radius-button)}
+input{border-radius:0}
+h1{font-stretch:80%;font-weight:780;letter-spacing:-.025em}
+.hd{font-family:var(--font-heading);font-stretch:84%;font-weight:700}
+svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+#app{position:relative;height:100dvh;display:flex;flex-direction:column;background:var(--color-bg);padding-top:max(env(safe-area-inset-top),14px);box-sizing:border-box}
+.screen-pad{flex:1;display:flex;flex-direction:column;padding:12px 24px calc(var(--safe-bottom) + 24px)}
+.scroll{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:12px 20px 20px}
+.col{flex:1;display:flex;flex-direction:column;min-height:0}
+
+/* Shared pieces */
+.wordmark{font-size:22px;letter-spacing:.04em}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-700)}
+.eyebrow-sm{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-700)}
+.label-xs{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.section-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:4px}
+.photo{border:1px solid var(--color-divider);border-radius:var(--radius-card);overflow:hidden;position:relative;background:repeating-linear-gradient(135deg,var(--color-accent-200) 0 10px,var(--color-accent-100) 10px 20px);display:flex;align-items:flex-end;padding:12px}
+.photo span{font:11px var(--font-mono);color:var(--color-accent-800)}
+.btn-primary{height:54px;background:var(--color-accent);color:#fff;border:1px solid var(--color-accent);font-size:20px;letter-spacing:.02em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-primary:active{background:var(--color-accent-700)}
+.link-btn{background:none;border:0;color:var(--color-accent-700);cursor:pointer;padding:10px 0}
+.card{border:1px solid var(--color-divider);border-radius:var(--radius-card);overflow:hidden;position:relative}
+.box{border:1px solid var(--color-divider)}
+.lead{font-size:17px;line-height:1.45;color:var(--color-neutral-800);margin:0}
+.h1-xl{font-size:46px;margin:6px 0 10px}
+.h1-l{font-size:40px;margin:0}
+
+/* Login */
+.login .photo{margin:28px 6px 0;height:150px}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--color-neutral-700)}
+.field input{height:48px;border:1px solid var(--color-divider);background:var(--color-surface);padding:0 12px;font:inherit;font-size:17px;color:var(--color-text);outline:none}
+.login-err{color:var(--color-error);font-size:14px}
+.demo-hint{font-size:12px;color:var(--color-neutral-600);line-height:1.6;margin-top:14px;text-align:center}
+
+/* Onboarding */
+.ob-photo{margin:28px 6px 0;flex:1;max-height:300px}
+.ob-install{margin:22px 0 0;flex:1;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:14px;align-items:center;border:1px solid var(--color-divider);border-radius:var(--radius-card);padding:12px 14px}
+.step-n{width:38px;height:38px;flex:none;border-radius:50%;background:var(--color-accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.step-t{font-size:15px;line-height:1.35}
+.sub{color:var(--color-neutral-700);font-size:13px}
+.pill-switch{width:40px;height:22px;border-radius:99px;position:relative;flex:none;background:var(--color-neutral-400)}
+.pill-switch::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff}
+.pill-switch.on{background:var(--color-accent)}
+.pill-switch.on::after{left:20px}
+.dots{display:flex;gap:6px;margin:26px 0 18px}
+.dots div{height:3px;width:14px;background:var(--color-neutral-400)}
+.dots .done{background:var(--color-accent)}
+.dots .cur{width:28px}
+
+/* Home */
+.home-head{display:flex;justify-content:space-between;align-items:flex-end}
+.hello{font-size:14px;color:var(--color-neutral-700)}
+.avatar-sm{width:42px;height:42px;border:1px solid var(--color-divider);display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--color-accent-100);color:var(--color-accent-800)}
+.next{margin:22px 6px 6px;padding:16px;cursor:pointer}
+.next-row{display:flex;gap:14px;margin-top:8px;align-items:center}
+.next-date{text-align:center;border-right:1px solid var(--color-divider);padding-right:14px}
+.next-day{font-size:38px;line-height:1}
+.next-mon{font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.next-title{font-size:23px;line-height:1.1}
+.meta{font-size:13px;color:var(--color-neutral-700)}
+.next-foot{margin-top:14px;display:flex;justify-content:space-between;align-items:center}
+.next-foot b{font-size:14px;color:var(--color-accent-700);font-weight:500}
+.seg{display:flex;border:1px solid var(--color-divider);margin:22px 0 14px}
+.seg button{flex:1;padding:9px 0;font-size:14px;border:0;cursor:pointer;background:transparent;color:var(--color-text)}
+.seg button.on{background:var(--color-accent);color:#fff}
+.feed{display:flex;flex-direction:column;gap:12px}
+.post{border:1px solid var(--color-divider);padding:14px;display:flex;flex-direction:column;gap:6px}
+.post img{width:100%;max-height:200px;object-fit:contain;background:var(--color-surface);border:1px solid var(--color-divider);margin-bottom:6px}
+.post-meta{display:flex;justify-content:space-between}
+.post-meta span:first-child{color:var(--color-accent-700)}
+.post-meta span:last-child{color:var(--color-neutral-600)}
+.post-title{font-size:21px;line-height:1.15}
+.post-text{font-size:14px;line-height:1.45;color:var(--color-neutral-800)}
+
+/* Termine */
+.ev-head{padding:12px 20px 0}
+.searchbox{display:flex;align-items:center;gap:8px;border:1px solid var(--color-divider);background:var(--color-surface);padding:0 12px;height:44px;color:var(--color-neutral-700)}
+.searchbox input{flex:1;min-width:0;-webkit-appearance:none;appearance:none;border:0;background:transparent;font:inherit;font-size:16px;outline:none;color:var(--color-text)}
+.chips{display:flex;gap:8px;overflow:auto;padding:12px 0;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;padding:6px 14px;font-size:14px;cursor:pointer;border:1px solid var(--color-divider);background:transparent;color:var(--color-text)}
+.chips button.on{border-color:var(--color-accent);background:var(--color-accent);color:#fff}
+.ev-list{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:0 20px 20px}
+.empty{padding:40px 0;text-align:center;color:var(--color-neutral-700)}
+.ev{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--color-divider);cursor:pointer;align-items:center}
+.ev-date{width:54px;text-align:center;flex:none}
+.ev-day{font-size:30px;line-height:1}
+.ev-mon{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--color-neutral-700)}
+.ev-body{flex:1;min-width:0}
+.ev-title{font-size:20px;line-height:1.15}
+.tag{font-size:11px;padding:3px 8px;border:1px solid var(--color-divider);color:var(--color-accent-800);background:transparent;white-space:nowrap}
+.tag.full{color:var(--color-neutral-700)}
+.tag.mine{border-color:var(--color-accent);background:var(--color-accent);color:#fff}
+
+/* Detail */
+.detail .scroll{padding:8px 20px 20px}
+.back{display:flex;align-items:center;gap:4px;background:none;border:0;cursor:pointer;color:var(--color-accent-700);font-size:16px;padding:8px 0}
+.detail .photo{margin:8px 6px 0;height:170px;padding:10px}
+.detail .eyebrow-sm{margin-top:20px}
+.detail h1{font-size:38px;margin:4px 0 14px}
+.facts{display:flex;flex-direction:column;gap:10px;font-size:15px}
+.facts div{display:flex;gap:10px;align-items:center}
+.facts svg{color:var(--color-accent-700)}
+.desc{font-size:16px;line-height:1.5;margin:18px 0;color:var(--color-neutral-800)}
+.cap{border:1px solid var(--color-divider);padding:14px}
+.cap-row{display:flex;justify-content:space-between;font-size:14px}
+.cap-row span:last-child{font-weight:500}
+.bar{height:4px;background:var(--color-neutral-300);margin:8px 0 12px}
+.bar div{height:4px;background:var(--color-accent)}
+.people{display:flex;flex-wrap:wrap;gap:6px}
+.person{height:34px;padding:0 10px;border:1px solid var(--color-divider);display:flex;align-items:center;font-size:13px;background:var(--color-accent-200);color:var(--color-accent-800)}
+.person:nth-child(even){background:var(--color-accent-100)}
+.none{font-size:13px;color:var(--color-neutral-600)}
+.action-bar{padding:12px 20px calc(var(--safe-bottom) + 12px);border-top:1px solid var(--color-divider);background:var(--color-bg)}
+.btn-reg{width:100%;height:54px;cursor:pointer;font-size:20px;border:1px solid var(--color-accent);background:var(--color-accent);color:#fff}
+.btn-reg.out{background:transparent;color:var(--color-accent-700)}
+
+/* Mitteilungen */
+.notif-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.notif-head .link-btn{font-size:14px;padding:8px 0}
+.notif{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--color-divider);cursor:pointer}
+.unread-dot{width:8px;height:8px;margin-top:7px;flex:none;border-radius:50%;background:transparent}
+.notif.unread .unread-dot{background:var(--color-accent)}
+.notif-body{flex:1}
+.notif-meta{display:flex;justify-content:space-between;color:var(--color-neutral-700)}
+.notif-title{font-size:20px;line-height:1.15;margin:2px 0}
+.notif-text{font-size:14px;color:var(--color-neutral-800);line-height:1.4}
+
+/* Profil */
+.profile h1{font-size:40px;margin:0 0 18px}
+.me{margin:0 6px;padding:18px;display:flex;gap:16px;align-items:center}
+.avatar-lg{width:64px;height:64px;background:var(--color-accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;flex:none}
+.me-name{font-size:26px;line-height:1.1}
+.me-nr{font-size:12px;color:var(--color-accent-700);margin-top:4px;font-family:var(--font-mono)}
+.rows{border:1px solid var(--color-divider);margin:22px 0 0}
+.rows div{display:flex;justify-content:space-between;gap:16px;padding:12px 14px;border-bottom:1px solid var(--color-divider);font-size:15px}
+.rows span:first-child{color:var(--color-neutral-600)}
+.rows span:last-child{text-align:right}
+.mail-btn{display:block;box-sizing:border-box;text-align:center;line-height:46px;height:48px;margin-top:12px;border:1px solid var(--color-accent);color:var(--color-text);text-decoration:none;font-size:18px}
+.fine{font-size:12px;color:var(--color-neutral-600);line-height:1.5;margin-top:8px}
+.admin-link{display:block;text-align:center;margin:10px 0 22px;padding:14px;border:1px solid var(--color-divider);font-size:15px;color:var(--color-accent-700);text-decoration:none}
+.list-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--color-divider);font-size:15px}
+.list-row.link{cursor:pointer}
+.list-row.link span:last-child{color:var(--color-neutral-700)}
+.muted{font-size:14px;color:var(--color-neutral-700);padding:10px 0}
+.sq-switch{width:40px;height:22px;border:1px solid var(--color-accent);background:transparent;position:relative;cursor:pointer;flex:none}
+.sq-switch::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;background:var(--color-neutral-600)}
+.sq-switch.on{background:var(--color-accent)}
+.sq-switch.on::after{left:22px;background:#fff}
+.logout{width:100%;height:48px;margin-top:22px;border:1px solid var(--color-divider);background:transparent;color:var(--color-accent-700);font-size:18px;cursor:pointer}
+
+/* Tab-Leiste */
+.tabs{display:flex;border-top:1px solid var(--color-divider);background:var(--color-bg);padding:8px 8px calc(var(--safe-bottom) + 6px)}
+.tabs button{flex:1;background:none;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--color-neutral-600);padding:6px 0;position:relative}
+.tabs button.on{color:var(--color-accent-700)}
+.tabs span{font-size:11px}
+.tabs .badge{position:absolute;top:2px;left:calc(50% + 6px);min-width:16px;height:16px;background:var(--color-accent-700);color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+'use strict';
+
+/* ---------- Icons (24er Raster, Strichstärke 1.5) ---------- */
+const IC = {
+  home: 'M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',
+  search: 'M18 11a7 7 0 1 0-14 0 7 7 0 0 0 14 0M20 20l-3.5-3.5',
+  bell: 'M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0',
+  user: 'M16 8a4 4 0 1 0-8 0 4 4 0 0 0 8 0M4 21a8 8 0 0 1 16 0',
+  cal: 'M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2M16 2v4M8 2v4M3 10h18',
+  back: 'm15 18-6-6 6-6',
+  arrow: 'M5 12h14m-7-7 7 7-7 7',
+  clock: 'M22 12a10 10 0 1 0-20 0 10 10 0 0 0 20 0M12 6v6l4 2',
+  pin: 'M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0M15 10a3 3 0 1 0-6 0 3 3 0 0 0 6 0'
+};
+const icon = (d, size) => `<svg class="ic" width="${size}" height="${size}" viewBox="0 0 24 24"><path d="${d}"/></svg>`;
+
+/* ---------- Beispieldaten (bis Supabase angebunden ist) ---------- */
+const EVENTS = [
+  { id: 'e1', cat: 'Clubleben', title: 'Saisonabschlussfeier', day: '07', month: 'Nov', long: 'Samstag, 7. November 2026', time: '19:00 Uhr', place: 'Clubanlage, Feldmarkstraße 200', spots: 0, note: 'Anmeldung bis 31.10.', desc: 'Für gute Stimmung und Musik ist gesorgt – die Tanzfläche ist frei! Dazu Currywurst, Würstchen, Salate und kühle Getränke. Anmeldung bis 31.10. über den Aushang am Clubhaus oder per WhatsApp an den Festausschuss.' },
+  { id: 'e2', cat: 'Verein', title: 'Jahreshauptversammlung', day: '–', month: 'Ende 2026', long: 'Ende 2026 – genaues Datum folgt', time: 'Uhrzeit folgt', place: 'Clubanlage, Feldmarkstraße 200', spots: 0, note: 'Datum folgt', desc: 'Jahreshauptversammlung der Tennisgesellschaft Gold-Weiß Gelsenkirchen 1932 e.V. Das genaue Datum geben wir rechtzeitig bekannt.' },
+  { id: 'e3', cat: 'Training', title: 'Kostenloses Probetraining', day: '18', month: 'Apr', long: 'So, 18. und 25. April 2027', time: 'Uhrzeit folgt', place: 'Tennisanlage, Gelsenkirchen', spots: 0, note: 'Anmeldung per E-Mail', desc: '3 Stunden Tennis, kostenlos und unverbindlich – für Groß und Klein, Einsteiger und Wiedereinsteiger. Eine kurze E-Mail an info@tg-gold-weiss.de genügt. Danach startest du auf Wunsch ins Schnupperjahr zum reduzierten Beitrag.' }
+];
+const NEWS = [
+  { kind: 'News', when: '3. Okt', title: 'Pumuckl-Turnier 2026 abgeschlossen', text: 'Jung trifft Alt im Generationen-Doppel – die Sieger aller Kategorien sind online.' },
+  { kind: 'News', when: '27. Sep', title: 'Clubmeisterschaften 2026', text: 'Nach dem Endspieltag stehen alle Clubmeister der Saison fest.' },
+  { kind: 'Aktion', when: 'Immer', title: 'Platz buchen', text: 'Freien Platz finden und online reservieren – über eBusy.' },
+  { kind: 'News', when: '2026', title: 'Jugend-Stadtmeisterschaften', text: 'Alle Turnierbäume der Jugend-Stadtmeisterschaften 2026 im Überblick.' }
+];
+const NOTIFS = [
+  { id: 1, kind: 'Aktion', when: '09:12', title: 'Saisonabschlussfeier: Anmeldung bis 31.10.', text: 'Über den Aushang am Clubhaus oder per WhatsApp an den Festausschuss.', ev: 'e1' },
+  { id: 2, kind: 'Termin', when: 'Gestern', title: 'Probetraining 18. und 25. April 2027', text: 'Kostenlos für Groß und Klein – Anmeldung per E-Mail.', ev: 'e3' },
+  { id: 3, kind: 'News', when: '3. Okt', title: 'Pumuckl-Turnier: Sieger online', text: 'Alle Kategorien sind eingetragen.' },
+  { id: 4, kind: 'Verein', when: '27. Sep', title: 'Jahreshauptversammlung', text: 'Das genaue Datum geben wir rechtzeitig bekannt.', ev: 'e2' }
+];
+const MEMBERS = [
+  { nummer: '1001', name: 'Anna Berger', street: 'Gartenweg 4', zip: '60311', city: 'Frankfurt', email: 'anna.berger@example.de', birth: '1985-03-14', since: '2012-04-01', role: 'member' },
+  { nummer: '1002', name: 'Jonas Keller', street: 'Lindenstr. 22', zip: '60322', city: 'Frankfurt', email: 'j.keller@example.de', birth: '1992-09-02', since: '2018-06-15', role: 'member' },
+  { nummer: '1003', name: 'Marie Vogt', street: 'Am Park 7', zip: '60385', city: 'Frankfurt', email: 'marie.vogt@example.de', birth: '1978-11-23', since: '2005-01-01', role: 'member' },
+  { nummer: '9001', name: 'Thomas Richter', street: 'Clubweg 1', zip: '60311', city: 'Frankfurt', email: 'redaktion@example.de', birth: '1980-01-01', since: '2003-05-01', role: 'editor' }
+];
+const WORK0 = [{ id: 'w1', title: 'Herbstputz der Anlage', date: '2026-10-17', time: '09:00 Uhr', place: 'Clubanlage, Feldmarkstraße 200', desc: 'Plätze abziehen, Laub entfernen, Hecken schneiden. Werkzeug ist vorhanden, Handschuhe bitte mitbringen.', spots: 12, signups: ['1002'] }];
+const ONBOARDING = [
+  { t: 'Tennis seit 1932', x: 'News, Termine und Mitteilungen der TG Gold-Weiß – immer in deiner Tasche.', p: 'Sandplätze' },
+  { t: 'Termine & Aktionen', x: 'Feiern, Turniere und Probetraining finden und mit einem Tipp anmelden.', p: 'Turnier' },
+  { t: 'Gemeinsam spielen', x: 'Sieh, wer dabei ist, und bleib mit anderen Mitgliedern in Kontakt.', p: 'Mitglieder' },
+  { t: 'Als App installieren', x: 'Kein Store nötig – lege die TGG-App auf deinen Home-Bildschirm.', p: '' }
+];
+const INSTALL_STEPS = [
+  ['1', 'Teilen-Symbol tippen', 'In Safari unten in der Leiste'],
+  ['2', '„Zum Home-Bildschirm“', 'Nach unten scrollen und wählen'],
+  ['3', 'Hinzufügen', 'Öffne die App danach vom Home-Bildschirm']
+];
+const FEED_FILTERS = [['Alle', 'Alle'], ['Website', 'Website'], ['News', 'News'], ['Aktion', 'Aktionen']];
+const CATS = ['Alle', 'Clubleben', 'Verein', 'Training', 'Arbeitsstunden'];
+const TABS = [['start', 'Start', IC.home], ['events', 'Termine', IC.search], ['notif', 'Mitteilungen', IC.bell], ['profile', 'Profil', IC.user]];
+const MON3 = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
+const BOARD_MAIL = 'info@tg-gold-weiss.de';
+const WORK_FEE_NOTE = 'Bei Abmeldung wird ein Ersatzbetrag von 25 € in Rechnung gestellt.';
+
+/* ---------- Hilfsfunktionen ---------- */
+const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const deD = d => { const [y, m, t] = d.split('-'); return t + '.' + m + '.' + y; };
+const parseD = s => { const m = (s || '').trim().match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/); return m ? m[3] + '-' + m[2].padStart(2, '0') + '-' + m[1].padStart(2, '0') : null; };
+const clean = t => (t || '').replace(/­/g, '').replace(/\s+/g, ' ').trim();
+
+/* ---------- Speicher ----------
+   Gleiche Schlüssel wie die Verwaltung (/verwaltung/), damit beide auf derselben Domain dieselben Daten sehen.
+   tgg_db_v1 legt nur die Verwaltung an; die App schreibt nur hinein, wenn es ihn schon gibt. */
+const KEY = { session: 'tgg_session_v1', db: 'tgg_db_v1', obSeen: 'tgg_ob_seen', web: 'tgg_web_cache', prefs: 'tgg_prefs_v1' };
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+  del(k) { try { localStorage.removeItem(k); } catch (e) {} },
+  json(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }
+};
+function loadDb() {
+  const d = store.json(KEY.db);
+  return d && d.members ? d : { members: MEMBERS, work: WORK0, pushes: [] };
+}
+function saveDb(db) {
+  if (store.get(KEY.db)) store.set(KEY.db, JSON.stringify(db));
+  S.db = db;
+}
+function savePrefs() { store.set(KEY.prefs, JSON.stringify({ read: S.read, push: S.push, mail: S.mail })); }
+
+/* ---------- Zustand ---------- */
+const prefs = store.json(KEY.prefs) || {};
+const S = {
+  screen: store.get(KEY.session) ? 'start' : 'login',
+  ses: store.get(KEY.session),
+  db: loadDb(),
+  web: store.json(KEY.web) || [],
+  ln: '', lb: '', loginErr: '',
+  ob: 0, feed: 'Alle', q: '', cat: 'Alle', sel: 'e1',
+  read: prefs.read || { 3: true, 4: true },
+  push: prefs.push !== undefined ? prefs.push : true,
+  mail: !!prefs.mail
+};
+if (S.screen === 'start' && !me()) { S.screen = 'login'; S.ses = null; }
+
+/* ---------- Abgeleitete Daten ---------- */
+function me() { return S.db.members.find(m => m.nummer === S.ses); }
+function shortName(nr) {
+  const m = S.db.members.find(x => x.nummer === nr);
+  if (!m) return nr;
+  const p = m.name.split(' ');
+  return p.length > 1 ? p[0] + ' ' + p[p.length - 1][0] + '.' : m.name;
+}
+function workEvents() {
+  const m = me();
+  return (S.db.work || []).map(w => {
+    const mine = !!m && w.signups.includes(m.nummer);
+    const taken = w.signups.filter(n => !m || n !== m.nummer).length;
+    return {
+      id: 'w_' + w.id, wid: w.id, work: true, mine, signups: w.signups, cat: 'Arbeitsstunden', title: w.title,
+      day: w.date.slice(8), month: MON3[+w.date.slice(5, 7) - 1],
+      long: new Date(w.date + 'T12:00:00').toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
+      time: w.time || 'Uhrzeit folgt', place: w.place, spots: w.spots || 0, taken,
+      note: w.spots ? Math.max(0, w.spots - taken - (mine ? 1 : 0)) + ' Plätze frei' : 'Anmeldung offen',
+      desc: (w.desc || '') + ' ' + WORK_FEE_NOTE
+    };
+  });
+}
+function staticEvent(e) {
+  const m = me(), su = (S.db.regs || {})[e.id] || [];
+  return { ...e, signups: su, mine: !!m && su.includes(m.nummer), taken: su.filter(n => !m || n !== m.nummer).length };
+}
+function allEvents() { return [...EVENTS.map(staticEvent), ...workEvents()]; }
+function findEvent(id) { const all = allEvents(); return all.find(e => e.id === id) || all[0]; }
+function regLabel(e) { return e.mine ? 'Angemeldet' : e.spots ? (e.taken >= e.spots ? 'Ausgebucht' : (e.spots - e.taken) + ' frei') : 'Anmelden'; }
+function notifications() {
+  const work = S.db.work || [];
+  const pushes = (S.db.pushes || []).map(p => {
+    const w = /^Arbeitseinsatz/.test(p.title) ? work.find(x => 'Arbeitseinsatz: ' + x.title === p.title) : null;
+    return { id: p.id, kind: p.auto ? 'Neu' : 'Mitteilung', when: deD(p.date), title: p.title, text: p.text, ev: w ? 'w_' + w.id : undefined };
+  });
+  return [...pushes, ...NOTIFS];
+}
+function feedItems() {
+  const news = S.db.news;
+  const web = S.web.filter(w => !(news || []).some(n => n.orig === w.title))
+    .map(w => ({ kind: 'Website', when: w.date, title: w.title, text: w.sub || w.text, img: w.image }));
+  const own = news ? news.map(n => ({ kind: n.orig ? 'Website' : 'News', when: n.when || deD(n.date), title: n.title, text: n.text, img: n.img })) : NEWS;
+  return [...web, ...own].filter(n => S.feed === 'Alle' || n.kind === S.feed);
+}
+
+/* ---------- Screens ---------- */
+function vLogin() {
+  return `<form class="screen-pad login" data-form="login" novalidate>
+    <div class="hd wordmark">TGG</div>
+    <div class="photo"><span>FOTO · ANLAGE</span></div>
+    <div style="margin-top:28px"><div class="eyebrow">Mitgliederbereich</div><h1 class="h1-xl">Anmelden</h1><p class="lead" style="font-size:16px">Mit Mitgliedsnummer und Geburtsdatum.</p></div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px">
+      <label class="field">Mitgliedsnummer<input name="ln" value="${esc(S.ln)}" inputmode="numeric" autocomplete="username"></label>
+      <label class="field">Geburtsdatum (TT.MM.JJJJ)<input name="lb" value="${esc(S.lb)}" placeholder="14.03.1985" inputmode="numeric" autocomplete="current-password"></label>
+      ${S.loginErr ? `<div class="login-err" role="alert">${esc(S.loginErr)}</div>` : ''}
+    </div>
+    <div style="flex:1;min-height:16px"></div>
+    <button type="submit" class="btn-primary hd">Anmelden</button>
+    <div class="demo-hint">Demo: 1001 · 14.03.1985 (Mitglied) — 9001 · 01.01.1980 (Redaktion)</div>
+  </form>`;
+}
+
+function vOnboarding() {
+  const d = ONBOARDING[S.ob], last = S.ob === 3;
+  return `<div class="screen-pad">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="hd wordmark">TGG</div>
+      <button class="link-btn" style="font-size:15px" data-act="skipOb">Überspringen</button>
+    </div>
+    ${last ? `<div class="ob-install">
+        ${INSTALL_STEPS.map(([n, t, x]) => `<div class="step"><div class="step-n">${n}</div><div class="step-t"><strong>${esc(t)}</strong><div class="sub">${esc(x)}</div></div></div>`).join('')}
+        <div class="step" role="switch" aria-checked="${S.push}" style="gap:12px;cursor:pointer" data-act="toggle" data-key="push"><span class="pill-switch${S.push ? ' on' : ''}"></span><div style="font-size:15px"><strong>Push erlauben</strong><div class="sub">News und Erinnerungen direkt aufs Handy</div></div></div>
+      </div>`
+      : `<div class="photo ob-photo"><span>FOTO · ${esc(d.p.toUpperCase())}</span></div>`}
+    <div style="margin-top:32px">
+      <div class="eyebrow">${S.ob + 1} / 4</div>
+      <h1 class="h1-xl">${esc(d.t)}</h1>
+      <p class="lead">${esc(d.x)}</p>
+    </div>
+    <div class="dots">${[0, 1, 2, 3].map(i => `<div class="${i <= S.ob ? 'done' : ''}${i === S.ob ? ' cur' : ''}"></div>`).join('')}</div>
+    <button class="btn-primary hd" data-act="nextOb">${last ? 'Loslegen' : 'Weiter'}${icon(IC.arrow, 20)}</button>
+  </div>`;
+}
+
+function vHome() {
+  const m = me(), e1 = findEvent('e1');
+  return `<div class="scroll">
+    <div class="home-head">
+      <div><div class="hello">Hallo, ${esc(m.name.split(' ')[0])}</div><h1 class="h1-l">Aktuelles</h1></div>
+      <div class="avatar-sm hd">${esc(initials(m))}</div>
+    </div>
+    <div class="card next" data-act="open" data-id="e1">
+      <div class="eyebrow-sm">Nächster Termin</div>
+      <div class="next-row">
+        <div class="next-date"><div class="hd next-day">${esc(e1.day)}</div><div class="next-mon">${esc(e1.month)}</div></div>
+        <div style="flex:1"><div class="hd next-title">${esc(e1.title)}</div><div class="meta" style="margin-top:3px">${esc(e1.time)} · ${esc(e1.place)}</div></div>
+      </div>
+      <div class="next-foot"><span class="meta">${e1.mine ? 'Du bist angemeldet' : esc(e1.note)}</span><b>Details →</b></div>
+    </div>
+    <div class="seg">${FEED_FILTERS.map(([k, l]) => `<button class="${S.feed === k ? 'on' : ''}" data-act="feed" data-id="${k}">${l}</button>`).join('')}</div>
+    <div class="feed">${feedItems().map(n => `<article class="post">
+        ${n.img ? `<img src="${esc(n.img)}" alt="" loading="lazy">` : ''}
+        <div class="post-meta label-xs"><span>${esc(n.kind)}</span><span>${esc(n.when)}</span></div>
+        <div class="hd post-title">${esc(n.title)}</div>
+        <div class="post-text">${esc(n.text)}</div>
+      </article>`).join('')}</div>
+  </div>`;
+}
+
+function vEventList() {
+  const q = S.q.trim().toLowerCase();
+  const res = allEvents().filter(e => (S.cat === 'Alle' || e.cat === S.cat) && (!q || (e.title + e.place + e.cat).toLowerCase().includes(q)));
+  if (!res.length) return `<div class="empty">Keine Treffer für „${esc(S.q)}“.</div>`;
+  return res.map(e => {
+    const full = e.spots && e.taken >= e.spots;
+    return `<div class="ev" data-act="open" data-id="${esc(e.id)}">
+      <div class="ev-date"><div class="hd ev-day">${esc(e.day)}</div><div class="ev-mon">${esc(e.month)}</div></div>
+      <div class="ev-body"><div class="eyebrow-sm" style="letter-spacing:.1em">${esc(e.cat)}</div><div class="hd ev-title">${esc(e.title)}</div><div class="meta">${esc(e.time)} · ${esc(e.place)}</div></div>
+      <div class="tag${e.mine ? ' mine' : full ? ' full' : ''}">${esc(regLabel(e))}</div>
+    </div>`;
+  }).join('');
+}
+function vEvents() {
+  return `<div class="col">
+    <div class="ev-head"><h1 class="h1-l" style="margin:0 0 12px">Termine</h1>
+      <div class="searchbox">${icon(IC.search, 20)}<input type="search" data-input="q" value="${esc(S.q)}" placeholder="Termine, Orte, Aktionen suchen" enterkeyhint="search"></div>
+      <div class="chips">${CATS.map(c => `<button class="${S.cat === c ? 'on' : ''}" data-act="cat" data-id="${c}">${c}</button>`).join('')}</div>
+    </div>
+    <div class="ev-list" id="ev-list">${vEventList()}</div>
+  </div>`;
+}
+
+function vDetail() {
+  const e = findEvent(S.sel), reg = e.mine, full = e.spots && e.taken >= e.spots && !reg;
+  const taken = e.taken + (reg ? 1 : 0);
+  const pct = e.spots ? Math.min(100, taken / e.spots * 100) : 100;
+  return `<div class="col detail">
+    <div class="scroll">
+      <button class="back" data-act="go" data-id="events">${icon(IC.back, 22)}Termine</button>
+      <div class="photo"><span>FOTO · ${esc(e.title)}</span></div>
+      <div class="eyebrow-sm">${esc(e.cat)}</div>
+      <h1>${esc(e.title)}</h1>
+      <div class="facts">
+        <div>${icon(IC.cal, 20)}${esc(e.long)}</div>
+        <div>${icon(IC.clock, 20)}${esc(e.time)}</div>
+        <div>${icon(IC.pin, 20)}${esc(e.place)}</div>
+      </div>
+      <p class="desc">${esc(e.desc)}</p>
+      <div class="cap">
+        <div class="cap-row"><span>Teilnehmer</span><span>${e.spots ? taken + ' / ' + e.spots : taken + ' angemeldet'}</span></div>
+        <div class="bar"><div style="width:${pct}%"></div></div>
+        <div class="people">${e.signups.length ? e.signups.map(nr => `<div class="person">${esc(shortName(nr))}</div>`).join('') : '<span class="none">Noch keine Anmeldungen</span>'}</div>
+      </div>
+    </div>
+    <div class="action-bar"><button class="btn-reg hd${reg ? ' out' : ''}" data-act="toggleReg">${reg ? 'Abmelden' : full ? 'Auf Warteliste' : 'Jetzt anmelden'}</button></div>
+  </div>`;
+}
+
+function vNotif() {
+  return `<div class="scroll">
+    <div class="notif-head"><h1 class="h1-l">Mitteilungen</h1><button class="link-btn" data-act="readAll">Alle gelesen</button></div>
+    ${notifications().map(n => `<div class="notif${S.read[n.id] ? '' : ' unread'}" data-act="notif" data-id="${esc(n.id)}">
+      <div class="unread-dot"></div>
+      <div class="notif-body"><div class="notif-meta label-xs"><span>${esc(n.kind)}</span><span>${esc(n.when)}</span></div><div class="hd notif-title">${esc(n.title)}</div><div class="notif-text">${esc(n.text)}</div></div>
+    </div>`).join('')}
+  </div>`;
+}
+
+function vProfile() {
+  const m = me(), regs = allEvents().filter(e => e.mine);
+  const rows = [['Anschrift', m.street + ', ' + m.zip + ' ' + m.city], ['E-Mail', m.email], ['Geburtsdatum', deD(m.birth)], ['Eintritt', deD(m.since)]];
+  const mailHref = 'mailto:' + BOARD_MAIL + '?subject=' + encodeURIComponent('Änderung Mitgliedsdaten Nr. ' + m.nummer) + '&body=' + encodeURIComponent('Mitglied: ' + m.name + ' (Nr. ' + m.nummer + ')\n\nBitte folgende Änderung vornehmen:\n');
+  return `<div class="scroll profile">
+    <h1>Profil</h1>
+    <div class="card me">
+      <div class="avatar-lg hd">${esc(initials(m))}</div>
+      <div><div class="hd me-name">${esc(m.name)}</div><div class="meta">${m.role === 'editor' ? 'Redaktion' : 'Aktives Mitglied'} · seit ${esc(m.since.slice(0, 4))}</div><div class="me-nr">Nr. ${esc(m.nummer)}</div></div>
+    </div>
+    <div class="rows">${rows.map(([k, v]) => `<div><span>${k}</span><span>${esc(v)}</span></div>`).join('')}</div>
+    <a class="mail-btn hd" href="${esc(mailHref)}">Änderung per E-Mail melden</a>
+    <div class="fine">Persönliche Daten ändert ausschließlich der Vorstand. Schreib uns kurz, was geändert werden soll.</div>
+    ${m.role === 'editor' ? '<a class="admin-link" href="/verwaltung/index.html">Verwaltung öffnen →</a>' : ''}
+    <div style="height:22px"></div>
+    <div class="section-label">Meine Anmeldungen</div>
+    ${regs.length ? regs.map(e => `<div class="list-row link" data-act="open" data-id="${esc(e.id)}"><span>${esc(e.title)}</span><span>${esc(e.day + '. ' + e.month)}</span></div>`).join('') : '<div class="muted">Noch keine Anmeldungen.</div>'}
+    <div class="section-label" style="margin-top:22px">Einstellungen</div>
+    ${[['Push-Mitteilungen', 'push'], ['E-Mail-Newsletter', 'mail']].map(([l, k]) => `<div class="list-row"><span>${l}</span><span class="sq-switch${S[k] ? ' on' : ''}" role="switch" aria-checked="${S[k]}" aria-label="${l}" data-act="toggle" data-key="${k}"></span></div>`).join('')}
+    <button class="logout hd" data-act="logout">Abmelden</button>
+  </div>`;
+}
+
+function vTabs() {
+  const active = S.screen === 'detail' ? 'events' : S.screen;
+  const unread = notifications().filter(n => !S.read[n.id]).length;
+  return `<nav class="tabs">${TABS.map(([k, l, d]) => `<button class="${active === k ? 'on' : ''}" data-act="go" data-id="${k}">
+      ${icon(d, 26)}<span>${l}</span>${k === 'notif' && unread ? `<span class="badge">${unread}</span>` : ''}
+    </button>`).join('')}</nav>`;
+}
+
+function initials(m) { return m.name.split(' ').map(w => w[0]).join('').slice(0, 2); }
+
+/* ---------- Rendern ---------- */
+const VIEWS = { login: vLogin, ob: vOnboarding, start: vHome, events: vEvents, detail: vDetail, notif: vNotif, profile: vProfile };
+const app = document.getElementById('app');
+let lastScreen = null;
+function render() {
+  // Scrollposition halten, solange der Screen gleich bleibt (z. B. beim Umschalten eines Filters).
+  const sc = app.querySelector('.scroll, .ev-list');
+  const top = S.screen === lastScreen && sc ? sc.scrollTop : 0;
+  app.innerHTML = VIEWS[S.screen]() + (S.screen !== 'login' && S.screen !== 'ob' ? vTabs() : '');
+  const sc2 = app.querySelector('.scroll, .ev-list');
+  if (sc2) sc2.scrollTop = top;
+  lastScreen = S.screen;
+}
+function set(patch) { Object.assign(S, patch); render(); }
+
+/* ---------- Aktionen ---------- */
+function finishOnboarding() { store.set(KEY.obSeen, '1'); set({ screen: 'start' }); }
+function doLogin() {
+  const b = parseD(S.lb);
+  const m = S.db.members.find(x => x.nummer === S.ln.trim() && b && x.birth === b);
+  if (!m) return set({ loginErr: 'Mitgliedsnummer oder Geburtsdatum stimmt nicht.' });
+  store.set(KEY.session, m.nummer);
+  // „Zuletzt in der App“ – die Verwaltung listet damit angemeldete und nicht angemeldete Mitglieder.
+  saveDb({ ...S.db, members: S.db.members.map(x => x.nummer === m.nummer ? { ...x, seen: new Date().toISOString().slice(0, 10) } : x) });
+  set({ ses: m.nummer, loginErr: '', ln: '', lb: '', screen: store.get(KEY.obSeen) ? 'start' : 'ob', ob: 0 });
+}
+function toggleReg() {
+  const e = findEvent(S.sel), m = me(), db = S.db, reg = e.mine;
+  if (!m) return;
+  if (e.work) {
+    const w = (db.work || []).find(x => x.id === e.wid);
+    if (!w) return;
+    if (reg && !confirm('Abmeldung vom Arbeitseinsatz\n\n' + WORK_FEE_NOTE + ' Trotzdem abmelden?')) return;
+    saveDb({ ...db, work: db.work.map(x => x.id === w.id ? { ...x, signups: reg ? x.signups.filter(n => n !== m.nummer) : [...x.signups, m.nummer] } : x) });
+  } else {
+    const cur = (db.regs || {})[e.id] || [];
+    saveDb({ ...db, regs: { ...(db.regs || {}), [e.id]: reg ? cur.filter(n => n !== m.nummer) : [...cur, m.nummer] } });
+  }
+  render();
+}
+const ACT = {
+  go: d => set({ screen: d.id, ob: 0 }),
+  open: d => set({ screen: 'detail', sel: d.id }),
+  feed: d => set({ feed: d.id }),
+  cat: d => set({ cat: d.id }),
+  skipOb: finishOnboarding,
+  nextOb: () => S.ob === 3 ? finishOnboarding() : set({ ob: S.ob + 1 }),
+  toggle: d => { S[d.key] = !S[d.key]; savePrefs(); render(); },
+  toggleReg,
+  notif: d => {
+    const n = notifications().find(x => String(x.id) === d.id);
+    if (!n) return;
+    S.read = { ...S.read, [n.id]: true }; savePrefs();
+    n.ev ? set({ screen: 'detail', sel: n.ev }) : render();
+  },
+  readAll: () => { S.read = Object.fromEntries(notifications().map(n => [n.id, true])); savePrefs(); render(); },
+  logout: () => { store.del(KEY.session); set({ ses: null, screen: 'login' }); }
+};
+app.addEventListener('click', ev => {
+  const el = ev.target.closest('[data-act]');
+  if (el && ACT[el.dataset.act]) ACT[el.dataset.act](el.dataset);
+});
+app.addEventListener('submit', ev => { ev.preventDefault(); if (ev.target.dataset.form === 'login') doLogin(); });
+app.addEventListener('input', ev => {
+  const t = ev.target;
+  if (t.name === 'ln' || t.name === 'lb') S[t.name] = t.value;
+  else if (t.dataset.input === 'q') { S.q = t.value; document.getElementById('ev-list').innerHTML = vEventList(); }
+});
+
+/* ---------- Ankündigungen der Website ----------
+   Die App liegt unter /app/ auf derselben Domain wie die Website und liest die Startseite direkt.
+   Fallback: Netlify-Funktion /.netlify/functions/ankuendigungen. Die letzte Antwort wird zwischengespeichert. */
+function loadWebItems() {
+  const done = items => {
+    if (!items || !items.length) return;
+    S.web = items; store.set(KEY.web, JSON.stringify(items));
+    if (S.screen === 'start') render();
+  };
+  fetch('/').then(r => r.ok ? r.text() : Promise.reject()).then(html => {
+    const doc = new DOMParser().parseFromString(html, 'text/html'), items = [];
+    doc.querySelectorAll('img[src*="img/events/"]').forEach((img, i) => {
+      let c = img.parentElement;
+      while (c && !c.querySelector('h3')) c = c.parentElement;
+      if (!c) return;
+      const title = clean(c.querySelector('h3').textContent);
+      const leaf = [...c.querySelectorAll('*')].filter(n => !n.children.length).map(n => clean(n.textContent)).filter(Boolean);
+      const date = leaf.find(x => /(Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag|Ende \d{4})/.test(x)) || '';
+      const ps = [...c.querySelectorAll('p')].map(p => clean(p.textContent)).filter(x => x && x !== date);
+      if (!items.some(x => x.title === title)) items.push({ id: 'w' + i, title, date, sub: ps[0] || '', text: ps[1] || ps[0] || '', image: new URL(img.getAttribute('src'), location.origin + '/').href });
+    });
+    if (items.length) done(items); else return Promise.reject();
+  }).catch(() => fetch('/.netlify/functions/ankuendigungen').then(r => r.ok ? r.json() : null).then(d => d && done(d.items)).catch(() => {}));
+}
+
+render();
+loadWebItems();
+</script>
+</body>
+</html>
