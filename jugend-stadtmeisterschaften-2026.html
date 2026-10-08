@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<!--
+  TG Gold-Weiß Gelsenkirchen – Jugend-Stadtmeisterschaften 2026
+  Aufbau: Kopfzeile (Logo, Menü) · Hauptinhalt (Abschnitte) · Fußzeile
+  Gestaltung: css/style.css · Funktionen: js/main.js
+-->
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Jugend-Stadtmeisterschaften 2026 – TG Gold-Weiß Gelsenkirchen</title>
+    <meta name="description" content="Jugend-Stadtmeisterschaften 2026 – Turnierbäume und Ergebnisse aller Altersklassen.">
+    <meta name="theme-color" content="#13263A">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <noscript>
+      <style>.js main,.js footer{visibility:visible!important}</style>
+    </noscript>
+  </head>
+  <body class="">
+    <a class="skip" href="#main">Zum Inhalt springen</a>
+
+    <!-- ######## KOPFZEILE (Logo, Menü) ######## -->
+    <header class="top">
+      <div class="wrap bar">
+        <a class="brand" href="index.html">
+          <img src="img/logo.svg" alt="" width="44" height="44">
+          <span>TG&nbsp;<span class="nw">Gold-Weiß</span><small>Gelsenkirchen, seit 1932</small></span>
+        </a>
+        <nav id="menu" aria-label="Hauptmenü">
+          <ul class="main">
+            <li>
+              <details class="dd">
+                <summary>Club<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></summary>
+                <ul class="sub">
+                  <li><a href="verein.html"><b>Verein</b><span>Vorstand, Gremien und Satzungen</span></a></li>
+                  <li><a href="clubanlage.html"><b>Clubanlage</b><span>Sechs&nbsp;Sandplätze am Waldrand</span></a></li>
+                  <li><a href="trainer.html"><b>Trainer</b><span>Training und Anfängerkurse</span></a></li>
+                  <li><a href="sponsoren.html"><b>Sponsoren</b><span>Partner und Mitgliedervorteile</span></a></li>
+                  <li><a href="sponsor-werden.html"><b>Sponsor werden</b><span>Pakete für Unternehmen</span></a></li>
+                </ul>
+              </details>
+            </li>
+            <li>
+              <details class="dd">
+                <summary class="on">Sport<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></summary>
+                <ul class="sub">
+                  <li><a href="mannschaften.html"><b>Mannschaften</b><span>Zwölf&nbsp;Teams im Spielbetrieb</span></a></li>
+                  <li><a href="turniere.html"><b>Turniere</b><span>Alle Turniere im Überblick</span></a></li>
+                  <li><a href="clubmeisterschaften.html"><b>Clubmeisterschaften 2026</b><span>Abgeschlossen&nbsp;– alle Clubmeister</span></a></li>
+                  <li><a href="pumucklturnier.html"><b>Pumucklturnier 2026</b><span>Abgeschlossen&nbsp;– alle Sieger</span></a></li>
+                  <li><a href="jugend-stadtmeisterschaften-2026.html" aria-current="page"><b>Jugend-Stadtmeisterschaften 2026</b><span>Abgeschlossen&nbsp;– alle Turnierbäume</span></a></li>
+                </ul>
+              </details>
+            </li>
+            <li><a href="probetraining.html">Probetraining</a></li>
+            <li><a href="mitglied-werden.html">Mitglied werden</a></li>
+          </ul>
+          <div class="actions">
+            <a class="btn ghost sm" href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">Platz buchen<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn sm" href="kontakt.html">Kontakt</a>
+          </div>
+        </nav>
+        <button class="burger" aria-expanded="false" aria-controls="menu"><span></span><span></span><em>Menü</em></button>
+      </div>
+      <div class="progress" aria-hidden="true"></div>
+    </header>
+
+    <!-- ######## HAUPTINHALT ######## -->
+    <main id="main">
+
+      <!-- ============ Seitenkopf: Jugend-Stadtmeisterschaften 2026 ============ -->
+      <div class="page-hero">
+        <div class="wrap">
+          <p class="crumb"><a href="index.html">Start</a><span>/</span>Sport</p>
+          <h1>Jugend-Stadtmeisterschaften 2026</h1>
+          <p class="lead">Turnierbäume und Ergebnisse aller Altersklassen. Das Turnier fand im Mai&nbsp;2026&nbsp;statt.</p>
+        </div>
+      </div>
+
+      <!-- ============ Die Sieger ============ -->
+      <section class="jsm-sum">
+        <div class="wrap">
+          <div class="head row">
+            <div>
+              <span class="done">Abgeschlossen</span>
+              <h2>Die Sieger</h2>
+            </div>
+            <a class="textlink" href="https://www.tennis.de/spielen/spielbetrieb/turniersuche.html#detail/796120" target="_blank" rel="noopener">Turnier auf tennis.de<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <ul class="winners">
+            <li><a href="#p-u12m" data-tab="u12m"><span>Junioren&nbsp;U12</span><b>Giese,&nbsp;N.</b><em>6:1 4:6 10:7</em></a></li>
+            <li><a href="#p-u15m" data-tab="u15m"><span>Junioren&nbsp;U15</span><b>Rogowski,&nbsp;N.</b><em>6:1 6:3</em></a></li>
+            <li><a href="#p-u18m" data-tab="u18m"><span>Junioren&nbsp;U18</span><b>Hadzimujic,&nbsp;D.</b><em>6:4 6:1</em></a></li>
+            <li><a href="#p-u12w" data-tab="u12w"><span>Juniorinnen&nbsp;U12</span><b>Haufe,&nbsp;S.</b><em>6:3 6:2</em></a></li>
+            <li><a href="#p-u15w" data-tab="u15w"><span>Juniorinnen&nbsp;U15</span><b>Babajic,&nbsp;U.</b><em>6:3 2:6 10:3</em></a></li>
+            <li><a href="#p-u18w" data-tab="u18w"><span>Juniorinnen&nbsp;U18</span><b>Rogowski,&nbsp;L.</b><em>Gruppensieg</em></a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ Junioren U12 Einzel ============ -->
+      <section class="jsm">
+        <div class="wrap">
+          <div class="tabs" role="tablist" aria-label="Altersklasse wählen">
+            <button type="button" role="tab" id="tab-u12m" aria-controls="p-u12m" aria-selected="true">Junioren&nbsp;U12</button>
+            <button type="button" role="tab" id="tab-u15m" aria-controls="p-u15m" aria-selected="false" tabindex="-1">Junioren&nbsp;U15</button>
+            <button type="button" role="tab" id="tab-u18m" aria-controls="p-u18m" aria-selected="false" tabindex="-1">Junioren&nbsp;U18</button>
+            <button type="button" role="tab" id="tab-u12w" aria-controls="p-u12w" aria-selected="false" tabindex="-1">Juniorinnen&nbsp;U12</button>
+            <button type="button" role="tab" id="tab-u15w" aria-controls="p-u15w" aria-selected="false" tabindex="-1">Juniorinnen&nbsp;U15</button>
+            <button type="button" role="tab" id="tab-u18w" aria-controls="p-u18w" aria-selected="false" tabindex="-1">Juniorinnen&nbsp;U18</button>
+          </div>
+
+          <!-- ============ Junioren U12 Einzel (#p-u12m) ============ -->
+          <section class="draw" id="p-u12m" role="tabpanel" aria-labelledby="tab-u12m">
+            <div class="draw-head">
+              <div>
+                <p class="kicker-s">Hauptfeld</p>
+                <h2>Junioren&nbsp;U12 Einzel</h2>
+              </div>
+              <p class="champ-line"><span>Sieger</span><b>Giese,&nbsp;N.</b><em>6:1 4:6 10:7</em></p>
+            </div>
+            <div class="bracket-scroll" tabindex="0" aria-label="Turnierbaum Junioren U12 Einzel, seitlich scrollbar">
+              <div class="bracket b8">
+                <div class="round r-first">
+                  <p class="rh">Viertelfinale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm"><span class="seed" title="Setzplatz">[1]</span>Buciuman, Matei Constantin</span><span class="pmeta">LK23,6&nbsp;– 2015&nbsp;– TC GW Westerholt, WTV</span></div>
+                        <div class="pl"><span class="nm">Jung, Jonas</span><span class="pmeta">LK24,0&nbsp;– 2014&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="sc">6:0 6:2</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Ortwein, Theo</span><span class="pmeta">LK24,5&nbsp;– 2014&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="pl win"><span class="nm">Bergermann, Tom Johannes</span><span class="pmeta">LK24,2&nbsp;– 2015&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="sc">6:3 6:1</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Bartkowiak, Jannis</span><span class="pmeta">LK24,2&nbsp;– 2015&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="pl win"><span class="nm">Weirich, Erik</span><span class="pmeta">LK24,2&nbsp;– 2015&nbsp;– SC Buer-Hassel 1919, WTV</span></div>
+                        <div class="sc">6:1 6:0</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Giese, Noah</span><span class="pmeta">–&nbsp;– – 2016&nbsp;– TV Jahn Hiesfeld&nbsp;e.V. TA, TVN</span></div>
+                        <div class="pl"><span class="nm"><span class="seed" title="Setzplatz">[2]</span>Grose, Nicolas</span><span class="pmeta">LK23,9&nbsp;– 2015&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="sc">6:0 6:0</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round ">
+                  <p class="rh">Halbfinale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Buciuman,&nbsp;M.</span></div>
+                        <div class="pl"><span class="nm">Bergermann,&nbsp;T.</span></div>
+                        <div class="sc">7:5 7:6</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Weirich,&nbsp;E.</span></div>
+                        <div class="pl win"><span class="nm">Giese,&nbsp;N.</span></div>
+                        <div class="sc">6:2 6:0</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round ">
+                  <p class="rh">Finale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Buciuman,&nbsp;M.</span></div>
+                        <div class="pl win"><span class="nm">Giese,&nbsp;N.</span></div>
+                        <div class="sc">6:1 4:6 10:7</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round r-last">
+                  <p class="rh">Sieger</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match champ">
+                        <span class="cup" aria-hidden="true"></span>
+                        <div class="pl win"><span class="nm">Giese,&nbsp;N.</span></div>
+                        <div class="sc">6:1 4:6 10:7</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Junioren U15 Einzel (#p-u15m) ============ -->
+          <section class="draw" id="p-u15m" role="tabpanel" aria-labelledby="tab-u15m">
+            <div class="draw-head">
+              <div>
+                <p class="kicker-s">Hauptfeld</p>
+                <h2>Junioren&nbsp;U15 Einzel</h2>
+              </div>
+              <p class="champ-line"><span>Sieger</span><b>Rogowski,&nbsp;N.</b><em>6:1 6:3</em></p>
+            </div>
+            <div class="bracket-scroll" tabindex="0" aria-label="Turnierbaum Junioren U15 Einzel, seitlich scrollbar">
+              <div class="bracket b16">
+                <div class="round r-first">
+                  <p class="rh">Achtelfinale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match has-bye">
+                        <div class="pl win"><span class="nm"><span class="seed" title="Setzplatz">[1]</span>Mühlenberg, Matteo</span><span class="pmeta">LK18,8&nbsp;– 2013&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="pl bye"><span class="nm">Rast</span></div>
+                        <div class="sc muted">Freilos</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Weirich, Merten Alexander</span><span class="pmeta">LK24,6&nbsp;– 2013&nbsp;– SC Buer-Hassel 1919, WTV</span></div>
+                        <div class="pl"><span class="nm">Kempa, Fritz</span><span class="pmeta">LK24,2&nbsp;– 2013&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="sc">6:1 6:2</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match has-bye">
+                        <div class="pl win"><span class="nm"><span class="seed" title="Setzplatz">[3]</span>Kleine-Wienforth, Casimir</span><span class="pmeta">LK20,9&nbsp;– 2012&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="pl bye"><span class="nm">Rast</span></div>
+                        <div class="sc muted">Freilos</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match has-bye">
+                        <div class="pl win"><span class="nm">Hadzimujic, Faid</span><span class="pmeta">LK24,0&nbsp;– 2013&nbsp;– TG&nbsp;<span class="nw">Gold-Weiß</span> Gelsenkirchen, WTV</span></div>
+                        <div class="pl bye"><span class="nm">Rast</span></div>
+                        <div class="sc muted">Freilos</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Bartkowiak, Henri</span><span class="pmeta">LK25,0&nbsp;– 2013&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="pl win"><span class="nm">Zimara, Ben</span><span class="pmeta">LK23,2&nbsp;– 2013&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="sc">6:0 6:0</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match has-bye">
+                        <div class="pl bye"><span class="nm">Rast</span></div>
+                        <div class="pl win"><span class="nm"><span class="seed" title="Setzplatz">[4]</span>Stachowiak, Konstantin</span><span class="pmeta">LK22,6&nbsp;– 2012&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="sc muted">Freilos</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match has-bye">
+                        <div class="pl bye"><span class="nm">Rast</span></div>
+                        <div class="pl win"><span class="nm">Ludwig, Tom</span><span class="pmeta">LK24,7&nbsp;– 2013&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="sc muted">Freilos</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match has-bye">
+                        <div class="pl bye"><span class="nm">Rast</span></div>
+                        <div class="pl win"><span class="nm"><span class="seed" title="Setzplatz">[2]</span>Rogowski, Niklas</span><span class="pmeta">LK19,4&nbsp;– 2013&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="sc muted">Freilos</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round ">
+                  <p class="rh">Viertelfinale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Mühlenberg,&nbsp;M.</span></div>
+                        <div class="pl"><span class="nm">Weirich,&nbsp;M.</span></div>
+                        <div class="sc">6:2 6:1</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Kleine-Wienforth,&nbsp;C.</span></div>
+                        <div class="pl"><span class="nm">Hadzimujic,&nbsp;F.</span></div>
+                        <div class="sc">6:0 6:0</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Zimara,&nbsp;B.</span></div>
+                        <div class="pl"><span class="nm">Stachowiak,&nbsp;K.</span></div>
+                        <div class="sc"><abbr title="nicht angetreten">n.a.</abbr></div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Ludwig,&nbsp;T.</span></div>
+                        <div class="pl win"><span class="nm">Rogowski,&nbsp;N.</span></div>
+                        <div class="sc">6:1 6:0</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round ">
+                  <p class="rh">Halbfinale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Mühlenberg,&nbsp;M.</span></div>
+                        <div class="pl"><span class="nm">Kleine-Wienforth,&nbsp;C.</span></div>
+                        <div class="sc">6:2 7:6</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Zimara,&nbsp;B.</span></div>
+                        <div class="pl win"><span class="nm">Rogowski,&nbsp;N.</span></div>
+                        <div class="sc">6:0 6:1</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round ">
+                  <p class="rh">Finale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Mühlenberg,&nbsp;M.</span></div>
+                        <div class="pl win"><span class="nm">Rogowski,&nbsp;N.</span></div>
+                        <div class="sc">6:1 6:3</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round r-last">
+                  <p class="rh">Sieger</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match champ">
+                        <span class="cup" aria-hidden="true"></span>
+                        <div class="pl win"><span class="nm">Rogowski,&nbsp;N.</span></div>
+                        <div class="sc">6:1 6:3</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Junioren U18 Einzel (#p-u18m) ============ -->
+          <section class="draw" id="p-u18m" role="tabpanel" aria-labelledby="tab-u18m">
+            <div class="draw-head">
+              <div>
+                <p class="kicker-s">Hauptfeld</p>
+                <h2>Junioren&nbsp;U18 Einzel</h2>
+              </div>
+              <p class="champ-line"><span>Sieger</span><b>Hadzimujic,&nbsp;D.</b><em>6:4 6:1</em></p>
+            </div>
+            <div class="bracket-scroll" tabindex="0" aria-label="Turnierbaum Junioren U18 Einzel, seitlich scrollbar">
+              <div class="bracket b8">
+                <div class="round r-first">
+                  <p class="rh">Viertelfinale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match has-bye">
+                        <div class="pl win"><span class="nm"><span class="seed" title="Setzplatz">[1]</span>Hadzimujic, Din</span><span class="pmeta">LK10,7&nbsp;– 2008&nbsp;– Gelsenkirchener TK, WTV</span></div>
+                        <div class="pl bye"><span class="nm">Rast</span></div>
+                        <div class="sc muted">Freilos</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Rüdig, Hanno</span><span class="pmeta">LK13,8&nbsp;– 2009&nbsp;– TV Blau-Weiss Bottrop&nbsp;e.V., TVN</span></div>
+                        <div class="pl"><span class="nm">Engling, Björn</span><span class="pmeta">LK18,7&nbsp;– 2010&nbsp;– Sportclub Westfalia ETuS 04/31&nbsp;e.V., WTV</span></div>
+                        <div class="sc">6:1 6:0</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Fähnrich, Henry</span><span class="pmeta">LK17,0&nbsp;– 2009&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="pl win"><span class="nm">de la Fuente, Benjamin</span><span class="pmeta">LK16,5&nbsp;– 2008&nbsp;– TG&nbsp;<span class="nw">Gold-Weiß</span> Gelsenkirchen, WTV</span></div>
+                        <div class="sc">6:1 6:2</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match has-bye">
+                        <div class="pl bye"><span class="nm">Rast</span></div>
+                        <div class="pl win"><span class="nm"><span class="seed" title="Setzplatz">[2]</span>Naujok, Robin</span><span class="pmeta">LK10,9&nbsp;– 2009&nbsp;– TC Grün-Weiß Bochum, WTV</span></div>
+                        <div class="sc muted">Freilos</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round ">
+                  <p class="rh">Halbfinale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Hadzimujic,&nbsp;D.</span></div>
+                        <div class="pl"><span class="nm">Rüdig,&nbsp;H.</span></div>
+                        <div class="sc">7:5 6:3</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">de la Fuente,&nbsp;B.</span></div>
+                        <div class="pl win"><span class="nm">Naujok,&nbsp;R.</span></div>
+                        <div class="sc">6:0 6:0</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round ">
+                  <p class="rh">Finale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Hadzimujic,&nbsp;D.</span></div>
+                        <div class="pl"><span class="nm">Naujok,&nbsp;R.</span></div>
+                        <div class="sc">6:4 6:1</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round r-last">
+                  <p class="rh">Sieger</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match champ">
+                        <span class="cup" aria-hidden="true"></span>
+                        <div class="pl win"><span class="nm">Hadzimujic,&nbsp;D.</span></div>
+                        <div class="sc">6:4 6:1</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Juniorinnen U12 Einzel (#p-u12w) ============ -->
+          <section class="draw" id="p-u12w" role="tabpanel" aria-labelledby="tab-u12w">
+            <div class="draw-head">
+              <div>
+                <p class="kicker-s">Hauptfeld</p>
+                <h2>Juniorinnen&nbsp;U12 Einzel</h2>
+              </div>
+              <p class="champ-line"><span>Siegerin</span><b>Haufe,&nbsp;S.</b><em>6:3 6:2</em></p>
+            </div>
+            <div class="bracket-scroll" tabindex="0" aria-label="Turnierbaum Juniorinnen U12 Einzel, seitlich scrollbar">
+              <div class="bracket b8">
+                <div class="round r-first">
+                  <p class="rh">Viertelfinale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match has-bye">
+                        <div class="pl win"><span class="nm"><span class="seed" title="Setzplatz">[1]</span>Haufe, Stella</span><span class="pmeta">LK23,2&nbsp;– 2014&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="pl bye"><span class="nm">Rast</span></div>
+                        <div class="sc muted">Freilos</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Rüdig, Lotte</span><span class="pmeta">LK24,2&nbsp;– 2014&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="pl"><span class="nm">Winkler, Irma</span><span class="pmeta">–&nbsp;– – 2016&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="sc"><abbr title="nicht angetreten">n.a.</abbr></div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Kranefeld, Romy</span><span class="pmeta">–&nbsp;– – 2016&nbsp;– TC Rot-Gelb Horst, WTV</span></div>
+                        <div class="pl"><span class="nm">Fuchs, Aurelia</span><span class="pmeta">–&nbsp;– – 2016&nbsp;– TC Rot-Gelb Horst, WTV</span></div>
+                        <div class="sc"><abbr title="nicht angetreten">n.a.</abbr></div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match has-bye">
+                        <div class="pl bye"><span class="nm">Rast</span></div>
+                        <div class="pl win"><span class="nm"><span class="seed" title="Setzplatz">[2]</span>Winkler, Meta</span><span class="pmeta">LK23,5&nbsp;– 2014&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="sc muted">Freilos</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round ">
+                  <p class="rh">Halbfinale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Haufe,&nbsp;S.</span></div>
+                        <div class="pl"><span class="nm">Rüdig,&nbsp;L.</span></div>
+                        <div class="sc">6:0 6:2</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Kranefeld,&nbsp;R.</span></div>
+                        <div class="pl win"><span class="nm">Winkler,&nbsp;M.</span></div>
+                        <div class="sc"><abbr title="nicht angetreten">n.a.</abbr></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round ">
+                  <p class="rh">Finale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Haufe,&nbsp;S.</span></div>
+                        <div class="pl"><span class="nm">Winkler,&nbsp;M.</span></div>
+                        <div class="sc">6:3 6:2</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round r-last">
+                  <p class="rh">Sieger</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match champ">
+                        <span class="cup" aria-hidden="true"></span>
+                        <div class="pl win"><span class="nm">Haufe,&nbsp;S.</span></div>
+                        <div class="sc">6:3 6:2</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Juniorinnen U15 Einzel (#p-u15w) ============ -->
+          <section class="draw" id="p-u15w" role="tabpanel" aria-labelledby="tab-u15w">
+            <div class="draw-head">
+              <div>
+                <p class="kicker-s">Hauptfeld</p>
+                <h2>Juniorinnen&nbsp;U15 Einzel</h2>
+              </div>
+              <p class="champ-line"><span>Siegerin</span><b>Babajic,&nbsp;U.</b><em>6:3 2:6 10:3</em></p>
+            </div>
+            <div class="bracket-scroll" tabindex="0" aria-label="Turnierbaum Juniorinnen U15 Einzel, seitlich scrollbar">
+              <div class="bracket b8">
+                <div class="round r-first">
+                  <p class="rh">Viertelfinale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match has-bye">
+                        <div class="pl win"><span class="nm"><span class="seed" title="Setzplatz">[1]</span>Babajic, Una</span><span class="pmeta">LK17,1&nbsp;– 2012&nbsp;– TG&nbsp;<span class="nw">Gold-Weiß</span> Gelsenkirchen, WTV</span></div>
+                        <div class="pl bye"><span class="nm">Rast</span></div>
+                        <div class="sc muted">Freilos</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Krüger, Mila</span><span class="pmeta">LK23,8&nbsp;– 2012&nbsp;– TG&nbsp;<span class="nw">Gold-Weiß</span> Gelsenkirchen, WTV</span></div>
+                        <div class="pl win"><span class="nm">Yorulmaz, Aliya</span><span class="pmeta">LK21,9&nbsp;– 2013&nbsp;– TC Grün-Weiß Bochum, WTV</span></div>
+                        <div class="sc">6:1 6:2</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Voortmann, Lia Lynn</span><span class="pmeta">LK23,4&nbsp;– 2011&nbsp;– TG&nbsp;<span class="nw">Gold-Weiß</span> Gelsenkirchen, WTV</span></div>
+                        <div class="pl win"><span class="nm">Görtz, Elina</span><span class="pmeta">LK22,4&nbsp;– 2013&nbsp;– Sportclub Westfalia ETuS 04/31&nbsp;e.V., WTV</span></div>
+                        <div class="sc"><abbr title="nicht angetreten">n.a.</abbr></div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Bernoth, Carla</span><span class="pmeta">LK19,5&nbsp;– 2011&nbsp;– TC Buer SWG, WTV</span></div>
+                        <div class="pl"><span class="nm"><span class="seed" title="Setzplatz">[2]</span>Grose, Florentine</span><span class="pmeta">LK17,9&nbsp;– 2013&nbsp;– TG&nbsp;<span class="nw">Gold-Weiß</span> Gelsenkirchen, WTV</span></div>
+                        <div class="sc">1:6 6:3 10:4</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round ">
+                  <p class="rh">Halbfinale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Babajic,&nbsp;U.</span></div>
+                        <div class="pl"><span class="nm">Yorulmaz,&nbsp;A.</span></div>
+                        <div class="sc">6:0 6:3</div>
+                      </div>
+                    </div>
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl"><span class="nm">Görtz,&nbsp;E.</span></div>
+                        <div class="pl win"><span class="nm">Bernoth,&nbsp;C.</span></div>
+                        <div class="sc">6:1 6:4</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round ">
+                  <p class="rh">Finale</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match">
+                        <div class="pl win"><span class="nm">Babajic,&nbsp;U.</span></div>
+                        <div class="pl"><span class="nm">Bernoth,&nbsp;C.</span></div>
+                        <div class="sc">6:3 2:6 10:3</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="round r-last">
+                  <p class="rh">Sieger</p>
+                  <div class="slots">
+                    <div class="slot">
+                      <div class="match champ">
+                        <span class="cup" aria-hidden="true"></span>
+                        <div class="pl win"><span class="nm">Babajic,&nbsp;U.</span></div>
+                        <div class="sc">6:3 2:6 10:3</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Juniorinnen U18 Einzel (#p-u18w) ============ -->
+          <section class="draw" id="p-u18w" role="tabpanel" aria-labelledby="tab-u18w">
+            <div class="draw-head">
+              <div>
+                <p class="kicker-s">Gruppe</p>
+                <h2>Juniorinnen&nbsp;U18 Einzel</h2>
+              </div>
+              <p class="champ-line"><span>Siegerin</span><b>Rogowski,&nbsp;L.</b><em>Gruppensieg</em></p>
+            </div>
+            <div class="table-scroll" tabindex="0">
+              <table class="grp">
+                <caption>Gruppe 1&nbsp;– Jeder gegen Jeden</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Spielerin</th>
+                    <th scope="col">Rogowski,&nbsp;L.</th>
+                    <th scope="col">Mühlenberg,&nbsp;E.</th>
+                    <th scope="col">Wallis,&nbsp;L.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><span class="nm"><span class="seed">[1]</span>Rogowski, Leonie</span><span class="pmeta">LK9,8&nbsp;– 2010&nbsp;– TC HW Gladbeck, WTV</span></th>
+                    <td class="self">–</td>
+                    <td class="">6:0 6:0</td>
+                    <td class="">n.a. Wallis,&nbsp;L.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><span class="nm">Mühlenberg, Emilia</span><span class="pmeta">LK19,5&nbsp;– 2009&nbsp;– TC Buer SWG, WTV</span></th>
+                    <td class="">0:6 0:6</td>
+                    <td class="self">–</td>
+                    <td class="">6:0 6:0</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><span class="nm">Wallis, Lea</span><span class="pmeta">LK23,2&nbsp;– 2010&nbsp;– TC Buer SWG, WTV</span></th>
+                    <td class="">n.a. Wallis,&nbsp;L.</td>
+                    <td class="">0:6 0:6</td>
+                    <td class="self">–</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-scroll" tabindex="0">
+              <table class="grp standings">
+                <caption>Tabelle 1</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Platz</th>
+                    <th scope="col">Spielerin</th>
+                    <th scope="col">Matches</th>
+                    <th scope="col">Sätze</th>
+                    <th scope="col">Games</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Rogowski,&nbsp;L.</td>
+                    <td>1:0</td>
+                    <td>2:0</td>
+                    <td>12:0</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Mühlenberg,&nbsp;E.</td>
+                    <td>0:1</td>
+                    <td>0:2</td>
+                    <td>0:12</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Wallis,&nbsp;L.</td>
+                    <td>0:0</td>
+                    <td>0:0</td>
+                    <td>0:0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <p class="note">Quelle: Turnierergebnisse auf <a href="https://www.tennis.de/spielen/spielbetrieb/turniersuche.html#detail/796120" target="_blank" rel="noopener">tennis.de</a>. <abbr title="nicht angetreten">n.a.</abbr> = nicht angetreten, Rast = Freilos, [1] = Setzplatz, LK = Leistungsklasse. Auf dem Smartphone lässt sich der Turnierbaum seitlich&nbsp;wischen.</p>
+        </div>
+      </section>
+    </main>
+    <!-- ######## ENDE HAUPTINHALT ######## -->
+
+    <!-- ######## FUSSZEILE ######## -->
+    <footer>
+      <div class="wrap">
+        <div class="cols">
+          <div class="fbrand">
+            <img src="img/logo-light.svg" alt="" width="56" height="56">
+            <div class="fbrand-text">
+              <p>Tennisgesellschaft <span class="nw">Gold-Weiß</span> Gelsenkirchen 1932&nbsp;e.V.<br>Tennis für Familien, Freizeit und Mannschaft&nbsp;– am Rande des Nienhausenbuschs.</p>
+              <div class="soc">
+                <a href="https://www.facebook.com/TgGoldWeissGelsenkirchen1932/" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://www.instagram.com/tggoldweissgelsenkirchen/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>Club</h4>
+            <ul>
+              <li><a href="verein.html">Verein</a></li>
+              <li><a href="clubanlage.html">Clubanlage</a></li>
+              <li><a href="trainer.html">Trainer</a></li>
+              <li><a href="sponsoren.html">Sponsoren</a></li>
+              <li><a href="sponsor-werden.html">Sponsor werden</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Sport</h4>
+            <ul>
+              <li><a href="mannschaften.html">Mannschaften</a></li>
+              <li><a href="turniere.html">Turniere</a></li>
+              <li><a href="probetraining.html">Probetraining</a></li>
+              <li><a href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">Platz buchen</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Kontakt</h4>
+            <ul>
+              <li>Feldmarkstraße 200</li>
+              <li>45883 Gelsenkirchen</li>
+              <li><a href="tel:+4920917770735">0209&nbsp;/&nbsp;17770735</a></li>
+              <li><a href="mailto:info@tg-gold-weiss.de">info@tg-gold-weiss.de</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="wordmark" aria-hidden="true"><span class="nw">Gold-Weiß</span></p>
+        <div class="copy">
+          <span>© Tennisgesellschaft Gold Weiss Gelsenkirchen 1932&nbsp;e.V.</span>
+          <span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz &amp; rechtliche Hinweise</a></span>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+    <script src="js/motion.js" defer></script>
+  </body>
+</html>

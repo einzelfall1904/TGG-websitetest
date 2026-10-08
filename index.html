@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!--
+  TG Gold-Weiß Gelsenkirchen – Home
+  Aufbau: Kopfzeile (Logo, Menü) · Hauptinhalt (Abschnitte) · Fußzeile
+  Gestaltung: css/style.css · Funktionen: js/main.js
+-->
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Home – TG Gold-Weiß Gelsenkirchen</title>
+    <meta name="description" content="Tennisgesellschaft Gold Weiss Gelsenkirchen – Tennisverein mit 6 Sandplätzen, Mannschaften, Turnieren und Probetraining.">
+    <meta name="theme-color" content="#13263A">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <noscript>
+      <style>.js main,.js footer{visibility:visible!important}</style>
+    </noscript>
+  </head>
+  <body class="home">
+    <a class="skip" href="#main">Zum Inhalt springen</a>
+
+    <!-- ######## KOPFZEILE (Logo, Menü) ######## -->
+    <header class="top">
+      <div class="wrap bar">
+        <a class="brand" href="index.html">
+          <img src="img/logo.svg" alt="" width="44" height="44">
+          <span>TG&nbsp;<span class="nw">Gold-Weiß</span><small>Gelsenkirchen, seit 1932</small></span>
+        </a>
+        <nav id="menu" aria-label="Hauptmenü">
+          <ul class="main">
+            <li>
+              <details class="dd">
+                <summary>Club<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></summary>
+                <ul class="sub">
+                  <li><a href="verein.html"><b>Verein</b><span>Vorstand, Gremien und Satzungen</span></a></li>
+                  <li><a href="clubanlage.html"><b>Clubanlage</b><span>Sechs&nbsp;Sandplätze am Waldrand</span></a></li>
+                  <li><a href="trainer.html"><b>Trainer</b><span>Training und Anfängerkurse</span></a></li>
+                  <li><a href="sponsoren.html"><b>Sponsoren</b><span>Partner und Mitgliedervorteile</span></a></li>
+                  <li><a href="sponsor-werden.html"><b>Sponsor werden</b><span>Pakete für Unternehmen</span></a></li>
+                </ul>
+              </details>
+            </li>
+            <li>
+              <details class="dd">
+                <summary>Sport<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></summary>
+                <ul class="sub">
+                  <li><a href="mannschaften.html"><b>Mannschaften</b><span>Zwölf&nbsp;Teams im Spielbetrieb</span></a></li>
+                  <li><a href="turniere.html"><b>Turniere</b><span>Alle Turniere im Überblick</span></a></li>
+                  <li><a href="clubmeisterschaften.html"><b>Clubmeisterschaften 2026</b><span>Abgeschlossen&nbsp;– alle Clubmeister</span></a></li>
+                  <li><a href="pumucklturnier.html"><b>Pumucklturnier 2026</b><span>Abgeschlossen&nbsp;– alle Sieger</span></a></li>
+                  <li><a href="jugend-stadtmeisterschaften-2026.html"><b>Jugend-Stadtmeisterschaften 2026</b><span>Abgeschlossen&nbsp;– alle Turnierbäume</span></a></li>
+                </ul>
+              </details>
+            </li>
+            <li><a href="probetraining.html">Probetraining</a></li>
+            <li><a href="mitglied-werden.html">Mitglied werden</a></li>
+          </ul>
+          <div class="actions">
+            <a class="btn ghost sm" href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">Platz buchen<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn sm" href="kontakt.html">Kontakt</a>
+          </div>
+        </nav>
+        <button class="burger" aria-expanded="false" aria-controls="menu"><span></span><span></span><em>Menü</em></button>
+      </div>
+      <div class="progress" aria-hidden="true"></div>
+    </header>
+
+    <!-- ######## HAUPTINHALT ######## -->
+    <main id="main">
+
+      <!-- ============ Startseite – Einstieg (Hero) ============ -->
+      <section class="hero">
+        <svg class="hero-court" viewBox="0 0 600 1300" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3"><rect class="court-line" x="40" y="40" width="520" height="1220"/><path class="court-line" d="M105 40V1260"/><path class="court-line" d="M495 40V1260"/><path class="court-line" d="M105 360H495"/><path class="court-line" d="M105 940H495"/><path class="court-line" d="M300 360V940"/><path class="court-line" d="M10 650H590" stroke-width="5" stroke-dasharray="2 8"/></svg>
+        <div class="wrap hero-in">
+          <div class="hero-copy">
+            <p class="kicker"><i></i><span>Tennisgesellschaft <span class="nw">Gold-Weiß</span>, seit 1932</span></p>
+            <h1>Tennis in Gelsen&shy;kirchen.</h1>
+            <p class="lead">Ob mit der Familie, in der Freizeit oder in der Mannschaft&nbsp;– bei uns spielst du auf sechs&nbsp;Sandplätzen am Rande des Waldes Nienhausenbusch.</p>
+            <div class="btns">
+              <a class="btn gold lg" href="probetraining.html">Kostenlos ausprobieren</a>
+              <a class="btn line lg" href="mitglied-werden.html">Mitglied werden</a>
+            </div>
+          </div>
+          <figure class="hero-photo">
+            <img src="https://tg-gold-weiss.de/wp-content/uploads/2022/09/signal-2022-08-28-12-45-22-667-1200x700.jpg" alt="Die Sandplätze der TG Gold-Weiß am Rande des Waldes Nienhausenbusch">
+            <figcaption><b>6&nbsp;Sandplätze</b>am Nienhausenbusch</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ Schnellzugriff-Kacheln ============ -->
+      <section class="bento-wrap">
+        <div class="wrap">
+          <div class="bento">
+            <a class="b b-trial" href="probetraining.html">
+              <span class="tag">Termine: 18.&nbsp;und&nbsp;25.&nbsp;April&nbsp;2027</span>
+              <h2>3&nbsp;Stunden Tennis. Kostenlos und unverbindlich.</h2>
+              <p>Für Groß und Klein, für Einsteiger und Wiedereinsteiger. Gefällt’s dir, startest du danach ins Schnupperjahr zum reduzierten&nbsp;Beitrag.</p>
+              <span class="btn dark">Zum Probetraining</span>
+            </a>
+            <a class="b b-cm" href="clubmeisterschaften.html">
+              <span class="done-d">Abgeschlossen</span>
+              <h3>Club&shy;meister&shy;schaften 2026</h3>
+              <p>Alle Clubmeister der Saison</p>
+              <span class="more">Zu den Clubmeistern</span>
+            </a>
+            <a class="b b-pu" href="pumucklturnier.html">
+              <span class="done-d">Abgeschlossen</span>
+              <h3>Pumuckl&shy;turnier 2026</h3>
+              <p>Die Sieger aller Kategorien</p>
+              <span class="more">Zu den Siegern</span>
+            </a>
+            <a class="b b-book" href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">
+              <img src="img/icon-calendar.svg" alt="">
+              <h3>Platz buchen<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+              <p>Freien Platz finden und online reservieren&nbsp;– über eBusy</p>
+            </a>
+            <a class="b b-member" href="mitglied-werden.html">
+              <img class="bg" src="https://tg-gold-weiss.de/wp-content/uploads/2023/08/IMG-20230810-WA0024-150x150.jpg" alt="">
+              <h3>Mitglied werden</h3>
+              <p>Deine Vorteile, der Weg in den Club und alle Fristen</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Was bei uns ansteht (#termine) ============ -->
+      <section id="termine">
+        <div class="wrap">
+          <div class="head">
+            <h2>Was bei uns ansteht</h2>
+            <p>Die Saison 2026 nimmt Fahrt auf. Alle Termine, Aktionen und Highlights findest du hier&nbsp;– reinschauen lohnt&nbsp;sich.</p>
+          </div>
+          <article class="event ev-poster">
+            <a class="poster" href="img/events/pflaumenkuchenturnier-gross.jpg" data-lightbox aria-label="Plakat Pflaumenkuchenturnier groß anzeigen"><img src="img/events/pflaumenkuchenturnier.jpg" alt="Plakat zum Pflaumenkuchenturnier am 26. September 2026" width="360" height="509" loading="lazy"></a>
+            <div>
+              <p class="ev-date">Samstag, 26.&nbsp;September&nbsp;2026</p>
+              <h3>Pflaumen&shy;kuchen&shy;turnier</h3>
+              <p class="ev-tag">Voller Einsatz, voller Geschmack</p>
+              <p>Der Spätsommer wird sportlich!</p>
+              <dl class="meta">
+                <dt>Wo</dt>
+                <dd>Clubanlage der TG&nbsp;<span class="nw">Gold-Weiß</span>, Feldmarkstraße 200</dd>
+                <dt>Anmeldung</dt>
+                <dd>Über den Aushang am Clubhaus</dd>
+              </dl>
+            </div>
+          </article>
+          <article class="event ev-poster">
+            <a class="poster" href="img/events/clubmeisterschaften-finale-gross.jpg" data-lightbox aria-label="Plakat Endspieltag der Clubmeisterschaften groß anzeigen"><img src="img/events/clubmeisterschaften-finale.jpg" alt="Plakat zu den Clubmeisterschaften 2026 mit dem Endspieltag am 27. September 2026" width="360" height="509" loading="lazy"></a>
+            <div>
+              <p class="ev-date">Sonntag,&nbsp;27.&nbsp;September&nbsp;2026, ab 11:00&nbsp;Uhr</p>
+              <h3>Endspieltag der Club&shy;meister&shy;schaften</h3>
+              <p class="ev-tag">Matchball für den&nbsp;Titel!</p>
+              <p>Die Finalspiele der Clubmeisterschaften&nbsp;2026.</p>
+              <dl class="meta">
+                <dt>Wo</dt>
+                <dd>Clubanlage der TG&nbsp;<span class="nw">Gold-Weiß</span>, Feldmarkstraße 200</dd>
+              </dl>
+              <a class="btn ghost" href="clubmeisterschaften.html">Zu den Clubmeistern</a>
+            </div>
+          </article>
+          <article class="event ev-poster">
+            <a class="poster" href="img/events/pumucklturnier-gross.jpg" data-lightbox aria-label="Plakat Pumucklturnier groß anzeigen"><img src="img/events/pumucklturnier.jpg" alt="Plakat zum Pumucklturnier am 3. Oktober 2026" width="360" height="509" loading="lazy"></a>
+            <div>
+              <p class="ev-date">Samstag, 03.&nbsp;Oktober&nbsp;2026, ab 11:00&nbsp;Uhr</p>
+              <h3>Pumuckl&shy;turnier</h3>
+              <p class="ev-tag">Jung trifft Alt, Nachwuchs trifft Erfahrung!</p>
+              <p>Spiel mit beim Pumuckl-Turnier im Generationen-Doppel.</p>
+              <dl class="meta">
+                <dt>Wo</dt>
+                <dd>Clubanlage der TG&nbsp;<span class="nw">Gold-Weiß</span>, Feldmarkstraße 200</dd>
+                <dt>Anmeldung</dt>
+                <dd>Über eure Trainer oder den Aushang am Clubhaus</dd>
+              </dl>
+              <a class="btn ghost" href="pumucklturnier.html">Zu den Siegern</a>
+            </div>
+          </article>
+          <article class="event ev-poster">
+            <a class="poster" href="img/events/saisonabschlussfeier-gross.jpg" data-lightbox aria-label="Plakat Saisonabschlussfeier groß anzeigen"><img src="img/events/saisonabschlussfeier.jpg" alt="Einladung zur Saisonabschlussfeier am 7. November 2026" width="360" height="509" loading="lazy"></a>
+            <div>
+              <p class="ev-date">Samstag, 07.&nbsp;November&nbsp;2026, 19:00&nbsp;Uhr</p>
+              <h3>Saisonabschlussfeier</h3>
+              <p class="ev-tag">Für gute Stimmung und Musik ist gesorgt&nbsp;– die Tanzfläche ist&nbsp;frei!</p>
+              <p>Wir wollen mit euch feiern&nbsp;– mit Musik, Tanz, Currywurst, Würstchen, Salaten und kühlen Getränken.</p>
+              <dl class="meta">
+                <dt>Wo</dt>
+                <dd>Clubanlage der TG&nbsp;<span class="nw">Gold-Weiß</span>, Feldmarkstraße 200</dd>
+                <dt>Anmeldung</dt>
+                <dd>Bis 31.10. über den Aushang am Clubhaus oder per WhatsApp an den Festausschuss</dd>
+              </dl>
+            </div>
+          </article>
+          <article class="event ev-poster">
+            <a class="poster" href="img/events/jahreshauptversammlung-gross.jpg" data-lightbox aria-label="Plakat Jahreshauptversammlung groß anzeigen"><img src="img/events/jahreshauptversammlung.jpg" alt="Plakat zur Jahreshauptversammlung der TG Gold-Weiß" width="360" height="509" loading="lazy"></a>
+            <div>
+              <p class="ev-date">Ende 2026&nbsp;– genaues Datum folgt</p>
+              <h3>Jahreshauptversammlung</h3>
+              <p class="ev-tag">Tennisgesellschaft <span class="nw">Gold-Weiß</span> Gelsenkirchen 1932&nbsp;e.V.</p>
+              <p>Das genaue Datum geben wir rechtzeitig&nbsp;bekannt.</p>
+              <dl class="meta">
+                <dt>Wo</dt>
+                <dd>Clubanlage der TG&nbsp;<span class="nw">Gold-Weiß</span>, Feldmarkstraße 200</dd>
+              </dl>
+            </div>
+          </article>
+          <article class="event ev-poster">
+            <a class="poster" href="img/events/probetraining-iwantyou-gross.jpg" data-lightbox aria-label="Plakat Probetraining groß anzeigen"><img src="img/events/probetraining-iwantyou.jpg" alt="Plakat: I want you for the Goldwhite Crew – Tennisspielerin zeigt auf den Betrachter" width="360" height="509" loading="lazy"></a>
+            <div>
+              <p class="ev-date">Sonntag,&nbsp;18. und Sonntag,&nbsp;25.&nbsp;April&nbsp;2027</p>
+              <h3>Kostenloses Probe&shy;training für Erwachsene und Kinder</h3>
+              <dl class="meta">
+                <dt>Wann</dt>
+                <dd>Sonntag,&nbsp;18.&nbsp;April&nbsp;2027 und Sonntag,&nbsp;25.&nbsp;April&nbsp;2027&nbsp;– die Uhrzeit geben wir rechtzeitig bekannt</dd>
+                <dt>Wo</dt>
+                <dd>Tennisanlage der TG&nbsp;<span class="nw">Gold-Weiß</span> Gelsenkirchen</dd>
+                <dt>Wer</dt>
+                <dd>Alle sind willkommen&nbsp;– Einsteiger und Wiedereinsteiger, Groß und Klein</dd>
+                <dt>Anmeldung</dt>
+                <dd>Eine kurze <span class="nw">E-Mail</span> an <a href="mailto:info@tg-gold-weiss.de">info@tg-gold-weiss.de</a> genügt&nbsp;– so können wir besser&nbsp;planen.</dd>
+              </dl>
+              <a class="btn" href="mailto:info@tg-gold-weiss.de?subject=Anmeldung%20Probetraining">Per <span class="nw">E-Mail</span> anmelden</a> <a class="btn ghost" href="probetraining.html">Mehr zum Probetraining</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ Willkommen am Nienhausen&shy;busch ============ -->
+      <section class="club">
+        <div class="wrap split">
+          <figure class="framed">
+            <img src="https://tg-gold-weiss.de/wp-content/uploads/2022/09/signal-2022-08-28-12-46-14-029-4-1024x768.jpg" alt="Clubanlage der TG Gold-Weiß" loading="lazy">
+          </figure>
+          <div>
+            <h2>Willkommen am Nienhausen&shy;busch</h2>
+            <p class="lead">Unsere Anlage liegt am Rande des Waldes&nbsp;– nur 100&nbsp;Meter vom Revierpark Nienhausen entfernt. Sport, Freizeit und Erholung liegen hier ganz nah beieinander.</p>
+            <dl class="facts">
+              <div>
+                <dt>6</dt>
+                <dd>gepflegte Sandplätze</dd>
+              </div>
+              <div>
+                <dt>100&nbsp;m</dt>
+                <dd>zum Revierpark Nienhausen</dd>
+              </div>
+              <div>
+                <dt>12</dt>
+                <dd>Mannschaften im Spielbetrieb</dd>
+              </div>
+              <div>
+                <dt>1932</dt>
+                <dd>gegründet, familiär geblieben</dd>
+              </div>
+            </dl>
+            <a class="btn" href="clubanlage.html">Zur Clubanlage</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Partnerleiste: Unsere Partner ============ -->
+      <section class="sponsors-strip">
+        <div class="wrap">
+          <div class="head row">
+            <h2>Unsere Partner</h2>
+            <span class="links"><a class="textlink" href="sponsoren.html">Alle Sponsoren und Mitgliedervorteile</a><a class="textlink" href="sponsor-werden.html">Sponsor werden</a></span>
+          </div>
+          <ul class="logos">
+            <li><img src="https://tg-gold-weiss.de/wp-content/uploads/2023/06/Tennis-Point-Banner.jpg" alt="Tennis Point" loading="lazy"></li>
+            <li><img src="https://tg-gold-weiss.de/wp-content/uploads/2022/03/Sponsor-Juzo-500px-X-300px.jpg" alt="JUZO – Julius Zorn" loading="lazy"></li>
+            <li><img src="https://tg-gold-weiss.de/wp-content/uploads/2022/03/Sponsor-Morant-500px-X-300px.jpg" alt="Sanitätshaus Morant GmbH" loading="lazy"></li>
+            <li><img src="https://tg-gold-weiss.de/wp-content/uploads/2022/03/Sponsor-Bauerfeind-500px-X-300px.jpg" alt="Bauerfeind GmbH" loading="lazy"></li>
+            <li><img src="https://tg-gold-weiss.de/wp-content/uploads/2022/03/Sponsor-Fortmann-500px-X-300px.jpg" alt="KFZ Fortmann" loading="lazy"></li>
+            <li><img src="https://tg-gold-weiss.de/wp-content/uploads/2022/03/Sponsor-Sparkasse-500px-X-300px.jpg" alt="Sparkasse Gelsenkirchen" loading="lazy"></li>
+            <li><img src="https://tg-gold-weiss.de/wp-content/uploads/2022/03/Sponsor-ELE-500px-X-300px.jpg" alt="Emscher Lippe Energie GmbH" loading="lazy"></li>
+            <li><img src="https://tg-gold-weiss.de/wp-content/uploads/2022/03/Sponsor-BuG-500px-X-300px.jpg" alt="Bau und Grund Immobilien GmbH" loading="lazy"></li>
+            <li><img src="https://tg-gold-weiss.de/wp-content/uploads/2022/03/Sponsor-Hoelzel-500px-X-300px.jpg" alt="Sport Hölzel" loading="lazy"></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ Abschluss-Aufruf: Lust auf Tennis? Dann los. ============ -->
+      <section class="cta">
+        <div class="wrap cta-in">
+          <div>
+            <h2>Lust auf Tennis? Dann&nbsp;los.</h2>
+            <p>Drei&nbsp;Stunden Probetraining&nbsp;– kostenlos und ohne Verpflichtung. Danach auf Wunsch ins Schnupperjahr zum reduzierten&nbsp;Beitrag.</p>
+          </div>
+          <div class="btns">
+            <a class="btn gold lg" href="probetraining.html">Zum Probetraining</a>
+            <a class="btn line lg" href="kontakt.html">Kontakt aufnehmen</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ######## ENDE HAUPTINHALT ######## -->
+
+    <!-- ######## FUSSZEILE ######## -->
+    <footer>
+      <div class="wrap">
+        <div class="cols">
+          <div class="fbrand">
+            <img src="img/logo-light.svg" alt="" width="56" height="56">
+            <div class="fbrand-text">
+              <p>Tennisgesellschaft <span class="nw">Gold-Weiß</span> Gelsenkirchen 1932&nbsp;e.V.<br>Tennis für Familien, Freizeit und Mannschaft&nbsp;– am Rande des Nienhausenbuschs.</p>
+              <div class="soc">
+                <a href="https://www.facebook.com/TgGoldWeissGelsenkirchen1932/" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://www.instagram.com/tggoldweissgelsenkirchen/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>Club</h4>
+            <ul>
+              <li><a href="verein.html">Verein</a></li>
+              <li><a href="clubanlage.html">Clubanlage</a></li>
+              <li><a href="trainer.html">Trainer</a></li>
+              <li><a href="sponsoren.html">Sponsoren</a></li>
+              <li><a href="sponsor-werden.html">Sponsor werden</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Sport</h4>
+            <ul>
+              <li><a href="mannschaften.html">Mannschaften</a></li>
+              <li><a href="turniere.html">Turniere</a></li>
+              <li><a href="probetraining.html">Probetraining</a></li>
+              <li><a href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">Platz buchen</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Kontakt</h4>
+            <ul>
+              <li>Feldmarkstraße 200</li>
+              <li>45883 Gelsenkirchen</li>
+              <li><a href="tel:+4920917770735">0209&nbsp;/&nbsp;17770735</a></li>
+              <li><a href="mailto:info@tg-gold-weiss.de">info@tg-gold-weiss.de</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="wordmark" aria-hidden="true"><span class="nw">Gold-Weiß</span></p>
+        <div class="copy">
+          <span>© Tennisgesellschaft Gold Weiss Gelsenkirchen 1932&nbsp;e.V.</span>
+          <span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz &amp; rechtliche Hinweise</a></span>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+    <script src="js/motion.js" defer></script>
+  </body>
+</html>

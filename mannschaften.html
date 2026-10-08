@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!--
+  TG Gold-Weiß Gelsenkirchen – Mannschaften
+  Aufbau: Kopfzeile (Logo, Menü) · Hauptinhalt (Abschnitte) · Fußzeile
+  Gestaltung: css/style.css · Funktionen: js/main.js
+-->
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Mannschaften – TG Gold-Weiß Gelsenkirchen</title>
+    <meta name="description" content="Alle Mannschaften der TG Gold-Weiß Gelsenkirchen im Sommer 2026 – Ligen, Tabellenplätze und Spielpläne.">
+    <meta name="theme-color" content="#13263A">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <noscript>
+      <style>.js main,.js footer{visibility:visible!important}</style>
+    </noscript>
+  </head>
+  <body class="">
+    <a class="skip" href="#main">Zum Inhalt springen</a>
+
+    <!-- ######## KOPFZEILE (Logo, Menü) ######## -->
+    <header class="top">
+      <div class="wrap bar">
+        <a class="brand" href="index.html">
+          <img src="img/logo.svg" alt="" width="44" height="44">
+          <span>TG&nbsp;<span class="nw">Gold-Weiß</span><small>Gelsenkirchen, seit 1932</small></span>
+        </a>
+        <nav id="menu" aria-label="Hauptmenü">
+          <ul class="main">
+            <li>
+              <details class="dd">
+                <summary>Club<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></summary>
+                <ul class="sub">
+                  <li><a href="verein.html"><b>Verein</b><span>Vorstand, Gremien und Satzungen</span></a></li>
+                  <li><a href="clubanlage.html"><b>Clubanlage</b><span>Sechs&nbsp;Sandplätze am Waldrand</span></a></li>
+                  <li><a href="trainer.html"><b>Trainer</b><span>Training und Anfängerkurse</span></a></li>
+                  <li><a href="sponsoren.html"><b>Sponsoren</b><span>Partner und Mitgliedervorteile</span></a></li>
+                  <li><a href="sponsor-werden.html"><b>Sponsor werden</b><span>Pakete für Unternehmen</span></a></li>
+                </ul>
+              </details>
+            </li>
+            <li>
+              <details class="dd">
+                <summary class="on">Sport<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></summary>
+                <ul class="sub">
+                  <li><a href="mannschaften.html" aria-current="page"><b>Mannschaften</b><span>Zwölf&nbsp;Teams im Spielbetrieb</span></a></li>
+                  <li><a href="turniere.html"><b>Turniere</b><span>Alle Turniere im Überblick</span></a></li>
+                  <li><a href="clubmeisterschaften.html"><b>Clubmeisterschaften 2026</b><span>Abgeschlossen&nbsp;– alle Clubmeister</span></a></li>
+                  <li><a href="pumucklturnier.html"><b>Pumucklturnier 2026</b><span>Abgeschlossen&nbsp;– alle Sieger</span></a></li>
+                  <li><a href="jugend-stadtmeisterschaften-2026.html"><b>Jugend-Stadtmeisterschaften 2026</b><span>Abgeschlossen&nbsp;– alle Turnierbäume</span></a></li>
+                </ul>
+              </details>
+            </li>
+            <li><a href="probetraining.html">Probetraining</a></li>
+            <li><a href="mitglied-werden.html">Mitglied werden</a></li>
+          </ul>
+          <div class="actions">
+            <a class="btn ghost sm" href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">Platz buchen<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn sm" href="kontakt.html">Kontakt</a>
+          </div>
+        </nav>
+        <button class="burger" aria-expanded="false" aria-controls="menu"><span></span><span></span><em>Menü</em></button>
+      </div>
+      <div class="progress" aria-hidden="true"></div>
+    </header>
+
+    <!-- ######## HAUPTINHALT ######## -->
+    <main id="main">
+
+      <!-- ============ Seitenkopf: Mann&shy;schaften ============ -->
+      <div class="page-hero">
+        <div class="wrap">
+          <p class="crumb"><a href="index.html">Start</a><span>/</span>Sport</p>
+          <h1>Mann&shy;schaften</h1>
+          <p class="lead">Zwölf&nbsp;Teams im Spielbetrieb des Westfälischen Tennis-Verbands&nbsp;– vom Nachwuchs bis Herren&nbsp;70.</p>
+        </div>
+      </div>
+
+      <!-- ============ Saison-Leiste (Sprunglinks) ============ -->
+      <div class="season">
+        <div class="wrap season-in">
+
+          <!-- ============ season-l ============ -->
+          <div class="season-l">
+            <span class="pill">Sommer 2026</span>
+            <p>Tabellenstand laut nuLiga, Stand 01.10.2026</p>
+          </div>
+          <nav class="jump" aria-label="Springe zu">
+            <a href="#damen">Damen</a>
+            <a href="#herren">Herren</a>
+            <a href="#jugend">Jugend</a>
+          </nav>
+
+          <!-- ============ season-r ============ -->
+          <div class="season-r">
+            <a class="btn ghost sm" href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ResultReportFOP&amp;type=full&amp;club=26022&amp;season=17863" target="_blank" rel="noopener">Alle Ergebnisse (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn sm" href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/clubTeams?club=26022" target="_blank" rel="noopener">Vereinsseite auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ Damen (#damen) ============ -->
+      <section class="tgroup" id="damen">
+        <div class="wrap">
+          <div class="head row">
+            <div>
+              <h2>Damen</h2>
+              <p>Von der offenen Damenmannschaft bis Damen&nbsp;65</p>
+            </div>
+            <span class="count">4&nbsp;Mannschaften</span>
+          </div>
+          <div class="teams">
+            <article class="team">
+              <div class="ph"><img src="img/teams/damen.jpg" alt="Mannschaftsfoto Damen" loading="lazy"></div>
+              <div class="tb">
+                <p class="league">Kreisliga<span>Ruhr-Lippe, Gr.&nbsp;007 RU</span></p>
+                <h3>Damen</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>5</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>1:4</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3653030&amp;championship=R-L+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=R-L+2026&amp;group=7" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2210772" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+            <article class="team">
+              <div class="ph"><img src="img/teams/damen-50.jpg" alt="Mannschaftsfoto Damen 50" loading="lazy"></div>
+              <div class="tb">
+                <p class="league">Bezirksklasse<span>Ruhr-Lippe, Gr.&nbsp;090</span></p>
+                <h3>Damen&nbsp;50</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>4</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>5:5</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3528991&amp;championship=R-L+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=R-L+2026&amp;group=90" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2210845" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+            <article class="team">
+              <div class="ph"><img src="img/teams/damen-55.jpg" alt="Mannschaftsfoto Damen 55" loading="lazy"></div>
+              <div class="tb">
+                <p class="league">Ruhr-Lippe-Liga<span>Ruhr-Lippe, Gr.&nbsp;098</span></p>
+                <h3>Damen&nbsp;55</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>6</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>2:10</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3532436&amp;championship=R-L+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=R-L+2026&amp;group=98" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2210852" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+            <article class="team">
+              <div class="ph"><img src="https://tg-gold-weiss.de/wp-content/uploads/2021/06/TGG-2021-D65.jpeg" alt="Mannschaftsfoto Damen 65" loading="lazy"></div>
+              <div class="tb">
+                <p class="league">Verbandsliga<span>WTV, Gr.&nbsp;020</span></p>
+                <h3>Damen&nbsp;65</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>5</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>2:8</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3533197&amp;championship=WTV+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=WTV+2026&amp;group=20" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2212011" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Herren (#herren) ============ -->
+      <section class="tgroup soft" id="herren">
+        <div class="wrap">
+          <div class="head row">
+            <div>
+              <h2>Herren</h2>
+              <p>Von den offenen Herren bis Herren&nbsp;70</p>
+            </div>
+            <span class="count">5&nbsp;Mannschaften</span>
+          </div>
+          <div class="teams">
+            <article class="team">
+              <div class="ph"><img src="img/teams/herren.jpg" alt="Mannschaftsfoto Herren" loading="lazy"></div>
+              <div class="tb">
+                <p class="league">Kreisklasse 1<span>Ruhr-Lippe, Gr.&nbsp;033 RU</span></p>
+                <h3>Herren</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>4</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>1:3</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3529424&amp;championship=R-L+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=R-L+2026&amp;group=33" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2210789" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+            <article class="team">
+              <div class="ph mono" aria-hidden="true"><span>H II</span></div>
+              <div class="tb">
+                <p class="league">4er Kreisklasse 1<span>Ruhr-Lippe, Gr.&nbsp;043 RU</span></p>
+                <h3>Herren&nbsp;II (4er)</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>7</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>1:11</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3584710&amp;championship=R-L+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=R-L+2026&amp;group=43" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2210810" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+            <article class="team">
+              <div class="ph"><img src="img/teams/herren-40.jpg" alt="Mannschaftsfoto Herren 40" loading="lazy"></div>
+              <div class="tb">
+                <p class="league">4er Kreisliga<span>Ruhr-Lippe, Gr.&nbsp;142 RU</span></p>
+                <h3>Herren&nbsp;40</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>4</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>2:6</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3532228&amp;championship=R-L+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=R-L+2026&amp;group=142" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2210894" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+            <article class="team">
+              <div class="ph"><img src="img/teams/herren-60.jpg" alt="Mannschaftsfoto Herren 60" loading="lazy"></div>
+              <div class="tb">
+                <p class="league">4er Kreisliga<span>Ruhr-Lippe, Gr.&nbsp;178 RU</span></p>
+                <h3>Herren&nbsp;60</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>6</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>2:10</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3531341&amp;championship=R-L+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=R-L+2026&amp;group=178" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2210927" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+            <article class="team">
+              <div class="ph"><img src="https://tg-gold-weiss.de/wp-content/uploads/2022/07/Herren_70_2022.jpg" alt="Mannschaftsfoto Herren 70" loading="lazy"></div>
+              <div class="tb">
+                <p class="league">Bezirksklasse<span>Ruhr-Lippe, Gr.&nbsp;191</span></p>
+                <h3>Herren&nbsp;70</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>3</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>7:5</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3534034&amp;championship=R-L+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=R-L+2026&amp;group=191" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2210945" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Jugend (#jugend) ============ -->
+      <section class="tgroup" id="jugend">
+        <div class="wrap">
+          <div class="head row">
+            <div>
+              <h2>Jugend</h2>
+              <p>Unser Nachwuchs im Mannschaftsspielbetrieb</p>
+            </div>
+            <span class="count">3&nbsp;Mannschaften</span>
+          </div>
+          <div class="teams">
+            <article class="team">
+              <div class="ph"><img src="img/teams/junioren-u18.jpg" alt="Mannschaftsfoto Junioren U18" loading="lazy"></div>
+              <div class="tb">
+                <p class="league">2er Kreisliga<span>Ruhr-Lippe, Gr.&nbsp;224 RU</span></p>
+                <h3>Junioren&nbsp;U18</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>2</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>4:2</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3534829&amp;championship=R-L+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=R-L+2026&amp;group=224" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2210970" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+            <article class="team">
+              <div class="ph"><img src="img/teams/damen.jpg" alt="Mannschaftsfoto Juniorinnen U18" loading="lazy"></div>
+              <div class="tb">
+                <p class="league">classic Kreisklasse<span>Ruhr-Lippe, Gr.&nbsp;270 RU</span></p>
+                <h3>Juniorinnen&nbsp;U18</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>3</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>6:4</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3533778&amp;championship=R-L+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=R-L+2026&amp;group=270" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2211025" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+            <article class="team">
+              <div class="ph"><img src="img/teams/juniorinnen-u15.jpg" alt="Mannschaftsfoto Juniorinnen U15" loading="lazy"></div>
+              <div class="tb">
+                <p class="league">classic Kreisklasse<span>Ruhr-Lippe, Gr.&nbsp;282 RU</span></p>
+                <h3>Juniorinnen&nbsp;U15</h3>
+                <dl class="tstats">
+                  <div>
+                    <dt>Platz</dt>
+                    <dd>7</dd>
+                  </div>
+                  <div>
+                    <dt>Punkte</dt>
+                    <dd>1:11</dd>
+                  </div>
+                </dl>
+                <p class="tlinks"><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/teamPortrait?team=3662070&amp;championship=R-L+2026" target="_blank" rel="noopener">Team auf nuLiga<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaTENDE.woa/wa/groupPage?championship=R-L+2026&amp;group=282" target="_blank" rel="noopener">Tabelle<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=ScheduleReportFOP&group=2211043" target="_blank" rel="noopener">Spielplan (PDF)<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Abschluss-Aufruf: Lust auf Mannschafts&shy;tennis? ============ -->
+      <section class="cta">
+        <div class="wrap cta-in">
+          <div>
+            <h2>Lust auf Mannschafts&shy;tennis?</h2>
+            <p>Ob Einsteiger oder erfahren&nbsp;– sprich uns an, wir finden das passende Team für&nbsp;dich.</p>
+          </div>
+          <div class="btns">
+            <a class="btn gold lg" href="probetraining.html">Zum Probetraining</a>
+            <a class="btn line lg" href="kontakt.html">Kontakt aufnehmen</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ######## ENDE HAUPTINHALT ######## -->
+
+    <!-- ######## FUSSZEILE ######## -->
+    <footer>
+      <div class="wrap">
+        <div class="cols">
+          <div class="fbrand">
+            <img src="img/logo-light.svg" alt="" width="56" height="56">
+            <div class="fbrand-text">
+              <p>Tennisgesellschaft <span class="nw">Gold-Weiß</span> Gelsenkirchen 1932&nbsp;e.V.<br>Tennis für Familien, Freizeit und Mannschaft&nbsp;– am Rande des Nienhausenbuschs.</p>
+              <div class="soc">
+                <a href="https://www.facebook.com/TgGoldWeissGelsenkirchen1932/" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://www.instagram.com/tggoldweissgelsenkirchen/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>Club</h4>
+            <ul>
+              <li><a href="verein.html">Verein</a></li>
+              <li><a href="clubanlage.html">Clubanlage</a></li>
+              <li><a href="trainer.html">Trainer</a></li>
+              <li><a href="sponsoren.html">Sponsoren</a></li>
+              <li><a href="sponsor-werden.html">Sponsor werden</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Sport</h4>
+            <ul>
+              <li><a href="mannschaften.html">Mannschaften</a></li>
+              <li><a href="turniere.html">Turniere</a></li>
+              <li><a href="probetraining.html">Probetraining</a></li>
+              <li><a href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">Platz buchen</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Kontakt</h4>
+            <ul>
+              <li>Feldmarkstraße 200</li>
+              <li>45883 Gelsenkirchen</li>
+              <li><a href="tel:+4920917770735">0209&nbsp;/&nbsp;17770735</a></li>
+              <li><a href="mailto:info@tg-gold-weiss.de">info@tg-gold-weiss.de</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="wordmark" aria-hidden="true"><span class="nw">Gold-Weiß</span></p>
+        <div class="copy">
+          <span>© Tennisgesellschaft Gold Weiss Gelsenkirchen 1932&nbsp;e.V.</span>
+          <span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz &amp; rechtliche Hinweise</a></span>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+    <script src="js/motion.js" defer></script>
+  </body>
+</html>

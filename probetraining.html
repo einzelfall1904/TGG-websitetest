@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--
+  TG Gold-Weiß Gelsenkirchen – Probetraining
+  Aufbau: Kopfzeile (Logo, Menü) · Hauptinhalt (Abschnitte) · Fußzeile
+  Gestaltung: css/style.css · Funktionen: js/main.js
+-->
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Probetraining – TG Gold-Weiß Gelsenkirchen</title>
+    <meta name="description" content="Kostenloses Probetraining bei der TG Gold-Weiß Gelsenkirchen: 3 Stunden Tennis, unverbindlich, für Erwachsene und Kinder.">
+    <meta name="theme-color" content="#13263A">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <noscript>
+      <style>.js main,.js footer{visibility:visible!important}</style>
+    </noscript>
+  </head>
+  <body class="">
+    <a class="skip" href="#main">Zum Inhalt springen</a>
+
+    <!-- ######## KOPFZEILE (Logo, Menü) ######## -->
+    <header class="top">
+      <div class="wrap bar">
+        <a class="brand" href="index.html">
+          <img src="img/logo.svg" alt="" width="44" height="44">
+          <span>TG&nbsp;<span class="nw">Gold-Weiß</span><small>Gelsenkirchen, seit 1932</small></span>
+        </a>
+        <nav id="menu" aria-label="Hauptmenü">
+          <ul class="main">
+            <li>
+              <details class="dd">
+                <summary>Club<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></summary>
+                <ul class="sub">
+                  <li><a href="verein.html"><b>Verein</b><span>Vorstand, Gremien und Satzungen</span></a></li>
+                  <li><a href="clubanlage.html"><b>Clubanlage</b><span>Sechs&nbsp;Sandplätze am Waldrand</span></a></li>
+                  <li><a href="trainer.html"><b>Trainer</b><span>Training und Anfängerkurse</span></a></li>
+                  <li><a href="sponsoren.html"><b>Sponsoren</b><span>Partner und Mitgliedervorteile</span></a></li>
+                  <li><a href="sponsor-werden.html"><b>Sponsor werden</b><span>Pakete für Unternehmen</span></a></li>
+                </ul>
+              </details>
+            </li>
+            <li>
+              <details class="dd">
+                <summary>Sport<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></summary>
+                <ul class="sub">
+                  <li><a href="mannschaften.html"><b>Mannschaften</b><span>Zwölf&nbsp;Teams im Spielbetrieb</span></a></li>
+                  <li><a href="turniere.html"><b>Turniere</b><span>Alle Turniere im Überblick</span></a></li>
+                  <li><a href="clubmeisterschaften.html"><b>Clubmeisterschaften 2026</b><span>Abgeschlossen&nbsp;– alle Clubmeister</span></a></li>
+                  <li><a href="pumucklturnier.html"><b>Pumucklturnier 2026</b><span>Abgeschlossen&nbsp;– alle Sieger</span></a></li>
+                  <li><a href="jugend-stadtmeisterschaften-2026.html"><b>Jugend-Stadtmeisterschaften 2026</b><span>Abgeschlossen&nbsp;– alle Turnierbäume</span></a></li>
+                </ul>
+              </details>
+            </li>
+            <li><a href="probetraining.html" class="on" aria-current="page">Probetraining</a></li>
+            <li><a href="mitglied-werden.html">Mitglied werden</a></li>
+          </ul>
+          <div class="actions">
+            <a class="btn ghost sm" href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">Platz buchen<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn sm" href="kontakt.html">Kontakt</a>
+          </div>
+        </nav>
+        <button class="burger" aria-expanded="false" aria-controls="menu"><span></span><span></span><em>Menü</em></button>
+      </div>
+      <div class="progress" aria-hidden="true"></div>
+    </header>
+
+    <!-- ######## HAUPTINHALT ######## -->
+    <main id="main">
+
+      <!-- ============ Probetraining – Einstieg ============ -->
+      <section class="pt-hero">
+        <div class="wrap pt-hero-in">
+          <div class="pt-copy">
+            <p class="crumb"><a href="index.html">Start</a><span>/</span>Probetraining</p>
+            <h1>Tennis aus&shy;probieren. Einfach&nbsp;so.</h1>
+            <p class="lead">Du wolltest schon immer mal Tennis spielen&nbsp;– oder nach einer Pause wieder einsteigen? Bei uns geht das ohne Hürden: drei&nbsp;Stunden Training, kostenlos und unverbindlich.</p>
+            <ul class="chips">
+              <li>3&nbsp;Stunden</li>
+              <li>kostenlos</li>
+              <li>unverbindlich</li>
+              <li>für Groß und Klein</li>
+            </ul>
+            <div class="btns">
+              <a class="btn gold lg" href="mailto:info@tg-gold-weiss.de?subject=Anmeldung%20Probetraining&body=Hallo%20TG%20Gold-Wei%C3%9F%2C%0A%0Aich%20m%C3%B6chte%20gern%20am%20Probetraining%20teilnehmen.%0A%0AName%3A%0AAnzahl%20Personen%20%28Erwachsene%2FKinder%29%3A%0A">Jetzt anmelden</a>
+              <a class="btn ghost lg" href="#termin">Zu den Terminen</a>
+            </div>
+          </div>
+          <figure class="pt-photo">
+            <img src="https://images.unsplash.com/photo-1777996625814-028201238572?auto=format&fit=crop&w=1400&q=75" alt="Ein Tennisball liegt auf einem Sandplatz" width="1400" height="1050">
+            <figcaption>Foto: Caroline Badran&nbsp;/&nbsp;Unsplash</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ Darum lohnt sich der erste Schritt ============ -->
+      <section>
+        <div class="wrap">
+          <div class="head">
+            <h2>Darum lohnt sich der erste Schritt</h2>
+            <p>Tennis ist mehr als ein Sport&nbsp;– es ist Bewegung, Gemeinschaft und ein bisschen Auszeit vom&nbsp;Alltag.</p>
+          </div>
+          <ul class="benefits">
+            <li><img src="img/icon-ball.svg" alt=""><h3>Kein Vorwissen nötig</h3><p>Du hast noch nie einen Schläger in der Hand gehabt? Perfekt. Wir fangen genau da an, wo du&nbsp;stehst.</p></li>
+            <li><img src="img/icon-court.svg" alt=""><h3>Draußen im Grünen</h3><p>Sandplätze am Rande des Waldes Nienhausenbusch&nbsp;– Sport an der frischen Luft statt Fitnessstudio.</p></li>
+            <li><img src="img/icon-users.svg" alt=""><h3>Neue Leute treffen</h3><p>Ein familiärer Club, in dem man sich kennt. Viele Spielpartner findest du direkt auf der&nbsp;Anlage.</p></li>
+            <li><img src="img/icon-racket.svg" alt=""><h3>Ein Sport fürs Leben</h3><p>Tennis hält fit, schult Koordination und Konzentration&nbsp;– und macht in jedem Alter&nbsp;Spaß.</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ So läuft dein Probe&shy;training ab ============ -->
+      <section class="dark">
+        <div class="wrap">
+          <div class="head">
+            <h2>So läuft dein Probe&shy;training ab</h2>
+          </div>
+          <ol class="steps">
+            <li><strong>Kurz anmelden</strong><span>Schreib uns eine <span class="nw">E-Mail</span> an<br><a href="mailto:info@tg-gold-weiss.de">info@tg-gold-weiss.de</a><br>– mit Namen und wie viele ihr&nbsp;seid.</span></li>
+            <li><strong>Vorbeikommen</strong><span>Feldmarkstraße 200 in Gelsenkirchen. Bequeme Sportkleidung, Sportschuhe und etwas zu trinken&nbsp;genügen.</span></li>
+            <li><strong>Spielen und entscheiden</strong><span>Drei&nbsp;Stunden mit erfahrenen Trainerinnen und Trainern. Gefällt’s dir, startest du ins Schnupperjahr zum reduzierten&nbsp;Beitrag.</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ Termine (#termin) ============ -->
+      <section class="soft" id="termin">
+        <div class="wrap">
+          <div class="head">
+            <h2>Termine</h2>
+            <p>Zwei&nbsp;Sonntage, zwei&nbsp;Chancen: Such dir einen aus oder komm zu beiden&nbsp;– wir freuen uns auf&nbsp;dich.</p>
+          </div>
+          <article class="event ev-poster">
+            <a class="poster" href="img/events/probetraining-iwantyou-gross.jpg" data-lightbox aria-label="Plakat Probetraining groß anzeigen"><img src="img/events/probetraining-iwantyou.jpg" alt="Plakat: I want you for the Goldwhite Crew – Tennisspielerin zeigt auf den Betrachter" width="360" height="509" loading="lazy"></a>
+            <div>
+              <p class="ev-date">Sonntag,&nbsp;18. und Sonntag,&nbsp;25.&nbsp;April&nbsp;2027</p>
+              <h3>Kostenloses Probe&shy;training für Erwachsene und Kinder</h3>
+              <dl class="meta">
+                <dt>Wann</dt>
+                <dd>Sonntag,&nbsp;18.&nbsp;April&nbsp;2027 und Sonntag,&nbsp;25.&nbsp;April&nbsp;2027&nbsp;– die Uhrzeit geben wir rechtzeitig bekannt</dd>
+                <dt>Wo</dt>
+                <dd>Tennisanlage der TG&nbsp;<span class="nw">Gold-Weiß</span> Gelsenkirchen</dd>
+                <dt>Wer</dt>
+                <dd>Alle sind willkommen&nbsp;– Einsteiger und Wiedereinsteiger, Groß und Klein</dd>
+                <dt>Anmeldung</dt>
+                <dd>Eine kurze <span class="nw">E-Mail</span> an <a href="mailto:info@tg-gold-weiss.de">info@tg-gold-weiss.de</a> genügt&nbsp;– so können wir besser&nbsp;planen.</dd>
+              </dl>
+              <a class="btn" href="mailto:info@tg-gold-weiss.de?subject=Anmeldung%20Probetraining">Per <span class="nw">E-Mail</span> anmelden</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ Häufige Fragen ============ -->
+      <section>
+        <div class="wrap split top faq-wrap">
+          <div>
+            <h2>Häufige Fragen</h2>
+            <p>Noch etwas offen? Schreib uns oder ruf an: <a href="tel:+4920917770735">0209&nbsp;/&nbsp;17770735</a>.</p>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Muss ich schon Tennis spielen&nbsp;können?</summary>
+              <p>Nein. Das Probetraining ist für Einsteiger genauso gedacht wie für alle, die nach einer Pause wieder anfangen möchten. Erfahrene Trainerinnen und Trainer holen dich auf deinem Niveau&nbsp;ab.</p>
+            </details>
+            <details>
+              <summary>Was kostet das Probetraining?</summary>
+              <p>Nichts. Die 3&nbsp;Stunden sind kostenlos und unverbindlich&nbsp;– du gehst keinerlei Verpflichtung&nbsp;ein.</p>
+            </details>
+            <details>
+              <summary>Können auch Kinder mitmachen?</summary>
+              <p>Ja. Das Probetraining richtet sich an Erwachsene und Kinder&nbsp;– kommt gern als ganze&nbsp;Familie.</p>
+            </details>
+            <details>
+              <summary>Was passiert nach dem Probetraining?</summary>
+              <p>Wenn es dir gefällt, kannst du ein Schnupperjahr zum reduzierten Beitrag starten. Es endet immer am 31.&nbsp;Dezember des laufenden Jahres. Wenn nicht, ist das völlig in&nbsp;Ordnung.</p>
+            </details>
+            <details>
+              <summary>Wie melde ich mich&nbsp;an?</summary>
+              <p>Schreib uns einfach eine kurze <span class="nw">E-Mail</span> an <a href="mailto:info@tg-gold-weiss.de">info@tg-gold-weiss.de</a>. So können wir besser planen und uns auf dich vorbereiten.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Abschluss-Aufruf: Dein erster Aufschlag wartet. ============ -->
+      <section class="cta">
+        <div class="wrap cta-in">
+          <div>
+            <h2>Dein erster Aufschlag&nbsp;wartet.</h2>
+            <p>Tennisgesellschaft <span class="nw">Gold-Weiß</span> Gelsenkirchen&nbsp;e.V., Feldmarkstraße 200, 45883 Gelsenkirchen</p>
+          </div>
+          <div class="btns">
+            <a class="btn gold lg" href="mailto:info@tg-gold-weiss.de?subject=Anmeldung%20Probetraining&body=Hallo%20TG%20Gold-Wei%C3%9F%2C%0A%0Aich%20m%C3%B6chte%20gern%20am%20Probetraining%20teilnehmen.%0A%0AName%3A%0AAnzahl%20Personen%20%28Erwachsene%2FKinder%29%3A%0A">Jetzt anmelden</a>
+            <a class="btn line lg" href="mitglied-werden.html">Mitglied werden</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ######## ENDE HAUPTINHALT ######## -->
+
+    <!-- ######## FUSSZEILE ######## -->
+    <footer>
+      <div class="wrap">
+        <div class="cols">
+          <div class="fbrand">
+            <img src="img/logo-light.svg" alt="" width="56" height="56">
+            <div class="fbrand-text">
+              <p>Tennisgesellschaft <span class="nw">Gold-Weiß</span> Gelsenkirchen 1932&nbsp;e.V.<br>Tennis für Familien, Freizeit und Mannschaft&nbsp;– am Rande des Nienhausenbuschs.</p>
+              <div class="soc">
+                <a href="https://www.facebook.com/TgGoldWeissGelsenkirchen1932/" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://www.instagram.com/tggoldweissgelsenkirchen/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>Club</h4>
+            <ul>
+              <li><a href="verein.html">Verein</a></li>
+              <li><a href="clubanlage.html">Clubanlage</a></li>
+              <li><a href="trainer.html">Trainer</a></li>
+              <li><a href="sponsoren.html">Sponsoren</a></li>
+              <li><a href="sponsor-werden.html">Sponsor werden</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Sport</h4>
+            <ul>
+              <li><a href="mannschaften.html">Mannschaften</a></li>
+              <li><a href="turniere.html">Turniere</a></li>
+              <li><a href="probetraining.html">Probetraining</a></li>
+              <li><a href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">Platz buchen</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Kontakt</h4>
+            <ul>
+              <li>Feldmarkstraße 200</li>
+              <li>45883 Gelsenkirchen</li>
+              <li><a href="tel:+4920917770735">0209&nbsp;/&nbsp;17770735</a></li>
+              <li><a href="mailto:info@tg-gold-weiss.de">info@tg-gold-weiss.de</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="wordmark" aria-hidden="true"><span class="nw">Gold-Weiß</span></p>
+        <div class="copy">
+          <span>© Tennisgesellschaft Gold Weiss Gelsenkirchen 1932&nbsp;e.V.</span>
+          <span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz &amp; rechtliche Hinweise</a></span>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+    <script src="js/motion.js" defer></script>
+  </body>
+</html>
