@@ -3416,6 +3416,69 @@ footer ul li:first-child {
   }
 }
 
+/* ---------- Rückblick: vergangene Termine (Startseite, unten) */
+.rueckblick {
+  background: var(--soft);
+}
+.rb-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.rb-list .event + .event {
+  margin-top: 0;
+}
+.rb-list .event {
+  grid-template-columns: 96px 1fr;
+  gap: 22px;
+  padding: 22px;
+  border-radius: var(--r);
+}
+.rb-list .event h3 {
+  font-size: 1.2rem;
+}
+.rb-list .poster {
+  width: auto;
+  filter: saturate(.75);
+}
+.rb-list .ev-date::before {
+  content: "Vorbei";
+  display: inline-block;
+  margin-right: 8px;
+  padding: 1px 9px;
+  border-radius: 99px;
+  background: var(--soft2);
+  color: var(--muted);
+  font-size: .78rem;
+}
+/* Anmeldung, Ort und Anmelde-Buttons sind für Vergangenes nicht mehr wichtig */
+.rb-list .meta,
+.rb-list .btn[href^="mailto:"] {
+  display: none;
+}
+.rb-list .btn {
+  margin-top: 6px;
+}
+@media (max-width: 900px) {
+  .rb-list {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 700px) {
+  .rb-list .event {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .rb-list .poster {
+    width: 110px;
+  }
+  /* auf dem Handy reicht Datum, Titel, Motto und ggf. der Button */
+  .rb-list .ev-tag + p,
+  .rb-list .ev-tag ~ p:not(.ev-tag) {
+    display: none;
+  }
+}
+
 /* ---------- Lightbox für Plakate */
 .poster {
   cursor: zoom-in;

@@ -7,7 +7,7 @@
    5. Google Maps und Bildergalerien erst nach Klick laden (Zwei-Klick-Lösung)
    6. Turnierbäume: Reiter für die Altersklassen
    7. Plakate in Großansicht (Lightbox)
-   8. Vergangene Termine ausblenden
+   8. Vergangene Termine in den Rückblick verschieben
    ===================================================================== */
 (function () {
   var menu   = document.getElementById('menu');
@@ -168,13 +168,26 @@
   dlg.addEventListener('close', function () { img.removeAttribute('src'); });
 })();
 
-/* ---------- 8. Vergangene Termine ausblenden ----------
+/* ---------- 8. Vergangene Termine in den Rückblick verschieben ----------
    Jeder Termin unter „Was bei uns ansteht“ trägt sein letztes Datum: <article class="event" data-ende="2026-10-10">.
-   Ab dem Folgetag wird er automatisch ausgeblendet. Termine ohne data-ende (z. B. „Datum folgt“) bleiben stehen. */
+   Ab dem Folgetag wandert er in die Rubrik „Rückblick“ unten auf der Startseite – die jüngste vergangene
+   Veranstaltung oben, die älteste ganz unten. Termine ohne data-ende (z. B. „Datum folgt“) bleiben oben stehen. */
 (function () {
+  var box = document.getElementById('rueckblick');
+  if (!box) return;
+  var liste = box.querySelector('.rb-list');
   var heute = new Date();
   var stichtag = heute.getFullYear() + '-' + ('0' + (heute.getMonth() + 1)).slice(-2) + '-' + ('0' + heute.getDate()).slice(-2);
-  [].forEach.call(document.querySelectorAll('.event[data-ende]'), function (ev) {
-    if (ev.getAttribute('data-ende') < stichtag) ev.remove();
+
+  var vorbei = [].filter.call(document.querySelectorAll('#termine .event[data-ende]'), function (ev) {
+    return ev.getAttribute('data-ende') < stichtag;
   });
+  if (!vorbei.length) return;
+
+  vorbei.sort(function (a, b) { return a.getAttribute('data-ende') < b.getAttribute('data-ende') ? 1 : -1; });
+  vorbei.forEach(function (ev) {
+    ev.classList.add('vorbei');
+    liste.appendChild(ev);
+  });
+  box.hidden = false;
 })();
