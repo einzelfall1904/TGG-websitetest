@@ -102,6 +102,13 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
 .post-meta span:last-child{color:var(--color-neutral-600)}
 .post-title{font-size:21px;line-height:1.15}
 .post-text{font-size:14px;line-height:1.45;color:var(--color-neutral-800)}
+.post.link{cursor:pointer;color:inherit;text-decoration:none}
+.post-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:4px}
+.post-foot b{margin-left:auto;font-size:14px;color:var(--color-accent-700);font-weight:500}
+.detail .poster-img{margin:8px 6px 0;border:1px solid var(--color-divider);border-radius:var(--radius-card);overflow:hidden;background:var(--color-surface)}
+.detail .poster-img img{display:block;width:100%;max-height:320px;object-fit:contain}
+.web-link{display:inline-block;margin:0 0 18px;font-size:15px;color:var(--color-accent-700);text-decoration:none}
+.binding{font-size:12px;color:var(--color-neutral-600);text-align:center;margin-bottom:8px}
 
 /* Termine */
 .ev-head{padding:12px 20px 0}
@@ -128,7 +135,7 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;strok
 .back{display:flex;align-items:center;gap:4px;background:none;border:0;cursor:pointer;color:var(--color-accent-700);font-size:16px;padding:8px 0}
 .detail .photo{margin:8px 6px 0;height:170px;padding:10px}
 .detail .eyebrow-sm{margin-top:20px}
-.detail h1{font-size:38px;margin:4px 0 14px}
+.detail h1{font-size:38px;margin:4px 0 14px;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word}
 .facts{display:flex;flex-direction:column;gap:10px;font-size:15px}
 .facts div{display:flex;gap:10px;align-items:center}
 .facts svg{color:var(--color-accent-700)}
@@ -247,6 +254,8 @@ const FEED_FILTERS = [['Alle', 'Alle'], ['Website', 'Website'], ['News', 'News']
 const CATS = ['Alle', 'Clubleben', 'Verein', 'Arbeitsstunden'];
 // Training (Probetraining) ist nur für Interessierte und erscheint deshalb nicht unter „Termine“.
 const HIDDEN_CATS = ['Training'];
+// Zurück-Knopf der Detailseite: dorthin, woher man kam.
+const BACK_LABEL = { start: 'Aktuelles', notif: 'Mitteilungen', profile: 'Profil' };
 const TABS = [['start', 'Start', IC.home], ['events', 'Termine', IC.search], ['notif', 'Mitteilungen', IC.bell], ['profile', 'Profil', IC.user]];
 const MON3 = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
 const BOARD_MAIL = 'info@tg-gold-weiss.de';
@@ -311,7 +320,7 @@ function workEvents() {
     const mine = !!m && w.signups.includes(m.nummer);
     const taken = w.signups.filter(n => !m || n !== m.nummer).length;
     return {
-      id: 'w_' + w.id, wid: w.id, work: true, mine, signups: w.signups, cat: 'Arbeitsstunden', title: w.title,
+      id: 'w_' + w.id, wid: w.id, work: true, date: w.date, mine, signups: w.signups, cat: 'Arbeitsstunden', title: w.title,
       day: w.date.slice(8), month: MON3[+w.date.slice(5, 7) - 1],
       long: new Date(w.date + 'T12:00:00').toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
       time: w.time || 'Uhrzeit folgt', place: w.place, spots: w.spots || 0, taken,
@@ -325,7 +334,24 @@ function staticEvent(e) {
   if (e.noSignup) return { ...e, signups: [], mine: false, taken: 0 };
   return { ...e, signups: su, mine: !!m && su.includes(m.nummer), taken: su.filter(n => !m || n !== m.nummer).length };
 }
-function allEvents() { return [...EVENTS.map(staticEvent), ...workEvents()]; }
+// Website-Termine mit data-app-anmeldung="<id>" bekommen eine Anmeldung in der App. Gibt es die id schon (e1, e2 …),
+// wird der Website-Kasten mit diesem Termin verknüpft, sonst entsteht der Termin aus den Website-Daten.
+function webSignupEvents() {
+  const known = EVENTS.map(e => e.id), today = todayKey();
+  return S.web.filter(w => w.signup && !known.includes(w.signup) && !(w.ende && w.ende < today)).map(w => {
+    const k = sortKey(w.date), later = /ende\s+\d{4}/i.test(w.date), time = (w.date.match(/(\d{1,2}:\d{2})\s*Uhr/) || [])[1];
+    return { id: w.signup, cat: 'Clubleben', title: w.title, day: k && !later ? k.slice(8) : '–', month: k ? (later ? 'Ende ' + k.slice(0, 4) : MON3[+k.slice(5, 7) - 1]) : '',
+      long: w.date || 'Datum folgt', time: time ? time + ' Uhr' : 'Uhrzeit folgt', place: w.place || 'Clubanlage, Feldmarkstraße 200', spots: 0, note: 'Anmeldung offen',
+      desc: [...new Set([w.sub, w.text].filter(Boolean))].join(' ') };
+  });
+}
+function webUrl(w) { return '/' + (w && w.anchor ? '#' + w.anchor : ''); }
+function allEvents() {
+  return [...EVENTS.map(staticEvent), ...webSignupEvents().map(staticEvent), ...workEvents()].map(e => {
+    const w = S.web.find(x => x.signup && x.signup === e.id);
+    return w ? { ...e, url: webUrl(w), img: w.image } : e;
+  });
+}
 function findEvent(id) { const all = allEvents(); return all.find(e => e.id === id) || all[0]; }
 function regLabel(e) { return e.noSignup ? 'Info' : e.mine ? 'Angemeldet' : e.spots ? (e.taken >= e.spots ? 'Ausgebucht' : (e.spots - e.taken) + ' frei') : 'Anmelden'; }
 function notifications() {
@@ -356,14 +382,22 @@ function todayKey() { const d = new Date(); return d.getFullYear() + '-' + Strin
 function feedItems() {
   const news = S.db.news, year = String(new Date().getFullYear()), today = todayKey();
   // Website-Termine, deren (letzter) Tag vorbei ist, werden ausgeblendet. News bleiben, sie sortieren nach Einstellungsdatum.
-  const upcoming = n => n.kind !== 'Website' || !n.end || n.end >= today;
+  // Aktionen (Arbeitseinsätze) ebenso. News bleiben, sie sortieren nach Einstellungsdatum.
+  const upcoming = n => !n.end || n.end >= today;
+  const evIds = allEvents().map(e => e.id);
+  // Website-Beiträge: mit Anmeldung öffnen sie die Detailseite in der App, sonst die Website an der passenden Stelle.
+  const webLink = w => w && w.signup && evIds.includes(w.signup) ? { ev: w.signup } : { href: webUrl(w) };
   const items = [
     ...S.web.filter(w => !(news || []).some(n => n.orig === w.title))
-      .map(w => ({ kind: 'Website', when: w.date, title: w.title, text: w.sub || w.text, img: w.image, k: sortKey(w.date), end: sortKey(w.date, null, true) })),
-    ...(news ? news.map(n => ({ kind: n.orig ? 'Website' : 'News', when: n.when || deD(n.date), title: n.title, text: n.text, img: n.img,
-        k: sortKey(n.when || '', (n.date || '').slice(0, 4) || year) || n.date || null,
-        end: n.orig ? sortKey(n.when || '', (n.date || '').slice(0, 4) || year, true) : null }))
-      : NEWS.map(n => ({ ...n, k: sortKey(n.when, year) })))
+      .map(w => ({ kind: 'Website', when: w.date, title: w.title, text: w.sub || w.text, img: w.image, k: sortKey(w.date), end: w.ende || sortKey(w.date, null, true), ...webLink(w) })),
+    ...(news ? news.map(n => {
+        const w = n.orig ? S.web.find(x => x.title === n.orig) : null;
+        return { kind: n.orig ? 'Website' : 'News', when: n.when || deD(n.date), title: n.title, text: n.text, img: n.img,
+          k: sortKey(n.when || '', (n.date || '').slice(0, 4) || year) || n.date || null,
+          end: n.orig ? (w && w.ende) || sortKey(n.when || '', (n.date || '').slice(0, 4) || year, true) : null, ...(n.orig ? webLink(w) : {}) };
+      }) : NEWS.map(n => ({ ...n, k: sortKey(n.when, year) }))),
+    // Aufrufe zur Mithilfe (Arbeitseinsätze, Putzaktionen, Gastro-Hilfe …) aus der Verwaltung, mit Anmeldung.
+    ...workEvents().map(e => ({ kind: 'Aktion', when: e.long + (e.time ? ', ' + e.time : ''), title: e.title, text: e.desc, k: e.date, end: e.date, ev: e.id }))
   ];
   // Alle Beiträge (Website, News, Aktionen) zeitlich aufsteigend wie auf der Startseite; Einträge ohne Datum (z. B. „Immer“) ans Ende.
   return items.filter(upcoming).map((n, i) => ({ n, i }))
@@ -427,13 +461,22 @@ function vHome() {
       <div class="next-foot"><span class="meta">${e1.mine ? 'Du bist angemeldet' : esc(e1.note)}</span><b>Details →</b></div>
     </div>
     <div class="seg">${FEED_FILTERS.map(([k, l]) => `<button class="${S.feed === k ? 'on' : ''}" data-act="feed" data-id="${k}">${l}</button>`).join('')}</div>
-    <div class="feed">${feedItems().map(n => `<article class="post">
-        ${n.img ? `<img src="${esc(n.img)}" alt="" loading="lazy">` : ''}
+    <div class="feed">${feedItems().map(vPost).join('')}</div>
+  </div>`;
+}
+
+function vPost(n) {
+  const body = `${n.img ? `<img src="${esc(n.img)}" alt="" loading="lazy">` : ''}
         <div class="post-meta label-xs"><span>${esc(n.kind)}</span><span>${esc(n.when)}</span></div>
         <div class="hd post-title">${esc(n.title)}</div>
-        <div class="post-text">${esc(n.text)}</div>
-      </article>`).join('')}</div>
-  </div>`;
+        <div class="post-text">${esc(n.text)}</div>`;
+  if (n.ev) {
+    const e = findEvent(n.ev), full = e.spots && e.taken >= e.spots;
+    return `<article class="post link" data-act="open" data-id="${esc(n.ev)}">${body}
+        <div class="post-foot"><span class="tag${e.mine ? ' mine' : full ? ' full' : ''}">${esc(regLabel(e))}</span><b>Details →</b></div></article>`;
+  }
+  if (n.href) return `<a class="post link" href="${esc(n.href)}" target="_blank" rel="noopener">${body}<div class="post-foot"><b>Auf der Website ↗</b></div></a>`;
+  return `<article class="post">${body}</article>`;
 }
 
 function vEventList() {
@@ -465,8 +508,8 @@ function vDetail() {
   const pct = e.spots ? Math.min(100, taken / e.spots * 100) : 100;
   return `<div class="col detail">
     <div class="scroll">
-      <button class="back" data-act="go" data-id="events">${icon(IC.back, 22)}Termine</button>
-      <div class="photo"><span>FOTO · ${esc(e.title)}</span></div>
+      <button class="back" data-act="back">${icon(IC.back, 22)}${BACK_LABEL[S.from] || 'Termine'}</button>
+      ${e.img ? `<div class="poster-img"><img src="${esc(e.img)}" alt="Plakat: ${esc(e.title)}"></div>` : `<div class="photo"><span>FOTO · ${esc(e.title)}</span></div>`}
       <div class="eyebrow-sm">${esc(e.cat)}</div>
       <h1>${esc(e.title)}</h1>
       <div class="facts">
@@ -475,13 +518,14 @@ function vDetail() {
         <div>${icon(IC.pin, 20)}${esc(e.place)}</div>
       </div>
       <p class="desc">${esc(e.desc)}</p>
+      ${e.url ? `<a class="web-link" href="${esc(e.url)}" target="_blank" rel="noopener">Auf der Website ansehen ↗</a>` : ''}
       ${e.noSignup ? `<div class="cap" style="font-size:14px;line-height:1.45;color:var(--color-neutral-800)">${NO_SIGNUP_NOTE}</div>` : `<div class="cap">
         <div class="cap-row"><span>Teilnehmer</span><span>${e.spots ? taken + ' / ' + e.spots : taken + ' angemeldet'}</span></div>
         <div class="bar"><div style="width:${pct}%"></div></div>
         <div class="people">${e.signups.length ? e.signups.map(nr => `<div class="person">${esc(shortName(nr))}</div>`).join('') : '<span class="none">Noch keine Anmeldungen</span>'}</div>
       </div>`}
     </div>
-    ${e.noSignup ? '' : `<div class="action-bar"><button class="btn-reg hd${reg ? ' out' : ''}" data-act="toggleReg">${reg ? 'Abmelden' : full ? 'Auf Warteliste' : 'Jetzt anmelden'}</button></div>`}
+    ${e.noSignup ? '' : `<div class="action-bar">${reg || e.work ? '' : '<div class="binding">Die Anmeldung ist verbindlich.</div>'}<button class="btn-reg hd${reg ? ' out' : ''}" data-act="toggleReg">${reg ? 'Abmelden' : full ? 'Auf Warteliste' : 'Jetzt anmelden'}</button></div>`}
   </div>`;
 }
 
@@ -511,7 +555,7 @@ function vProfile() {
     ${m.role === 'editor' ? '<a class="admin-link" href="/verwaltung/index.html">Verwaltung öffnen →</a>' : ''}
     <div style="height:22px"></div>
     <div class="section-label">Meine Anmeldungen</div>
-    ${regs.length ? regs.map(e => `<div class="list-row link" data-act="open" data-id="${esc(e.id)}"><span>${esc(e.title)}</span><span>${esc(e.day + '. ' + e.month)}</span></div>`).join('') : '<div class="muted">Noch keine Anmeldungen.</div>'}
+    ${regs.length ? regs.map(e => `<div class="list-row link" data-act="open" data-id="${esc(e.id)}"><span>${esc(e.title)}</span><span>${esc(e.day === '–' ? e.month : e.day + '. ' + e.month)}</span></div>`).join('') : '<div class="muted">Noch keine Anmeldungen.</div>'}
     <div class="section-label" style="margin-top:22px">Einstellungen</div>
     ${[['Push-Mitteilungen', 'push'], ['E-Mail-Newsletter', 'mail']].map(([l, k]) => `<div class="list-row"><span>${l}</span><span class="sq-switch${S[k] ? ' on' : ''}" role="switch" aria-checked="${S[k]}" aria-label="${l}" data-act="toggle" data-key="${k}"></span></div>`).join('')}
     <button class="logout hd" data-act="logout">Abmelden</button>
@@ -519,7 +563,7 @@ function vProfile() {
 }
 
 function vTabs() {
-  const active = S.screen === 'detail' ? 'events' : S.screen;
+  const active = S.screen === 'detail' ? (BACK_LABEL[S.from] ? S.from : 'events') : S.screen;
   const unread = notifications().filter(n => !S.read[n.id]).length;
   return `<nav class="tabs">${TABS.map(([k, l, d]) => `<button class="${active === k ? 'on' : ''}" data-act="go" data-id="${k}">
       ${icon(d, 26)}<span>${l}</span>${k === 'notif' && unread ? `<span class="badge">${unread}</span>` : ''}
@@ -570,7 +614,8 @@ function toggleReg() {
 }
 const ACT = {
   go: d => set({ screen: d.id, ob: 0 }),
-  open: d => set({ screen: 'detail', sel: d.id }),
+  open: d => set({ screen: 'detail', sel: d.id, from: S.screen === 'detail' ? S.from : S.screen }),
+  back: () => set({ screen: S.from && S.from !== 'detail' ? S.from : 'events' }),
   feed: d => set({ feed: d.id }),
   cat: d => set({ cat: d.id }),
   skipOb: finishOnboarding,
@@ -581,7 +626,7 @@ const ACT = {
     const n = notifications().find(x => String(x.id) === d.id);
     if (!n) return;
     S.read = { ...S.read, [n.id]: true }; savePrefs();
-    n.ev ? set({ screen: 'detail', sel: n.ev }) : render();
+    n.ev ? set({ screen: 'detail', sel: n.ev, from: 'notif' }) : render();
   },
   readAll: () => { S.read = Object.fromEntries(notifications().map(n => [n.id, true])); savePrefs(); render(); },
   logout: () => { store.del(KEY.session); set({ ses: null, screen: 'login' }); }
@@ -617,7 +662,11 @@ function loadWebItems() {
       const leaf = [...c.querySelectorAll('*')].filter(n => !n.children.length).map(n => clean(n.textContent)).filter(Boolean);
       const date = leaf.find(x => /(Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag|Ende \d{4})/.test(x)) || '';
       const ps = [...c.querySelectorAll('p')].map(p => clean(p.textContent)).filter(x => x && x !== date);
-      if (!items.some(x => x.title === title)) items.push({ id: 'w' + i, title, date, sub: ps[0] || '', text: ps[1] || ps[0] || '', image: new URL(img.getAttribute('src'), location.origin + '/').href });
+      // Kasten-Attribute der Website: id (Sprungziel), data-app-anmeldung (Anmeldung in der App), data-ende (letzter Tag).
+      const box = c.closest('article') || c, wo = [...box.querySelectorAll('dt')].find(dt => clean(dt.textContent) === 'Wo');
+      if (!items.some(x => x.title === title)) items.push({ id: 'w' + i, title, date, sub: ps[0] || '', text: ps[1] || ps[0] || '', image: new URL(img.getAttribute('src'), location.origin + '/').href,
+        anchor: box.id || '', signup: box.getAttribute('data-app-anmeldung') || '', ende: box.getAttribute('data-ende') || '',
+        place: wo && wo.nextElementSibling ? clean(wo.nextElementSibling.textContent) : '' });
     });
     if (items.length) done(items); else return Promise.reject();
   }).catch(() => fetch('/.netlify/functions/ankuendigungen').then(r => r.ok ? r.json() : null).then(d => d && done(d.items)).catch(() => {}));
