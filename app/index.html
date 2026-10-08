@@ -244,7 +244,9 @@ const INSTALL_STEPS = [
   ['3', 'Hinzufügen', 'Öffne die App danach vom Home-Bildschirm']
 ];
 const FEED_FILTERS = [['Alle', 'Alle'], ['Website', 'Website'], ['News', 'News'], ['Aktion', 'Aktionen']];
-const CATS = ['Alle', 'Clubleben', 'Verein', 'Training', 'Arbeitsstunden'];
+const CATS = ['Alle', 'Clubleben', 'Verein', 'Arbeitsstunden'];
+// Training (Probetraining) ist nur für Interessierte und erscheint deshalb nicht unter „Termine“.
+const HIDDEN_CATS = ['Training'];
 const TABS = [['start', 'Start', IC.home], ['events', 'Termine', IC.search], ['notif', 'Mitteilungen', IC.bell], ['profile', 'Profil', IC.user]];
 const MON3 = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
 const BOARD_MAIL = 'info@tg-gold-weiss.de';
@@ -256,6 +258,8 @@ const WORK_FEE_NOTE = 'Bei Abmeldung wird ein Ersatzbetrag von 25 € in Rechnun
 const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const deD = d => { const [y, m, t] = d.split('-'); return t + '.' + m + '.' + y; };
 const parseD = s => { const m = (s || '').trim().match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/); return m ? m[3] + '-' + m[2].padStart(2, '0') + '-' + m[1].padStart(2, '0') : null; };
+// Nur Ziffern eingeben, die Punkte setzt die App: „14031985“ → „14.03.1985“. Ein Punkt kommt erst mit der nächsten Ziffer, damit Löschen normal funktioniert.
+const formatBirth = v => { const d = v.replace(/\D/g, '').slice(0, 8); return d.length > 4 ? d.slice(0, 2) + '.' + d.slice(2, 4) + '.' + d.slice(4) : d.length > 2 ? d.slice(0, 2) + '.' + d.slice(2) : d; };
 const clean = t => (t || '').replace(/­/g, '').replace(/\s+/g, ' ').trim();
 
 /* ---------- Speicher ----------
@@ -364,7 +368,7 @@ function vLogin() {
     <div style="margin-top:28px"><div class="eyebrow">Mitgliederbereich</div><h1 class="h1-xl">Anmelden</h1><p class="lead" style="font-size:16px">Mit Mitgliedsnummer und Geburtsdatum.</p></div>
     <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px">
       <label class="field">Mitgliedsnummer<input name="ln" value="${esc(S.ln)}" inputmode="numeric" autocomplete="username"></label>
-      <label class="field">Geburtsdatum (TT.MM.JJJJ)<input name="lb" value="${esc(S.lb)}" placeholder="14.03.1985" inputmode="numeric" autocomplete="current-password"></label>
+      <label class="field">Geburtsdatum (TT.MM.JJJJ)<input name="lb" value="${esc(S.lb)}" placeholder="14.03.1985" inputmode="numeric" maxlength="10" autocomplete="current-password"></label>
       ${S.loginErr ? `<div class="login-err" role="alert">${esc(S.loginErr)}</div>` : ''}
     </div>
     <div style="flex:1;min-height:16px"></div>
@@ -422,7 +426,7 @@ function vHome() {
 
 function vEventList() {
   const q = S.q.trim().toLowerCase();
-  const res = allEvents().filter(e => (S.cat === 'Alle' || e.cat === S.cat) && (!q || (e.title + e.place + e.cat).toLowerCase().includes(q)));
+  const res = allEvents().filter(e => !HIDDEN_CATS.includes(e.cat) && (S.cat === 'Alle' || e.cat === S.cat) && (!q || (e.title + e.place + e.cat).toLowerCase().includes(q)));
   if (!res.length) return `<div class="empty">Keine Treffer für „${esc(S.q)}“.</div>`;
   return res.map(e => {
     const full = e.spots && e.taken >= e.spots;
@@ -577,7 +581,8 @@ app.addEventListener('click', ev => {
 app.addEventListener('submit', ev => { ev.preventDefault(); if (ev.target.dataset.form === 'login') doLogin(); });
 app.addEventListener('input', ev => {
   const t = ev.target;
-  if (t.name === 'ln' || t.name === 'lb') S[t.name] = t.value;
+  if (t.name === 'ln') S.ln = t.value;
+  else if (t.name === 'lb') S.lb = t.value = formatBirth(t.value);
   else if (t.dataset.input === 'q') { S.q = t.value; document.getElementById('ev-list').innerHTML = vEventList(); }
 });
 
