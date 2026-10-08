@@ -329,11 +329,27 @@ function notifications() {
   });
   return [...pushes, ...NOTIFS];
 }
+// Termindatum aus Website-Texten wie „Samstag, 10. Oktober 2026, 18:00 Uhr“ oder „Ende 2026“ (für die Sortierung).
+const MONTHS_LONG = ['januar', 'februar', 'märz', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'dezember'];
+function eventSortKey(text) {
+  const t = clean(text).replace(/ /g, ' ').toLowerCase();
+  const m = t.match(/(\d{1,2})\.\s*(?:und\s+\D*?\d{1,2}\.\s*)?([a-zä]+)\s+(\d{4})/);
+  const mon = m ? MONTHS_LONG.indexOf(m[2]) : -1;
+  if (mon >= 0) return m[3] + '-' + String(mon + 1).padStart(2, '0') + '-' + m[1].padStart(2, '0');
+  const end = t.match(/ende\s+(\d{4})/);
+  return end ? end[1] + '-12-31' : null;
+}
 function feedItems() {
   const news = S.db.news;
-  const web = S.web.filter(w => !(news || []).some(n => n.orig === w.title))
-    .map(w => ({ kind: 'Website', when: w.date, title: w.title, text: w.sub || w.text, img: w.image }));
-  const own = news ? news.map(n => ({ kind: n.orig ? 'Website' : 'News', when: n.when || deD(n.date), title: n.title, text: n.text, img: n.img })) : NEWS;
+  // Website-Beiträge (übernommene und noch nicht übernommene) chronologisch wie auf der Startseite, danach die eigenen News.
+  const web = [
+    ...S.web.filter(w => !(news || []).some(n => n.orig === w.title))
+      .map(w => ({ kind: 'Website', when: w.date, title: w.title, text: w.sub || w.text, img: w.image })),
+    ...(news || []).filter(n => n.orig).map(n => ({ kind: 'Website', when: n.when || deD(n.date), title: n.title, text: n.text, img: n.img }))
+  ].map((n, i) => ({ n, i, k: eventSortKey(n.when) }))
+    .sort((a, b) => (a.k && b.k ? a.k.localeCompare(b.k) : a.k ? -1 : b.k ? 1 : 0) || a.i - b.i)
+    .map(x => x.n);
+  const own = news ? news.filter(n => !n.orig).map(n => ({ kind: 'News', when: n.when || deD(n.date), title: n.title, text: n.text, img: n.img })) : NEWS;
   return [...web, ...own].filter(n => S.feed === 'Alle' || n.kind === S.feed);
 }
 
