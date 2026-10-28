@@ -136,6 +136,32 @@
         scrollTrigger: { trigger: b, start: 'top 85%', once: true } });
     });
 
+    // Chronik: die goldene Zeitlinie wächst beim Scrollen mit, jedes Ereignis baut sich der Reihe nach auf
+    // (Punkt springt auf, Jahr gleitet herein, Text steigt auf, Foto wird von oben aufgedeckt)
+    var chr = one('.chr-line');
+    if (chr) {
+      gsap.fromTo(one('.chr-prog', chr), { scaleY: 0 }, { scaleY: 1, ease: 'none',
+        scrollTrigger: { trigger: chr, start: 'top 60%', end: 'bottom 60%', scrub: 0.4 } });
+      $('.chr-dec-t').forEach(function (t) {
+        gsap.timeline({ scrollTrigger: { trigger: t, start: 'top 85%', once: true } }).add(revealBlock(t));
+      });
+      $('.chr-item').forEach(function (it) {
+        var tl = gsap.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger: it, start: 'top 82%', once: true } });
+        tl.fromTo(it, { '--dot': 0 }, { '--dot': 1, duration: 0.5, ease: 'back.out(3)' }, 0)
+          .from(one('.chr-year', it), { autoAlpha: 0, x: -18, duration: 0.6 }, 0.05)
+          .from($('.chr-body > p, .chr-names', it), { autoAlpha: 0, y: 18, duration: 0.7, stagger: 0.08 }, 0.12);
+        var fig = one('.chr-fig', it);
+        if (fig) {
+          tl.fromTo(one('img', fig), { clipPath: 'inset(0% 0% 100% 0%)', scale: 1.08 },
+            { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, duration: 1.1, ease: 'expo.out', clearProps: 'clipPath,transform' }, 0.25)
+            .from(one('figcaption', fig), { autoAlpha: 0, y: 8, duration: 0.5 }, 0.6);
+        }
+      });
+      var chrEnd = one('.chr-end');
+      if (chrEnd) gsap.from(chrEnd.children, { autoAlpha: 0, y: 24, duration: 0.7, stagger: 0.08, ease: 'power3.out',
+        scrollTrigger: { trigger: chrEnd, start: 'top 85%', once: true } });
+    }
+
     // Parallaxe für große Bilder
     $('.framed img, .wide img, .banner').forEach(function (img) {
       gsap.fromTo(img, { scale: 1.08 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: true } });

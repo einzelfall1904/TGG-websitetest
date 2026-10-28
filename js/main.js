@@ -8,6 +8,7 @@
    6. Turnierbäume: Reiter für die Altersklassen
    7. Plakate in Großansicht (Lightbox)
    8. Vergangene Termine in den Rückblick verschieben
+   9. Chronik: Jahrzehnt-Leiste markiert das aktuelle Jahrzehnt
    ===================================================================== */
 (function () {
   var menu   = document.getElementById('menu');
@@ -190,4 +191,24 @@
     liste.appendChild(ev);
   });
   box.hidden = false;
+})();
+
+/* ---------- 9. Chronik: Jahrzehnt-Leiste markiert das aktuelle Jahrzehnt ---------- */
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.chr-nav a'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var bar = document.querySelector('.chr-nav .wrap');
+  function mark(id) {
+    links.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + id;
+      a.classList.toggle('on', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+      // aktives Jahrzehnt in der (auf dem Handy waagerecht scrollbaren) Leiste sichtbar halten
+      if (on && bar) bar.scrollTo({ left: a.offsetLeft - bar.offsetLeft - 16, behavior: 'smooth' });
+    });
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) mark(e.target.id); });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  [].forEach.call(document.querySelectorAll('.chr-dec'), function (d) { io.observe(d); });
 })();

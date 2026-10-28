@@ -3479,6 +3479,280 @@ footer ul li:first-child {
   }
 }
 
+/* ---------- Chronik (chronik.html) */
+.chr-intro {
+  padding-bottom: 48px;
+}
+.chr-facts {
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 0;
+}
+.chr-facts div:nth-child(odd) {
+  padding-right: 20px;
+}
+@media (max-width: 760px) {
+  .chr-facts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Jahrzehnt-Leiste: bleibt beim Scrollen oben stehen */
+.chr-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: saturate(1.5) blur(12px);
+  -webkit-backdrop-filter: saturate(1.5) blur(12px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.chr-nav .wrap {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: none;
+}
+.chr-nav .wrap::-webkit-scrollbar {
+  display: none;
+}
+.chr-nav a {
+  flex: none;
+  padding: 7px 14px;
+  border-radius: 99px;
+  color: var(--muted);
+  font-weight: 650;
+  font-size: .92rem;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.chr-nav a:hover {
+  color: var(--navy);
+  background: var(--soft);
+}
+.chr-nav a.on {
+  color: #fff;
+  background: var(--navy);
+}
+
+/* Zeitleiste */
+.chr {
+  padding-top: 72px;
+}
+.chr-line {
+  position: relative;
+  --x: 248px;            /* Lage der Zeitlinie */
+}
+.chr-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--x);
+  width: 2px;
+  background: var(--line);
+}
+.chr-prog {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--gold), var(--gold-d));
+  transform-origin: top center;
+}
+.chr-dec {
+  display: grid;
+  grid-template-columns: calc(var(--x) - 48px) 1fr;
+  gap: 48px;
+  scroll-margin-top: 80px;
+}
+.chr-dec + .chr-dec {
+  margin-top: 40px;
+}
+.chr-dec-t {
+  position: sticky;
+  top: 90px;
+  align-self: start;
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 780;
+  font-stretch: 70%;
+  line-height: .9;
+  color: #B9C6D2;
+  letter-spacing: -.03em;
+}
+.chr-dec-t span {
+  color: var(--navy);
+}
+.chr-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 40px;
+}
+.chr-item {
+  position: relative;
+  padding-bottom: 44px;
+}
+/* Punkt auf der Zeitlinie */
+.chr-item::before {
+  content: "";
+  position: absolute;
+  left: -48px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--gold);
+  box-sizing: border-box;
+  transform: scale(var(--dot, 1));
+}
+.chr-key::before {
+  left: -51px;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  background: var(--gold);
+  border-color: #fff;
+  box-shadow: 0 0 0 3px var(--gold);
+}
+.chr-year {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  font-weight: 760;
+  font-stretch: 78%;
+  line-height: 1.1;
+  color: var(--gold-d);
+}
+.chr-key .chr-year {
+  font-size: 1.9rem;
+}
+.chr-body {
+  max-width: 68ch;
+}
+.chr-body p {
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+.chr-body strong {
+  font-weight: 700;
+}
+.chr-names {
+  columns: 2;
+  margin: 0 0 12px;
+  padding-left: 1.4em;
+  color: var(--muted);
+  max-width: 460px;
+}
+.chr-fig {
+  margin: 18px 0 0;
+  max-width: 560px;
+}
+.chr-fig a {
+  display: block;
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--soft);
+  box-shadow: 0 14px 34px -22px rgba(14, 26, 36, .6);
+  cursor: zoom-in;
+}
+.chr-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform .5s;
+}
+.chr-fig a:hover img {
+  transform: scale(1.03);
+}
+.chr-fig figcaption {
+  margin-top: 10px;
+  font-size: .86rem;
+  color: var(--muted);
+}
+/* Dokumente und Zeitungsausschnitte etwas kleiner, Hochformate schmaler */
+.chr-doc {
+  max-width: 420px;
+}
+.chr-tall {
+  max-width: 280px;
+}
+.chr-emblem {
+  max-width: 160px;
+}
+.chr-emblem a {
+  background: #fff;
+  padding: 14px;
+}
+/* Ausblick */
+.chr-end {
+  position: relative;
+  margin: 24px 0 0 var(--x);
+  padding: 40px 0 0 40px;
+}
+.chr-end::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 40px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px dashed var(--gold);
+  background: #fff;
+}
+.chr-end-k {
+  margin: 0 0 6px;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold-d);
+}
+.chr-end h2 {
+  margin-bottom: 12px;
+}
+.chr-end p {
+  max-width: 60ch;
+  color: var(--muted);
+}
+.chr-end .btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+@media (max-width: 900px) {
+  .chr-line {
+    --x: 10px;
+  }
+  .chr-dec {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .chr-dec-t {
+    position: static;
+    padding-left: 40px;
+  }
+  .chr-list {
+    padding-left: 40px;
+  }
+  .chr-end {
+    margin-left: 0;
+    padding-left: 40px;
+  }
+  .chr-end::before {
+    left: 1px;
+  }
+}
+@media (max-width: 560px) {
+  .chr-year,
+  .chr-key .chr-year {
+    font-size: 1.35rem;
+  }
+  .chr-names {
+    columns: 1;
+  }
+}
+
 /* ---------- Lightbox für Plakate */
 .poster {
   cursor: zoom-in;

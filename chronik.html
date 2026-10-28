@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<!--
+  TG Gold-Weiß Gelsenkirchen – Chronik
+  Aufbau: Kopfzeile (Logo, Menü) · Hauptinhalt (Seitenkopf, Zahlen, Jahrzehnt-Leiste, Zeitleiste je Jahrzehnt) · Fußzeile
+  Quelle: Chronik der Festschrift zum 80-jährigen Vereinsjubiläum (2012). Fotos: img/chronik/ (aus der Festschrift ausgeschnitten).
+  Neues Ereignis ergänzen: im passenden Jahrzehnt ein <li class="chr-item"> kopieren (Jahr, Text, optional Foto).
+  Gestaltung: css/style.css (Abschnitt „Chronik“) · Animation: js/motion.js (Abschnitt „Chronik“)
+-->
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Chronik – TG Gold-Weiß Gelsenkirchen</title>
+    <meta name="description" content="Die Geschichte der TG Gold-Weiß Gelsenkirchen seit 1932: Gründung, Neugründung 1947, neue Anlage 1980, Erfolge, Jubiläen und das neue Clubhaus.">
+    <meta name="theme-color" content="#13263A">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <noscript>
+      <style>.js main,.js footer{visibility:visible!important}</style>
+    </noscript>
+  </head>
+  <body class="">
+    <a class="skip" href="#main">Zum Inhalt springen</a>
+
+    <!-- ######## KOPFZEILE (Logo, Menü) ######## -->
+    <header class="top">
+      <div class="wrap bar">
+        <a class="brand" href="index.html">
+          <img src="img/logo.svg" alt="" width="44" height="44">
+          <span>TG&nbsp;<span class="nw">Gold-Weiß</span><small>Gelsenkirchen, seit 1932</small></span>
+        </a>
+        <nav id="menu" aria-label="Hauptmenü">
+          <ul class="main">
+            <li>
+              <details class="dd">
+                <summary class="on">Club<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></summary>
+                <ul class="sub">
+                  <li><a href="verein.html"><b>Verein</b><span>Vorstand, Gremien und Satzungen</span></a></li>
+                  <li><a href="chronik.html" aria-current="page"><b>Chronik</b><span>Unsere Geschichte seit 1932</span></a></li>
+                  <li><a href="clubanlage.html"><b>Clubanlage</b><span>Sechs&nbsp;Sandplätze am Waldrand</span></a></li>
+                  <li><a href="trainer.html"><b>Trainer</b><span>Training und Anfängerkurse</span></a></li>
+                  <li><a href="sponsoren.html"><b>Sponsoren</b><span>Partner und Mitgliedervorteile</span></a></li>
+                  <li><a href="sponsor-werden.html"><b>Sponsor werden</b><span>Pakete für Unternehmen</span></a></li>
+                </ul>
+              </details>
+            </li>
+            <li>
+              <details class="dd">
+                <summary>Sport<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></summary>
+                <ul class="sub">
+                  <li><a href="mannschaften.html"><b>Mannschaften</b><span>Zwölf&nbsp;Teams im Spielbetrieb</span></a></li>
+                  <li><a href="turniere.html"><b>Turniere</b><span>Alle Turniere im Überblick</span></a></li>
+                  <li><a href="clubmeisterschaften.html"><b>Clubmeisterschaften 2026</b><span>Abgeschlossen&nbsp;– alle Clubmeister</span></a></li>
+                  <li><a href="pumucklturnier.html"><b>Pumucklturnier 2026</b><span>Abgeschlossen&nbsp;– alle Sieger</span></a></li>
+                  <li><a href="jugend-stadtmeisterschaften-2026.html"><b>Jugend-Stadtmeisterschaften 2026</b><span>Abgeschlossen&nbsp;– alle Turnierbäume</span></a></li>
+                </ul>
+              </details>
+            </li>
+            <li><a href="probetraining.html">Probetraining</a></li>
+            <li><a href="mitglied-werden.html">Mitglied werden</a></li>
+          </ul>
+          <div class="actions">
+            <a class="btn ghost sm" href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">Platz buchen<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn sm" href="kontakt.html">Kontakt</a>
+          </div>
+        </nav>
+        <button class="burger" aria-expanded="false" aria-controls="menu"><span></span><span></span><em>Menü</em></button>
+      </div>
+      <div class="progress" aria-hidden="true"></div>
+    </header>
+
+    <!-- ######## HAUPTINHALT ######## -->
+    <main id="main">
+
+      <!-- ============ Seitenkopf: Chronik ============ -->
+      <div class="page-hero">
+        <div class="wrap">
+          <p class="crumb"><a href="index.html">Start</a><span>/</span>Club</p>
+          <h1>Chronik</h1>
+          <p class="lead">Unsere Geschichte seit 1932&nbsp;– von 20&nbsp;Gründungsmitgliedern am Nienhausenbusch bis zum neuen Clubhaus.</p>
+        </div>
+      </div>
+
+      <!-- ============ Einleitung und Zahlen ============ -->
+      <section class="chr-intro">
+        <div class="wrap">
+          <div class="head">
+            <h2>Über 90&nbsp;Jahre Tennis in&nbsp;Gelsenkirchen</h2>
+            <p>Gegründet als „Gelb-Weiß“, nach dem Krieg neu gegründet als „Gold-Weiß“: Hier findest du die wichtigsten Stationen unseres Vereins&nbsp;– Jahr für Jahr, mit Fotos und Zeitungsausschnitten aus dem Vereinsarchiv.</p>
+          </div>
+          <dl class="facts chr-facts">
+            <div>
+              <dt>1932</dt>
+              <dd>gegründet als Tennisgesellschaft „Gelb-Weiß“</dd>
+            </div>
+            <div>
+              <dt>20</dt>
+              <dd>Gründungsmitglieder</dd>
+            </div>
+            <div>
+              <dt>1947</dt>
+              <dd>Neugründung als „Gold-Weiß“</dd>
+            </div>
+            <div>
+              <dt>360</dt>
+              <dd>Mitglieder im Rekordjahr&nbsp;1983</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ============ Jahrzehnt-Leiste (Sprunglinks) ============ -->
+      <nav class="chr-nav" aria-label="Jahrzehnte">
+        <div class="wrap">
+          <a href="#j1930">1930er</a>
+          <a href="#j1940">1940er</a>
+          <a href="#j1950">1950er</a>
+          <a href="#j1960">1960er</a>
+          <a href="#j1970">1970er</a>
+          <a href="#j1980">1980er</a>
+          <a href="#j1990">1990er</a>
+          <a href="#j2000">2000er</a>
+          <a href="#j2010">2010er</a>
+        </div>
+      </nav>
+
+      <!-- ============ Zeitleiste ============ -->
+      <section class="chr">
+        <div class="wrap chr-line">
+          <div class="chr-track" aria-hidden="true"><span class="chr-prog"></span></div>
+
+          <!-- ============ 1930er ============ -->
+          <div class="chr-dec" id="j1930">
+            <h2 class="chr-dec-t"><span>1930</span>er</h2>
+            <ol class="chr-list">
+              <li class="chr-item">
+                <p class="chr-year">1932&nbsp;–&nbsp;1933</p>
+                <div class="chr-body">
+                  <p>Einige Mitglieder des Tennisclubs „Grün-Weiß“ Essen geben den Anstoß zur Gründung einer Tennisgesellschaft im Nienhausen&nbsp;Park. Nach der Zusage der Stadt Gelsenkirchen gründen 20&nbsp;Personen die Tennisgesellschaft „Gelb-Weiß“ Gelsenkirchen. Zum 1.&nbsp;Vorsitzenden wird Hugo Diekmann gewählt.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1932-mitglieder.jpg" data-lightbox><img src="img/chronik/chronik-1932-mitglieder.jpg" alt="Gruppenfoto der Mitglieder der Tennisgesellschaft Gelb-Weiß in den Jahren 1932/33" width="929" height="655" loading="lazy"></a>
+                    <figcaption>Mitglieder der Tennisgesellschaft „Gelb-Weiß“ in den Jahren 1932/33</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1934</p>
+                <div class="chr-body">
+                  <p>Herr Schiffmann, Magazinverwalter der Zeche Zollverein, stiftet eine Umkleidemöglichkeit: ein Häuschen mit je einer Umkleide und einem Waschraum, in der Mitte ein 10&nbsp;×&nbsp;4&nbsp;Meter großer Aufenthaltsraum mit Sitzgelegenheiten. Bis dahin musste man sich noch im Keller des Waldhauses umziehen. Da bis 1952 ein WC fehlt, werden weiter die Toiletten des Waldhauses benutzt. Die Frühlingsfeste finden weiterhin im Hotel Hans&nbsp;Sachs statt.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1934-turniermannschaft.jpg" data-lightbox><img src="img/chronik/chronik-1934-turniermannschaft.jpg" alt="Die erste Turniermannschaft der Tennisgesellschaft Gelb-Weiß am Netz, 1934" width="929" height="701" loading="lazy"></a>
+                    <figcaption>Die erste Turniermannschaft der Tennisgesellschaft „Gelb-Weiß“, 1934</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1935&nbsp;–&nbsp;1944</p>
+                <div class="chr-body">
+                  <p>Über diese Jahre liegen wegen der damaligen Verhältnisse keine Unterlagen und Informationen vor. F.&nbsp;W.&nbsp;Berkau ist in dieser Zeit kommissarischer Vorsitzender.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- ============ 1940er ============ -->
+          <div class="chr-dec" id="j1940">
+            <h2 class="chr-dec-t"><span>1940</span>er</h2>
+            <ol class="chr-list">
+              <li class="chr-item">
+                <p class="chr-year">1945&nbsp;–&nbsp;1946</p>
+                <div class="chr-body">
+                  <p>Polnische Kriegsgefangene bauen das Clubhaus ab und verheizen es. Der Platz selbst bleibt von Bombentrichtern verschont.</p>
+                </div>
+              </li>
+              <li class="chr-item chr-key">
+                <p class="chr-year">1947&nbsp;–&nbsp;1949</p>
+                <div class="chr-body">
+                  <p>Nach Kriegsende folgt am 10.&nbsp;September&nbsp;1947 die Neugründung unserer Tennisgesellschaft. Aus den Vereinsfarben Gelb-Weiß wird nun <strong>Gold-Weiß</strong>. Unter der Nummer VR&nbsp;284 wird die Tennisgesellschaft Gold-Weiß Gelsenkirchen&nbsp;e.&nbsp;V. beim Amtsgericht Gelsenkirchen eingetragen. Zum 1.&nbsp;Vorsitzenden wählt die Versammlung Franz-Werner Viefhaus, der über viele Jahre die Geschicke des Vereins mitbestimmt. Der Verein zählt 25&nbsp;Mitglieder.</p>
+                  <figure class="chr-fig chr-doc">
+                    <a href="img/chronik/chronik-1947-protokoll.jpg" data-lightbox><img src="img/chronik/chronik-1947-protokoll.jpg" alt="Maschinengeschriebenes Versammlungsprotokoll vom 10. September 1947 mit Unterschriften des Vorstands" width="953" height="1403" loading="lazy"></a>
+                    <figcaption>Versammlungsprotokoll der Neugründung vom 10.&nbsp;September&nbsp;1947</figcaption>
+                  </figure>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- ============ 1950er ============ -->
+          <div class="chr-dec" id="j1950">
+            <h2 class="chr-dec-t"><span>1950</span>er</h2>
+            <ol class="chr-list">
+              <li class="chr-item">
+                <p class="chr-year">1950</p>
+                <div class="chr-body">
+                  <p>Dr.&nbsp;Heinz Viefhaus entwirft das Vereinsemblem, das bis heute gilt.</p>
+                  <figure class="chr-fig chr-emblem">
+                    <a href="img/chronik/chronik-1950-emblem.jpg" data-lightbox><img src="img/chronik/chronik-1950-emblem.jpg" alt="Das Vereinsemblem der TG Gold-Weiß: geschwungene Form mit einem G in der Mitte" width="336" height="386" loading="lazy"></a>
+                    <figcaption>Das Vereinsemblem von 1950</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1951&nbsp;–&nbsp;1952</p>
+                <div class="chr-body">
+                  <p>Dr.&nbsp;Heinz Viefhaus löst seinen Bruder als 1.&nbsp;Vorsitzenden ab. Da die Sportfreunde Essen-Katernberg die Kosten für die Herrichtung der Plätze übernehmen, wird die TG Gold-Weiß eine Unterabteilung dieses ruhmreichen Fußballvereins.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1951-alte-anlage.jpg" data-lightbox><img src="img/chronik/chronik-1951-alte-anlage.jpg" alt="Das alte flache Clubhaus an der Tennisanlage mit zwei Aschenplätzen" width="857" height="569" loading="lazy"></a>
+                    <figcaption>Die alte Tennisanlage mit zwei Aschenplätzen</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1953</p>
+                <div class="chr-body">
+                  <p>Nach Zahlung einer Abstandssumme von 1.000&nbsp;DM löst sich die TG Gold-Weiß als Unterabteilung von den Sportfreunden Essen-Katernberg.</p>
+                  <figure class="chr-fig chr-doc">
+                    <a href="img/chronik/chronik-1953-abschrift.jpg" data-lightbox><img src="img/chronik/chronik-1953-abschrift.jpg" alt="Maschinengeschriebene Abschrift der Sportfreunde Essen-Katernberg vom August 1953 über den Erhalt von 1.000 DM" width="857" height="655" loading="lazy"></a>
+                    <figcaption>Abschrift der Zahlungsbestätigung über 1.000&nbsp;DM an die Sportfreunde Essen-Katernberg, August&nbsp;1953</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1954&nbsp;–&nbsp;1957</p>
+                <div class="chr-body">
+                  <p>In der Damen-Klasse&nbsp;B gewinnt Irene Lunemann die erste Stadtmeisterschaft für den Club. 1957 feiert die TGG ihr 25-jähriges Jubiläum.</p>
+                  <figure class="chr-fig chr-doc">
+                    <a href="img/chronik/chronik-1957-zeitung-25-jahre.jpg" data-lightbox><img src="img/chronik/chronik-1957-zeitung-25-jahre.jpg" alt="Zeitungsartikel mit der Überschrift 25 Jahre Gold-Weiß" width="766" height="683" loading="lazy"></a>
+                    <figcaption>Zeitungsbericht „25&nbsp;Jahre Gold-Weiß“ zum Jubiläum 1957</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1958&nbsp;–&nbsp;1960</p>
+                <div class="chr-body">
+                  <p>Die TG Gold-Weiß wird weiter von Dr.&nbsp;Heinz Viefhaus geführt, F.&nbsp;W.&nbsp;Viefhaus gehört dem Vorstand weiterhin als Geschäftsführer an. In diesen Jahren tauchen aber auch neue Namen in den Vorstandsmannschaften auf&nbsp;– Namen einer neuen Generation, darunter Egon Stein, Heinz-Josef Roth und Baldur Reul.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- ============ 1960er ============ -->
+          <div class="chr-dec" id="j1960">
+            <h2 class="chr-dec-t"><span>1960</span>er</h2>
+            <ol class="chr-list">
+              <li class="chr-item">
+                <p class="chr-year">1961</p>
+                <div class="chr-body">
+                  <p>Auf Initiative der Gold-Weißen wird das <strong>Vier-Vereine-Turnier</strong> ins Leben gerufen. Teilnehmer sind die Eisenwerke (TG&nbsp;Bulmke), die Zeche Holland (Grün-Weiß-Gold), die TG&nbsp;Rheinelbe und unsere TGG. 1973 springt der TC&nbsp;Horst für die Zeche Holland ein, 1987 der TC&nbsp;Rotthausen für die TG&nbsp;Rheinelbe. Beim ersten Einzelturnier dieser Pokalrunde, das wir ausrichten, holen wir zwei erste Plätze: Irmgard Schmachtenberg siegt im Damen-Einzel, Hannelore Jacob und Horst Stein im&nbsp;Mixed.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1962&nbsp;–&nbsp;1964</p>
+                <div class="chr-body">
+                  <p>Heinz Schwalbe löst den langjährigen 1.&nbsp;Vorsitzenden Dr.&nbsp;med.&nbsp;Heinz Viefhaus ab. 2.&nbsp;Vorsitzender wird Erich Solka, Egon Stein übernimmt den Posten des Sportwarts. Hans-Georg Roth beginnt 1964 seine Vorstandsarbeit als Jugendwart&nbsp;– sie soll, was damals noch niemand ahnen kann, über 25&nbsp;Jahre dauern.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1965&nbsp;–&nbsp;1966</p>
+                <div class="chr-body">
+                  <p>In den Vorstandsmannschaften tauchen weitere neue Namen auf. Karl-Ulrich Krämer wird 1966 1.&nbsp;Vorsitzender. Der langjährige Geschäftsführer F.&nbsp;W.&nbsp;Viefhaus findet in Alfred Dannat seinen Nachfolger.</p>
+                </div>
+              </li>
+              <li class="chr-item chr-key">
+                <p class="chr-year">1967</p>
+                <div class="chr-body">
+                  <p>Unter dem neuen Sportwart Hermann Lück meldet der Verein erstmals eine Mannschaft zu den <strong>Medenspielen</strong>. Zu dieser ersten Mannschaft gehören:</p>
+                  <ol class="chr-names">
+                    <li>Reiner Julius</li>
+                    <li>Hermann Lück</li>
+                    <li>Winfried Krämer</li>
+                    <li>Karl-Ulrich Krämer</li>
+                    <li>Egon Stein</li>
+                    <li>Erich Solka</li>
+                    <li>Lothar Stockhorst</li>
+                    <li>Dieter Pohe</li>
+                  </ol>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1968</p>
+                <div class="chr-body">
+                  <p>Ein erneuter Vorstandswechsel: Hans-Georg Roth wird neuer Geschäftsführer. Unter der Regie von Karl-Ulrich Krämer wird das Clubhaus umgebaut.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1969</p>
+                <div class="chr-body">
+                  <p>Das Amt des 1.&nbsp;Vorsitzenden wird mit Heinz-Josef Roth neu besetzt.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- ============ 1970er ============ -->
+          <div class="chr-dec" id="j1970">
+            <h2 class="chr-dec-t"><span>1970</span>er</h2>
+            <ol class="chr-list">
+              <li class="chr-item">
+                <p class="chr-year">1970</p>
+                <div class="chr-body">
+                  <p>Mit Udo Erwin wird ein neuer Jugendwart gewählt, der dem Vorstand noch viele Jahre angehören wird. Die I.&nbsp;Herrenmannschaft steigt in die Klasse&nbsp;B auf (heute 2.&nbsp;Bezirksklasse).</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1971</p>
+                <div class="chr-body">
+                  <p>Neuer 1.&nbsp;Vorsitzender wird Heinz-Josef Odendahl. Die erstmals gemeldete II.&nbsp;Herrenmannschaft steigt in die Klasse&nbsp;C auf (heute 3.&nbsp;Bezirksklasse).</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1972&nbsp;–&nbsp;1978</p>
+                <div class="chr-body">
+                  <p>Mit Hermann Lück wird ein neuer 1.&nbsp;Vorsitzender gewählt, der die Geschicke des Vereins über viele Jahre lenken wird. Am 29.&nbsp;Januar stirbt der kurz zuvor gewählte Jugendwart Werner Loch bei einem tragischen Autounfall. Eine III.&nbsp;Herrenmannschaft nimmt den Spielbetrieb auf.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1972-dritte-herren.jpg" data-lightbox><img src="img/chronik/chronik-1972-dritte-herren.jpg" alt="Die III. Medenmannschaft in weißer Tenniskleidung mit Holzschlägern" width="812" height="659" loading="lazy"></a>
+                    <figcaption>Die III.&nbsp;Medenmannschaft: Dirk Jacob, Heinz König, Winfried Beßling, Heinz Odendahl, Helmut Hirsch, Karl Heinz Thomas, Jürgen Hegmann</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item chr-key">
+                <p class="chr-year">1979</p>
+                <div class="chr-body">
+                  <p>Der Verein nimmt das Pachtangebot der Stadt Gelsenkirchen für das Grundstück an, und die Jahreshauptversammlung erlaubt dem Vorstand, den <strong>Neubau der Tennisanlage</strong> in Auftrag zu geben. Am 19.&nbsp;November beginnt die Firma Kottig aus Gronau mit den Erdarbeiten.</p>
+                  <figure class="chr-fig chr-doc">
+                    <a href="img/chronik/chronik-1979-baubeginn.jpg" data-lightbox><img src="img/chronik/chronik-1979-baubeginn.jpg" alt="Zeitungsausschnitt mit der Überschrift TG Gold-Weiß baut eine neue Anlage, darüber ein Foto am Bauschild" width="571" height="769" loading="lazy"></a>
+                    <figcaption>1979: Baubeginn der neuen Anlage&nbsp;– „TG&nbsp;Gold-Weiß baut eine neue Anlage“</figcaption>
+                  </figure>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- ============ 1980er ============ -->
+          <div class="chr-dec" id="j1980">
+            <h2 class="chr-dec-t"><span>1980</span>er</h2>
+            <ol class="chr-list">
+              <li class="chr-item chr-key">
+                <p class="chr-year">1980</p>
+                <div class="chr-body">
+                  <p>Die Saison wird auf der <strong>neuen Tennisanlage</strong> eröffnet, zunächst noch im alten Clubhaus. Das neue Clubhaus wird am 11.&nbsp;Oktober beim traditionellen Herbstfest eingeweiht. Dem Verein gehören 293&nbsp;Mitglieder an. Erstmals gewinnen wir den Vier-Vereine-Mannschaftspokal, gegen Ende der Saison auch erstmals den Molwitz-Pokal. Die Knabenmannschaft mit Andreas Adorf, Guido Rossmann, Jens Rose und Manuel Schulz steigt in die Leistungsklasse auf. Außerdem steigen die I.&nbsp;Damen in die Bezirksliga und die I.&nbsp;Herren in die 1.&nbsp;Bezirksklasse auf.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1980-erste-herren.jpg" data-lightbox><img src="img/chronik/chronik-1980-erste-herren.jpg" alt="Die I. Herren mit Holzschlägern auf dem Sandplatz" width="869" height="725" loading="lazy"></a>
+                    <figcaption>Die I.&nbsp;Herren, Aufstieg in die 1.&nbsp;Bezirksklasse: U.&nbsp;Anzion, M.&nbsp;Adorf, H.&nbsp;Lück, R.&nbsp;Regulski, T.&nbsp;Adorf, U.&nbsp;Krämer, U.&nbsp;Erwin</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1981</p>
+                <div class="chr-body">
+                  <p>Am 25.&nbsp;April wird die neue Tennisanlage offiziell eingeweiht, dazu gibt es ein Einladungsturnier für Mädchen und Jungen. Wegen der neuen Anlage richten wir die Stadtmeisterschaften aus. Die I.&nbsp;Herren schaffen den Sprung in die Bezirksliga, die III.&nbsp;Herren steigen in die 4.&nbsp;Bezirksklasse auf. Die TG Gold-Weiß richtet den Schmetterball der Gelsenkirchener Tennisclubs im Hotel Maritim aus. Erste Überlegungen entstehen, auf der alten Anlage einen dritten Platz zu bauen&nbsp;– das alte Clubhaus muss abgerissen werden, dadurch wird Platz frei.</p>
+                  <figure class="chr-fig chr-doc">
+                    <a href="img/chronik/chronik-1981-neue-anlage.jpg" data-lightbox><img src="img/chronik/chronik-1981-neue-anlage.jpg" alt="Zeitungsausschnitt Neue Tennisanlage übergeben mit Fotos des neuen Clubhauses und der Gäste" width="722" height="675" loading="lazy"></a>
+                    <figcaption>„Neue Tennisanlage übergeben“&nbsp;– Zeitungsbericht vom 30.&nbsp;April&nbsp;1981</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item chr-key">
+                <p class="chr-year">1982</p>
+                <div class="chr-body">
+                  <p>Den 349&nbsp;Mitgliedern stehen neun Tennisplätze zur Verfügung. Den ersten Titel auf Bezirksebene holt Susanne Krämer bei den Hallenbezirksmeisterschaften der Juniorinnen&nbsp;III. Zum <strong>50-jährigen Jubiläum</strong> richten wir die Jugendstadtmeisterschaften aus und feiern am 9.&nbsp;Oktober im Freizeithaus Nienhausen&nbsp;– die Festrede hält der 1.&nbsp;Vorsitzende Hermann Lück. Hermann Lück, Hans-Georg Roth und Heinz-Josef Odendahl erhalten für über 15&nbsp;Jahre Vorstandsarbeit die bronzene Ehrennadel des Westfälischen Tennisverbandes, überreicht vom 1.&nbsp;Vorsitzenden des Ruhrbezirks, Heiner Langer. Die II.&nbsp;Herren schaffen den Wiederaufstieg in die 3.&nbsp;Bezirksklasse, die II.&nbsp;Damen steigen in die 2.&nbsp;Bezirksklasse auf.</p>
+                  <figure class="chr-fig chr-doc">
+                    <a href="img/chronik/chronik-1982-zeitung-50-jahre.jpg" data-lightbox><img src="img/chronik/chronik-1982-zeitung-50-jahre.jpg" alt="Zeitungsartikel 50 Jahre Tennisgesellschaft Gold-Weiß Gelsenkirchen e. V." width="739" height="591" loading="lazy"></a>
+                    <figcaption>„50&nbsp;Jahre Tennisgesellschaft Gold-Weiß“&nbsp;– Zeitungsbericht zur Saisoneröffnung 1982</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1983</p>
+                <div class="chr-body">
+                  <p>Mit der Stadt Gelsenkirchen wird ein neuer Pachtvertrag für die alte Anlage bis zum 31.12.1991 geschlossen. Dem Verein gehören 360&nbsp;Mitglieder an. Auf der Jahreshauptversammlung tritt der gerade wiedergewählte Vorstand zurück, weil die Mitglieder eine notwendige Beitragserhöhung ablehnen. Auf der außerordentlichen Versammlung wird der Vorstand bis auf zwei Positionen wiedergewählt und die Erhöhung als einmalige Umlage beschlossen. Zur Jugendförderung gründet sich ein Jugendförderkreis. Die II.&nbsp;Herren steigen in die 2., die IV.&nbsp;Herren in die 5.&nbsp;Bezirksklasse auf. Die gemischte Jugendmannschaft wird Ruhr-Bezirksmeister, und bei den Stadtmeisterschaften ist die TGG mit fünf Stadtmeister- und zwei Vizetiteln der erfolgreichste Verein.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1983-jugend.jpg" data-lightbox><img src="img/chronik/chronik-1983-jugend.jpg" alt="Gruppenfoto von Spielerinnen und Spielern in Trainingsanzügen auf dem Sandplatz" width="963" height="585" loading="lazy"></a>
+                    <figcaption>Mannschaftsfoto aus dem Jahr&nbsp;1983</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1984</p>
+                <div class="chr-body">
+                  <p>Im Februar erscheint die erste Ausgabe der Vereinszeitung „TGG&nbsp;Magazin“. Vier Mannschaften steigen auf: die Jungsenioren in die 1.&nbsp;Bezirksklasse, die II.&nbsp;Damen in die Bezirksliga, die Henner-Henkel-Mannschaft in die Leistungsklasse und die Senioren in die 1.&nbsp;Bezirksklasse. Gegen Ende der Saison verlieren wir die hoffnungsvollen Jugendlichen Jens Rose, Guido Rossmann und Steffen Budweg an den&nbsp;GTK.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1985</p>
+                <div class="chr-body">
+                  <p>355&nbsp;Mitglieder gehören dem Verein an. Der neue Sportwart Reiner Hillebrandt ruft das Ferien-Doppelturnier ins Leben. In der Winterhallenrunde steigen die I.&nbsp;Herren in die Bezirksliga auf, die IV.&nbsp;Herren schaffen den Wiederaufstieg in die 4.&nbsp;Bezirksklasse. Die I.&nbsp;Damen müssen leider aus der Bezirksliga absteigen.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1986</p>
+                <div class="chr-body">
+                  <p>Am 5.&nbsp;Februar veranstaltet der Festausschuss das erste Tennis-Mixed-Nachtturnier. Zum zweiten Mal wird die Stadtmeisterschaft auf unserer Anlage ausgetragen. Die I.&nbsp;Herren müssen nach fünf Jahren aus der Bezirksliga absteigen, die IV.&nbsp;Herren können die 4.&nbsp;Bezirksklasse nicht halten. Hermann Lück erhält vom Stadtsportbund die goldene Ehrennadel für 13&nbsp;Jahre als Gelsenkirchener Fachschaftsleiter Tennis.</p>
+                  <figure class="chr-fig chr-doc">
+                    <a href="img/chronik/chronik-1986-nachtturnier.jpg" data-lightbox><img src="img/chronik/chronik-1986-nachtturnier.jpg" alt="Zeitungsartikel 1. Hallen-Mixed-Nachtturnier der TG Gold-Weiß Gelsenkirchen" width="699" height="694" loading="lazy"></a>
+                    <figcaption>„1.&nbsp;Hallen-Mixed-Nachtturnier“&nbsp;– von 22 bis 4&nbsp;Uhr morgens in der Halle am Parkstadion</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1987</p>
+                <div class="chr-body">
+                  <p>Für diese Saison meldet der Verein erstmals 15&nbsp;Mannschaften, darunter fünf Jugendmannschaften. Die I.&nbsp;Damen schaffen den Wiederaufstieg in die Bezirksliga.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1988</p>
+                <div class="chr-body">
+                  <p>Mit 339&nbsp;Mitgliedern geht die TGG ins Jahr. In den Aufstiegsrunden zur Verbandsliga scheitern die Seniorinnen und die I.&nbsp;Jungsenioren. Zum zweiten Mal in der Vereinsgeschichte wird die gemischte Jugendmannschaft Ruhr-Bezirksmeister. Die I.&nbsp;Herren steigen wieder in die Bezirksliga auf.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1989</p>
+                <div class="chr-body">
+                  <p>Die gemischte Jugendmannschaft wiederholt ihren Erfolg und wird erneut Ruhr-Bezirksmeister. Die I.&nbsp;Jungsenioren scheitern wie im Vorjahr in der Aufstiegsrunde zur Verbandsliga. Nach zwei Jahren Pause gewinnen wir wieder den Vier-Vereine-Mannschaftspokal, beim Einzelturnier dazu fünf Pokale. Bei den Stadtmeisterschaften feiern wir den bisher größten Erfolg mit fünf Stadtmeistern und sechs Vizestadtmeistern. Gegen Ende der Saison gewinnt die TGG den Molwitz-Pokal.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1989-mannschaft.jpg" data-lightbox><img src="img/chronik/chronik-1989-mannschaft.jpg" alt="Mannschaft in Trainingsanzügen vor dem Netz" width="811" height="365" loading="lazy"></a>
+                    <figcaption>Mannschaftsfoto, Ende der 1980er-Jahre</figcaption>
+                  </figure>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- ============ 1990er ============ -->
+          <div class="chr-dec" id="j1990">
+            <h2 class="chr-dec-t"><span>1990</span>er</h2>
+            <ol class="chr-list">
+              <li class="chr-item">
+                <p class="chr-year">1990</p>
+                <div class="chr-body">
+                  <p>Wie im Vorjahr starten wir mit 15&nbsp;Mannschaften in die Meisterschaftsrunden, davon fünf Jugendmannschaften. Die Mädchen steigen in die Leistungsklasse auf. Die Seniorinnen werden ungeschlagen Gruppensieger der Bezirksliga, gewinnen in den drei Aufstiegsspielen zur Verbandsliga aber kein Spiel. Den Vier-Vereine-Mannschaftspokal verteidigen wir erfolgreich, beim Endturnier gewinnen wir sieben von acht möglichen Pokalen&nbsp;– und auch den neu gestifteten Wanderpokal für die erfolgreichste Mannschaft beim Einzelturnier. Auch der Molwitz-Pokal bleibt bei uns.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1991</p>
+                <div class="chr-body">
+                  <p>Heinz-Josef Odendahl scheidet nach 25&nbsp;Jahren aus persönlichen Gründen aus dem Vorstand aus, sein Nachfolger als Schriftführer wird Klaus Penski. Zu Jahresbeginn zählt die TGG 329&nbsp;Mitglieder. Zum dritten Mal finden die Gelsenkirchener Stadtmeisterschaften auf unserer Anlage statt&nbsp;– mit fünf Stadtmeistern und einem Vizestadtmeister für uns. Dazu eine wahre Aufstiegsflut: Fünf Mannschaften steigen auf, und erstmals in der Vereinsgeschichte gelingt der Aufstieg in die <strong>Verbandsliga</strong>&nbsp;– gleich mit zwei Mannschaften, den Seniorinnen und den I.&nbsp;Jungseniorinnen. Außerdem steigen die II.&nbsp;Jungsenioren in die Bezirksliga, die I.&nbsp;Senioren in die Bezirksliga und die II.&nbsp;Senioren in die 3.&nbsp;Bezirksklasse auf. Beim Vier-Vereine-Turnier gewinnen wir wieder den Mannschaftspokal und beim selbst ausgerichteten Einzelturnier vier Pokale. Auch der Molwitz-Pokal wird verteidigt. Auf dem Herbstfest erhalten Reiner Hillebrandt und Udo Erwin für 15&nbsp;Jahre Vorstandsarbeit die bronzene Ehrennadel des Westfälischen Tennisverbandes.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1991-damen.jpg" data-lightbox><img src="img/chronik/chronik-1991-damen.jpg" alt="Damenmannschaft in weißer Tenniskleidung am Netz" width="790" height="535" loading="lazy"></a>
+                    <figcaption>Damenmannschaft, Anfang der 1990er-Jahre</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item chr-key">
+                <p class="chr-year">1992</p>
+                <div class="chr-body">
+                  <p>Der Verein feiert sein <strong>60-jähriges Bestehen</strong> und zählt Mitte des Jahres 323&nbsp;Mitglieder. Am 26./27.&nbsp;September findet das Einladungsturnier um den Nissan-Wegmann-Cup mit acht Spielern statt. Bei sonnigem Wetter gewinnt Stephan Rhode (OTHC Oberhausen)&nbsp;– mit vielen Besuchern, auch beim Jazz-Frühschoppen. Das Jubiläumsfest folgt am 31.&nbsp;Oktober. Die Festansprache hält der 1.&nbsp;Vorsitzende Hermann Lück, der für 25&nbsp;Jahre Vorstandsarbeit die goldene Ehrennadel der TGG erhält. Für 25&nbsp;Jahre Mitgliedschaft werden die Ehepaare Hella und Georg Krause sowie Mechthild und Hans-Werner Keßler geehrt. Jugendwart Walter Lenzen scheidet aus, Nachfolger werden Manfred Pelka und Elisabeth Blauser. Sportlich steigen Seniorinnen und I.&nbsp;Jungseniorinnen mit viel Pech wieder aus der Verbandsliga ab, die II.&nbsp;Jungsenioren aus der Bezirksliga. Neu in der Verbandsliga sind die I.&nbsp;Jungsenioren, und die erstmals gemeldeten Senioren AK&nbsp;II schaffen auf Anhieb den Sprung in die Bezirksliga.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1992-mannschaft.jpg" data-lightbox><img src="img/chronik/chronik-1992-mannschaft.jpg" alt="Herrenmannschaft in einheitlichen Trainingsanzügen vor einer Wand" width="773" height="468" loading="lazy"></a>
+                    <figcaption>Mannschaftsfoto, 1992</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1993</p>
+                <div class="chr-body">
+                  <p>Die Tennisgesellschaft geht mit 310&nbsp;Mitgliedern in die Saison. Die I.&nbsp;Jungseniorinnen schaffen den Wiederaufstieg in die Verbandsliga, die I.&nbsp;Jungsenioren müssen leider wieder absteigen. Die Seniorinnen scheitern in der Aufstiegsrunde, die II.&nbsp;Senioren steigen in die 2.&nbsp;Bezirksklasse auf. Bei den Bezirksmeisterschaften gewinnen Ursula Trompeter und Klaudia Woelk das Jungseniorinnen-Doppel. Beim Vier-Vereine-Turnier holen wir den Mannschaftspokal und mit vier Titeln im Einzelturnier wieder den Vosswinkel-Pokal. Udo Erwin wird auf dem Herbstfest für 25&nbsp;Jahre Mitgliedschaft geehrt. Manfred Pelka kandidiert nicht mehr als Jugendwart, Elisabeth Blauser wird wiedergewählt und führt das Amt nun allein.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1993-aufstieg.jpg" data-lightbox><img src="img/chronik/chronik-1993-aufstieg.jpg" alt="Mannschaft hält Buchstaben mit dem Wort Aufstieg vor sich" width="751" height="386" loading="lazy"></a>
+                    <figcaption>„Aufstieg!“&nbsp;– Mannschaftsfoto, 1993</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1994</p>
+                <div class="chr-body">
+                  <p>315&nbsp;Mitglieder zählt die Tennisgesellschaft zu Jahresbeginn. Im April stirbt unser langjähriger Clubwirt Herbert Pfeffer. Simone Pfeffer und Jenny van der Velde verstärken die Damenmannschaft. Die I.&nbsp;Jungseniorinnen scheitern knapp am Aufstieg in die Oberliga, die I.&nbsp;Jungsenioren in der Aufstiegsrunde zur Verbandsliga. Die Seniorinnen schaffen den Wiederaufstieg in die Verbandsliga, die Damen den direkten Wiederaufstieg in die 1.&nbsp;Bezirksklasse, und die neu gegründeten III.&nbsp;Senioren steigen sofort in die 3.&nbsp;Bezirksklasse auf. Die gemischte Jugendmannschaft AK&nbsp;V wird Vize-Ruhrbezirksmeister. Wieder gewinnen wir den Mannschaftspokal des Vier-Vereine-Turniers und mit vier Einzeltiteln den Vosswinkel-Pokal. Mit Inge Uhlenbruch, Klaudia Woelk, Reinhard Regulski, Hartmut Woelk, Peter Kalecinski, Günter Ronke, Georg Moshövel und Reinhard Holthaus holen wir auch den Molwitz-Pokal zurück. Für 25&nbsp;Jahre Mitgliedschaft wird das Ehepaar Irmgard und Winfried Beßling geehrt.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1995</p>
+                <div class="chr-body">
+                  <p>Der Verein zählt 309&nbsp;Mitglieder. Zu Jahresbeginn stirbt Margret Rhode. Erste Überlegungen für einen Clubhausanbau entstehen: ein Lagerraum für den Festausschuss sowie eine größere Küche und ein größeres Sitzungszimmer. Die Hauptversammlung genehmigt den Anbau, und schon im November beginnen die Arbeiten. Susanne Krämer kehrt von der TG&nbsp;Bochum&nbsp;49 zurück, und die Damen steigen ungeschlagen in die Bezirksliga auf. Die gemischte Jugendmannschaft AK&nbsp;V wird ungeschlagen Ruhr-Bezirksmeister, die I.&nbsp;Jungsenioren kehren in die Verbandsliga zurück, die Seniorinnen steigen ab. Das Jubiläumsturnier des TC&nbsp;Ückendorf gewinnen wir. Kristin Poppek wird Bezirksjüngstenmeisterin im Einzel, Katharina Rath mit Lisa Thomsen (TG&nbsp;Hüls) im Doppel. Den Vier-Vereine-Mannschaftspokal verteidigen wir, gewinnen drei Pokale beim Endturnier, drei Stadtmeistertitel und den 2.&nbsp;Platz beim Molwitz-Pokal. Auf dem Herbstfest werden mit Reinhilde Krämer, Dr.&nbsp;Heinz Schwalbe und Dieter Pohe die ersten Jubilare für 40&nbsp;Jahre Mitgliedschaft geehrt, Reinhard Regulski erhält für 25&nbsp;Jahre die silberne Ehrennadel.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1995-mannschaft.jpg" data-lightbox><img src="img/chronik/chronik-1995-mannschaft.jpg" alt="Mannschaft in Trainingsjacken am Netz, vorne mit einem Teddybären als Maskottchen" width="625" height="523" loading="lazy"></a>
+                    <figcaption>Mannschaftsfoto, Mitte der 1990er-Jahre</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1996</p>
+                <div class="chr-body">
+                  <p>Die Mitgliederzahl steigt im Laufe des Jahres von 292 auf 315. Der Clubhausanbau nimmt Formen an. Den größten sportlichen Erfolg der Vereinsgeschichte feiern die I.&nbsp;Jungseniorinnen mit dem Aufstieg in die <strong>Oberliga</strong>. Die Seniorinnen bleiben in der Verbandsliga. Beim Jubiläumsturnier des TC&nbsp;Rotthausen belegen wir den 3.&nbsp;Platz. Den Vier-Vereine-Mannschaftspokal verteidigen wir, beim Endturnier gewinnen wir zwei Pokale. Bei den Stadtmeisterschaften holen wir sechs Titel, bei den Jugendstadtmeisterschaften zwei. Beim Molwitz-Pokal wird es wieder Platz&nbsp;2. Das zweite Turnier um den Nissan-Wegmann-Cup bietet sportlich hervorragendes Tennis.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1996-mannschaft.jpg" data-lightbox><img src="img/chronik/chronik-1996-mannschaft.jpg" alt="Damenmannschaft mit Schlägern am Netz, vorne die Betreuerin" width="782" height="499" loading="lazy"></a>
+                    <figcaption>Mannschaftsfoto 1996 mit Betreuerin Marianne Roth</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1997</p>
+                <div class="chr-body">
+                  <p>Die Mitgliederzahl sinkt im Laufe des Jahres von 302 auf 295. Die I.&nbsp;Jungseniorinnen halten sich in der Oberliga, die Seniorinnen in der Verbandsliga, die Jungsenioren müssen aus der Verbandsliga absteigen. Die 1.&nbsp;Senioren AK&nbsp;II steigen in die Bezirksliga auf, die 2.&nbsp;Herren in die 3.&nbsp;Bezirksklasse, die Mädchen und die Henner-Henkel-Mannschaft jeweils in die 2.&nbsp;Leistungsklasse. Den Vier-Vereine-Mannschaftspokal verteidigen wir, beim Endturnier holen wir drei Pokale, bei den Stadtmeisterschaften sieben Titel und sechs 2.&nbsp;Plätze. Beim Molwitz-Pokal wird es erneut Platz&nbsp;2. Im Oktober stirbt das langjährige Mitglied Wolfgang Willert. Am 1.&nbsp;Dezember übernimmt das Ehepaar Sander die Bewirtschaftung.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1997-senioren.jpg" data-lightbox><img src="img/chronik/chronik-1997-senioren.jpg" alt="Herren mit Tennisschlägern am Netz" width="723" height="444" loading="lazy"></a>
+                    <figcaption>Mannschaftsfoto, 1997</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1998</p>
+                <div class="chr-body">
+                  <p>Mitte des Jahres zählt der Verein 305&nbsp;Mitglieder. Die Seniorinnen bleiben in der Verbandsliga, die Jungseniorinnen müssen aus der Oberliga absteigen. Dafür erlebt die Tennisgesellschaft eine wahre Aufstiegsflut: Die I.&nbsp;Mädchen und die Henner-Henkel-Mannschaft steigen in die 1.&nbsp;Leistungsklasse auf, die Jungsenioren direkt wieder in die Verbandsliga. Die erstmals gemeldeten 2.&nbsp;Damen steigen in die 2.&nbsp;Bezirksklasse auf, die 2.&nbsp;Herren marschieren direkt in die 2.&nbsp;Bezirksklasse durch, die 2.&nbsp;Jungseniorinnen steigen in die Bezirksliga auf, die 2. und 3.&nbsp;Senioren in die 1. bzw. 2.&nbsp;Bezirksklasse. Den Vier-Vereine-Mannschaftspokal verteidigen wir und holen beim Endturnier fünf Pokale, bei den Stadtmeisterschaften vier Titel und drei 2.&nbsp;Plätze. Beim Molwitz-Pokal wird es wieder Platz&nbsp;2. Den dritten Nissan-Wegmann-Cup gewinnt Mathias Huning vom Bundesligisten TC&nbsp;Bad Homburg.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-1998-damen.jpg" data-lightbox><img src="img/chronik/chronik-1998-damen.jpg" alt="Damenmannschaft in Trainingsjacken am Netz" width="699" height="423" loading="lazy"></a>
+                    <figcaption>Damenmannschaft, 1998</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">1999</p>
+                <div class="chr-body">
+                  <p>Mitte des Jahres zählt der Verein 306&nbsp;Mitglieder. Die Jungseniorinnen bleiben in der Verbandsliga, die Seniorinnen steigen in die Bezirksliga ab, die Jungsenioren verlassen die Verbandsliga wieder, und die 2.&nbsp;Herren steigen aus der 2.&nbsp;Bezirksklasse ab. Die I.&nbsp;Damen scheitern in der Aufstiegsrunde zur Verbandsliga, die erst im Vorjahr gemeldeten 2.&nbsp;Damen steigen wieder auf, diesmal in die 1.&nbsp;Bezirksklasse. Katharina Rath wird Bezirksmeisterin der Damen. Den Vier-Vereine-Mannschaftspokal verteidigen wir erneut, beim Endturnier holen wir vier Pokale, bei den Stadtmeisterschaften drei Titel und drei 2.&nbsp;Plätze. Beim Molwitz-Pokal wird es wieder Platz&nbsp;2.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- ============ 2000er ============ -->
+          <div class="chr-dec" id="j2000">
+            <h2 class="chr-dec-t"><span>2000</span>er</h2>
+            <ol class="chr-list">
+              <li class="chr-item chr-key">
+                <p class="chr-year">2000</p>
+                <div class="chr-body">
+                  <p>Mitte des Jahres zählt der Verein 289&nbsp;Mitglieder. Am 25.&nbsp;Februar werden wir zum <strong>„Verein des Jahres 1999“</strong> gekürt und erhalten den Jugendförderpreis der Volksbank. Die I.&nbsp;Damen steigen in der Hallenrunde in die Verbandsliga auf&nbsp;– und im Frühjahr mit denselben Spielerinnen auch in die Sommer-Verbandsliga. Die Damen&nbsp;40 schaffen den Wiederaufstieg in die Verbandsliga (2001 spielen sie dort als Damen&nbsp;50). Katharina Rath verteidigt ihren Titel als Bezirksmeisterin. Der Vier-Vereine-Mannschaftspokal geht ab diesem Jahr an den erfolgreichsten Verein beim Einzelturnier: Die TGG gewinnt sieben Pokale und damit auch den Mannschaftspokal. Beim Molwitz-Pokal wird es Platz&nbsp;2.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-2000-damen.jpg" data-lightbox><img src="img/chronik/chronik-2000-damen.jpg" alt="Damenmannschaft mit Schlägern auf dem Sandplatz" width="709" height="492" loading="lazy"></a>
+                    <figcaption>Damenmannschaft, 2000</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">2001</p>
+                <div class="chr-body">
+                  <p>Mitte des Jahres hat der Verein 275&nbsp;Mitglieder. Die Damen&nbsp;50 schaffen im ersten Jahr in der neuen Altersklasse direkt den Aufstieg in die Westfalenliga, die neu gemeldeten Damen&nbsp;40&nbsp;II steigen in die 1.&nbsp;Bezirksklasse auf. Die Herren&nbsp;55 scheitern in der Aufstiegsrunde zur Verbandsliga, die Herren&nbsp;50 steigen aus der Bezirksliga ab. Beim Vier-Vereine-Turnier holen wir vier Pokale, bei den Jugendstadtmeisterschaften drei Titel. Die Cilly-Aussem-Mannschaft und die 1.&nbsp;Mädchenmannschaft steigen in die 1.&nbsp;Leistungsklasse auf. Bei der Stadtmeisterschaft vom 27.6. bis 1.7., ausgetragen bei der TGG, stellen wir sechs Stadtmeister.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">2002</p>
+                <div class="chr-body">
+                  <p>Mitte des Jahres zählt der Verein 260&nbsp;Mitglieder. Die Herren&nbsp;55 und die Herren&nbsp;30 steigen in die Verbandsliga auf, die Damen&nbsp;40 aus der Verbandsliga ab. Die TGG stellt drei Jugendstadtmeister, bei den Erwachsenen gewinnt Katharina Rath. Beim Vier-Vereine-Turnier holen wir drei Pokale. In der Winterrunde 2002/2003 steigt die Damenmannschaft in die Westfalenliga auf.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">2003</p>
+                <div class="chr-body">
+                  <p>Der Vorstand wird um einen weiteren 2.&nbsp;Vorsitzenden erweitert, gewählt wird Oliver Boldt. Die 1.&nbsp;Damen&nbsp;40 steigen wieder in die Verbandsliga auf, die Herren&nbsp;30 und Herren&nbsp;50 müssen aus der Verbandsliga absteigen. Die Jugend-Stadtmeisterschaft wird vom 20. bis 27.&nbsp;Juli erstmals wieder auf unserer Anlage ausgetragen, gemeinsam mit der Anlage des&nbsp;GTK. Beim Vier-Vereine-Endturnier auf unserer Anlage gewinnen wir drei Titel.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">2004</p>
+                <div class="chr-body">
+                  <p>Die I.&nbsp;Damen steigen in die Sommer-<strong>Oberliga</strong> auf, die I.&nbsp;Damen&nbsp;40 leider wieder aus der Verbandsliga ab. Beim Vier-Vereine-Turnier gewinnen wir nach zwei Jahren Pause wieder den Mannschaftspokal und vier Einzelpokale, beim Molwitz-Pokal nach drei Jahren wieder einen 2.&nbsp;Platz. Die Stadtmeisterschaft findet erneut auf unserer Anlage statt: Katharina Rath wird dreifache Siegerin&nbsp;– im Einzel, im Doppel mit Denise Wolf und im Mixed mit Christian Schüring (Buer). Renate Lück gewinnt das Damen-50-Einzel gegen Petra Schwarz. Zweite Plätze belegen Markus Erwin (Herren&nbsp;B), Jochen Kupfer (Herren&nbsp;40), Reinhard Holthaus (Herren&nbsp;50) sowie Jochen Kupfer und Reinhard Holthaus im Herren-Doppel&nbsp;40.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">2005</p>
+                <div class="chr-body">
+                  <p>Die I.&nbsp;Damen müssen leider wieder aus der Oberliga absteigen, die Herren&nbsp;60 steigen in die Bezirksliga auf. Beim Vier-Vereine-Turnier gewinnen wir erneut den Mannschaftspokal und vier Einzelpokale. Bei den Stadtmeisterschaften siegt Katharina Rath bei den Damen&nbsp;A und im Damen-Doppel mit Denise Wolf, die außerdem mit Marcus Seidel (TC&nbsp;Buer) das Mixed gewinnt. Renate Lück wird mit Eva Zint Zweite im Damen-Doppel&nbsp;50, ebenso Martin Püttmann und Martin Haselier im Herren-Doppel&nbsp;30 und Reinhard Holthaus bei den Herren&nbsp;50. Bei den Damen&nbsp;B siegt Constanze Nöfer. Bei den Jugend-Stadtmeisterschaften sind wir mit sechs Titeln und drei 2.&nbsp;Plätzen der erfolgreichste Verein.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">2006</p>
+                <div class="chr-body">
+                  <p>Die Herren&nbsp;55 müssen aus der Ruhr-Lippe-Liga absteigen. Die I.&nbsp;Damen steigen wieder in die Oberliga auf, die Herren&nbsp;60 in die Ruhr-Lippe-Liga. Beim Vier-Vereine-Turnier gewinnen wir erneut den Mannschaftspokal und drei Einzelpokale. Im Winter halten sich die 1.&nbsp;Damen in der Westfalenliga.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-2006-damen.jpg" data-lightbox><img src="img/chronik/chronik-2006-damen.jpg" alt="Spielerinnen der Damenmannschaft auf dem Sandplatz" width="746" height="352" loading="lazy"></a>
+                    <figcaption>Damenmannschaft, 2006</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">2007</p>
+                <div class="chr-body">
+                  <p>Das Jahr des <strong>75-jährigen Bestehens</strong> wird gleich zu Beginn vom plötzlichen Tod unseres 1.&nbsp;Vorsitzenden Hermann Lück überschattet. Zuvor war bereits Monika Deimel-Behnert verstorben.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">2008</p>
+                <div class="chr-body">
+                  <p>Der Verein hat 225&nbsp;Mitglieder. Erwin Blauser tritt im Laufe der Saison als 2.&nbsp;Vorsitzender zurück. Die II.&nbsp;Damen&nbsp;55 steigen in die Ruhr-Lippe-Liga auf, mit Inge Uhlenbruch, Anne Hillebrandt, Petra Schwarz, Resi Krusenbaum, Ingrid Kramer und Kornelia Hirsch. Beim Vier-Vereine-Turnier geben wir unsere Vormachtstellung ab: Beim Endturnier gewinnen wir nur zwei Pokale.</p>
+                </div>
+              </li>
+              <li class="chr-item">
+                <p class="chr-year">2009</p>
+                <div class="chr-body">
+                  <p>Neuer 2.&nbsp;Vorsitzender wird Udo Erwin. Kurz vor dem Pumuckl-Turnier tritt Kornelia Hirsch zurück, das Amt des Jugendwarts übernehmen Bärbel und Udo Erwin kommissarisch. Die Herren&nbsp;55 steigen in die Ruhr-Lippe-Liga auf, mit Alfred Krusenbaum, Klaus Klein, Erwin Blauser, Werner Diehl, Reiner Hillebrandt, Uwe Poppek, Gerd Lemke und Ulrich Heier. Beim Vier-Vereine-Endturnier gewinnen wir wieder zwei Pokale.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- ============ 2010er ============ -->
+          <div class="chr-dec" id="j2010">
+            <h2 class="chr-dec-t"><span>2010</span>er</h2>
+            <ol class="chr-list">
+              <li class="chr-item">
+                <p class="chr-year">2010</p>
+                <div class="chr-body">
+                  <p>Neue Jugendwarte werden Christiane Hering und Bärbel Erwin, neuer Geschäftsführer wird Klaus Hering. Bei den Jugend-Stadtmeisterschaften siegt Oliver Hering bei den Junioren&nbsp;U16 und gewinnt mit Fabian Schuler auch das Doppel. Bei den Erwachsenen siegen Uschi Gross und Peter Kalecinski bei den Senioren&nbsp;55+. Beim Vier-Vereine-Turnier spielt der PSV Gelsenkirchen für die TG&nbsp;Bulmke&nbsp;– damit sind wir der letzte verbliebene Gründungsteilnehmer. Auch in diesem Jahr gewinnen wir zwei Pokale.</p>
+                </div>
+              </li>
+              <li class="chr-item chr-key">
+                <p class="chr-year">2011</p>
+                <div class="chr-body">
+                  <p>Zu Jahresbeginn zählt der Verein 196&nbsp;Mitglieder. Manfred Boldt wird für zwei weitere Jahre als 1.&nbsp;Vorsitzender bestätigt. Kurz vor der Tennissaison, am 22.&nbsp;März&nbsp;2011, <strong>brennt unser Clubhaus ab</strong>. Es beginnt ein langer Weg durch die Ämter. Im Juni wird das Clubhaus abgerissen, im Herbst beginnt der Wiederaufbau. Sportlich wird Oliver Hering Stadtmeister der Herren&nbsp;B, Mara Vogel Meisterin der Juniorinnen&nbsp;U16. Beim Vier-Vereine-Turnier mit neuen Konkurrenzen stehen wir in sechs von sieben Endspielen, können aber keines gewinnen.</p>
+                  <figure class="chr-fig">
+                    <a href="img/chronik/chronik-2011-brand.jpg" data-lightbox><img src="img/chronik/chronik-2011-brand.jpg" alt="Verkohlte Trümmer im Inneren des abgebrannten Clubhauses" width="727" height="380" loading="lazy"></a>
+                    <figcaption>Das Clubhaus nach dem Brand am 22.&nbsp;März&nbsp;2011</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="chr-item chr-key">
+                <p class="chr-year">2012</p>
+                <div class="chr-body">
+                  <p>Im Jahr des <strong>80-jährigen Jubiläums</strong> gibt es zwei Aufsteiger: die 1.&nbsp;Damen und die Damen&nbsp;40. In die Ruhr-Lippe-Liga steigen die Damen&nbsp;40 mit Susanne Sack, Sue Holt-Klein, Birgit Remy-Gerigk, Regine Fortmann, Heidi Heier, Bettina Jankowski, Eti Blauser und Sylvia Moshövel auf. Nach vielen Jahren müssen die Damen&nbsp;55 aus der Verbandsliga absteigen. Beim Vier-Vereine-Turnier gewinnen wir drei Pokale, Mannschaft des Jahres werden die 1.&nbsp;Damen. Unser <strong>neues Clubhaus</strong> und das Gelände drumherum werden fertig&nbsp;– das Herbstfest feiern wir bereits in den neuen Räumen.</p>
+                  <figure class="chr-fig chr-tall">
+                    <a href="img/chronik/chronik-2012-neues-clubhaus.jpg" data-lightbox><img src="img/chronik/chronik-2012-neues-clubhaus.jpg" alt="Personen auf dem Gerüst des neuen Clubhauses, im Hintergrund ein Baukran" width="339" height="549" loading="lazy"></a>
+                    <figcaption>Das neue Clubhaus entsteht, 2012</figcaption>
+                  </figure>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- ============ Ausblick ============ -->
+          <div class="chr-end">
+            <p class="chr-end-k">Fortsetzung folgt</p>
+            <h2>Und die Geschichte geht&nbsp;weiter</h2>
+            <p>Diese Chronik basiert auf der Festschrift zum 80-jährigen Jubiläum aus dem Jahr&nbsp;2012. Die Jahre danach ergänzen wir nach und nach. Du hast Fotos, Zeitungsausschnitte oder Erinnerungen aus dem Vereinsleben? Wir freuen uns über jede&nbsp;Ergänzung.</p>
+            <div class="btns">
+              <a class="btn" href="mailto:info@tg-gold-weiss.de?subject=Chronik%20der%20TG%20Gold-Wei%C3%9F">Ergänzung schicken</a>
+              <a class="btn ghost" href="verein.html">Zum Vorstand von heute</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ######## ENDE HAUPTINHALT ######## -->
+
+    <!-- ######## FUSSZEILE ######## -->
+    <footer>
+      <div class="wrap">
+        <div class="cols">
+          <div class="fbrand">
+            <img src="img/logo-light.svg" alt="" width="56" height="56">
+            <div class="fbrand-text">
+              <p>Tennisgesellschaft <span class="nw">Gold-Weiß</span> Gelsenkirchen 1932&nbsp;e.V.<br>Tennis für Familien, Freizeit und Mannschaft&nbsp;– am Rande des Nienhausenbuschs.</p>
+              <div class="soc">
+                <a href="https://www.facebook.com/TgGoldWeissGelsenkirchen1932/" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://www.instagram.com/tggoldweissgelsenkirchen/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>Club</h4>
+            <ul>
+              <li><a href="verein.html">Verein</a></li>
+              <li><a href="chronik.html">Chronik</a></li>
+              <li><a href="clubanlage.html">Clubanlage</a></li>
+              <li><a href="trainer.html">Trainer</a></li>
+              <li><a href="sponsoren.html">Sponsoren</a></li>
+              <li><a href="sponsor-werden.html">Sponsor werden</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Sport</h4>
+            <ul>
+              <li><a href="mannschaften.html">Mannschaften</a></li>
+              <li><a href="turniere.html">Turniere</a></li>
+              <li><a href="probetraining.html">Probetraining</a></li>
+              <li><a href="https://tg-gold-weiss.ebusy.de/" target="_blank" rel="noopener">Platz buchen</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Kontakt</h4>
+            <ul>
+              <li>Feldmarkstraße 200</li>
+              <li>45883 Gelsenkirchen</li>
+              <li><a href="tel:+4920917770735">0209&nbsp;/&nbsp;17770735</a></li>
+              <li><a href="mailto:info@tg-gold-weiss.de">info@tg-gold-weiss.de</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="wordmark" aria-hidden="true"><span class="nw">Gold-Weiß</span></p>
+        <div class="copy">
+          <span>© Tennisgesellschaft Gold Weiss Gelsenkirchen 1932&nbsp;e.V.</span>
+          <span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz &amp; rechtliche Hinweise</a></span>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.js" defer></script>
+    <script src="js/vendor/gsap.min.js" defer></script>
+    <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+    <script src="js/vendor/SplitText.min.js" defer></script>
+    <script src="js/motion.js" defer></script>
+  </body>
+</html>
