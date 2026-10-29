@@ -1,0 +1,207 @@
+[
+    {
+        "id": "pflaumenkuchenturnier",
+        "datum": "2026-09-26",
+        "bis": null,
+        "uhrzeit": "",
+        "datum_text": "",
+        "sortierung": "",
+        "titel": "Pflaumen­kuchen­turnier",
+        "motto": "Voller Einsatz, voller Geschmack",
+        "text": "Der Spätsommer wird sportlich!",
+        "angaben": [
+            [
+                "Wo",
+                "Clubanlage der TG <span class=\"nw\">Gold-Weiß</span>, Feldmarkstraße 200"
+            ],
+            [
+                "Anmeldung",
+                "Über den Aushang am Clubhaus"
+            ]
+        ],
+        "knoepfe": [],
+        "plakat": "pflaumenkuchenturnier",
+        "plakat_alt": "Plakat zum Pflaumenkuchenturnier am 26. September 2026",
+        "plakat_hoehe": 509,
+        "attribute": []
+    },
+    {
+        "id": "endspieltag-clubmeisterschaften",
+        "datum": null,
+        "bis": "2026-09-27",
+        "uhrzeit": "",
+        "datum_text": "Sonntag, 27. September 2026, ab 11:00 Uhr",
+        "sortierung": "2026-09-27",
+        "titel": "Endspieltag der Club­meister­schaften",
+        "motto": "Matchball für den Titel!",
+        "text": "Die Finalspiele der Clubmeisterschaften 2026.",
+        "angaben": [
+            [
+                "Wo",
+                "Clubanlage der TG <span class=\"nw\">Gold-Weiß</span>, Feldmarkstraße 200"
+            ]
+        ],
+        "knoepfe": [
+            [
+                "Zu den Clubmeistern",
+                "clubmeisterschaften.html",
+                true
+            ]
+        ],
+        "plakat": "clubmeisterschaften-finale",
+        "plakat_alt": "Plakat zu den Clubmeisterschaften 2026 mit dem Endspieltag am 27. September 2026",
+        "plakat_hoehe": 509,
+        "attribute": []
+    },
+    {
+        "id": "pumucklturnier",
+        "datum": null,
+        "bis": "2026-10-03",
+        "uhrzeit": "",
+        "datum_text": "Samstag, 03. Oktober 2026, ab 11:00 Uhr",
+        "sortierung": "2026-10-03",
+        "titel": "Pumuckl­turnier",
+        "motto": "Jung trifft Alt, Nachwuchs trifft Erfahrung!",
+        "text": "Spiel mit beim Pumuckl-Turnier im Generationen-Doppel.",
+        "angaben": [
+            [
+                "Wo",
+                "Clubanlage der TG <span class=\"nw\">Gold-Weiß</span>, Feldmarkstraße 200"
+            ],
+            [
+                "Anmeldung",
+                "Über eure Trainer oder den Aushang am Clubhaus"
+            ]
+        ],
+        "knoepfe": [
+            [
+                "Zu den Siegern",
+                "pumucklturnier.html",
+                true
+            ]
+        ],
+        "plakat": "pumucklturnier",
+        "plakat_alt": "Plakat zum Pumucklturnier am 3. Oktober 2026",
+        "plakat_hoehe": 509,
+        "attribute": []
+    },
+    {
+        "id": "saisonabschluss-damen-u18",
+        "datum": "2026-10-10",
+        "bis": null,
+        "uhrzeit": "18:00",
+        "datum_text": "",
+        "sortierung": "",
+        "titel": "Saison­abschluss­feier der Damen und Juniorinnen U18",
+        "motto": "Die Saison ist gespielt – jetzt wird gefeiert!",
+        "text": "Unsere Damenmannschaft und die Juniorinnen U18 lassen die Saison gemeinsam ausklingen.",
+        "angaben": [
+            [
+                "Wo",
+                "Clubhaus der TG <span class=\"nw\">Gold-Weiß</span>, Feldmarkstraße 200"
+            ]
+        ],
+        "knoepfe": [],
+        "plakat": "saisonabschluss-damen-u18",
+        "plakat_alt": "Plakat zur Saisonabschlussfeier der Damen und Juniorinnen U18 am 10. Oktober 2026: die Juniorinnen springen jubelnd mit Pokal, Schlägern und Konfetti vor dem Netz in die Luft",
+        "plakat_hoehe": 509,
+        "attribute": []
+    },
+    {
+        "id": "saisonabschlussfeier",
+        "datum": "2026-11-07",
+        "bis": null,
+        "uhrzeit": "19:00",
+        "datum_text": "",
+        "sortierung": "",
+        "titel": "Saisonabschlussfeier",
+        "motto": "Für gute Stimmung und Musik ist gesorgt – die Tanzfläche ist frei!",
+        "text": "Wir wollen mit euch feiern – mit Musik, Tanz, Currywurst, Würstchen, Salaten und kühlen Getränken.",
+        "angaben": [
+            [
+                "Wo",
+                "Clubanlage der TG <span class=\"nw\">Gold-Weiß</span>, Feldmarkstraße 200"
+            ],
+            [
+                "Anmeldung",
+                "Bis 31.10. über den Aushang am Clubhaus oder per WhatsApp an den Festausschuss"
+            ]
+        ],
+        "knoepfe": [],
+        "plakat": "saisonabschlussfeier",
+        "plakat_alt": "Einladung zur Saisonabschlussfeier am 7. November 2026",
+        "plakat_hoehe": 509,
+        "attribute": {
+            "data-app-anmeldung": "e1"
+        }
+    },
+    {
+        "id": "jahreshauptversammlung",
+        "datum": null,
+        "bis": null,
+        "uhrzeit": "",
+        "datum_text": "Ende 2026 – genaues Datum folgt",
+        "sortierung": "2026-12-31",
+        "titel": "Jahreshauptversammlung",
+        "motto": "Tennisgesellschaft <span class=\"nw\">Gold-Weiß</span> Gelsenkirchen 1932 e.V.",
+        "text": "Das genaue Datum geben wir rechtzeitig bekannt.",
+        "angaben": [
+            [
+                "Wo",
+                "Clubanlage der TG <span class=\"nw\">Gold-Weiß</span>, Feldmarkstraße 200"
+            ]
+        ],
+        "knoepfe": [],
+        "plakat": "jahreshauptversammlung",
+        "plakat_alt": "Plakat zur Jahreshauptversammlung der TG Gold-Weiß",
+        "plakat_hoehe": 509,
+        "attribute": {
+            "data-app-anmeldung": "e2"
+        }
+    },
+    {
+        "id": "probetraining",
+        "datum": null,
+        "bis": "2027-04-25",
+        "uhrzeit": "",
+        "datum_text": "Sonntag, 18. und Sonntag, 25. April 2027",
+        "sortierung": "2027-04-25",
+        "titel": "Kostenloses Probe­training für Erwachsene und Kinder",
+        "motto": "",
+        "text": "",
+        "angaben": [
+            [
+                "Wann",
+                "Sonntag, 18. April 2027 und Sonntag, 25. April 2027 – die Uhrzeit geben wir rechtzeitig bekannt"
+            ],
+            [
+                "Wo",
+                "Tennisanlage der TG <span class=\"nw\">Gold-Weiß</span> Gelsenkirchen"
+            ],
+            [
+                "Wer",
+                "Alle sind willkommen – Einsteiger und Wiedereinsteiger, Groß und Klein"
+            ],
+            [
+                "Anmeldung",
+                "Eine kurze <span class=\"nw\">E-Mail</span> an <a href=\"mailto:info@tg-gold-weiss.de\">info@tg-gold-weiss.de</a> genügt – so können wir besser planen."
+            ]
+        ],
+        "knoepfe": [
+            [
+                "Per <span class=\"nw\">E-Mail</span> anmelden",
+                "mailto:info@tg-gold-weiss.de?subject=Anmeldung%20Probetraining",
+                false
+            ],
+            [
+                "Mehr zum Probetraining",
+                "probetraining.html",
+                true
+            ]
+        ],
+        "plakat": "probetraining-iwantyou",
+        "plakat_alt": "Plakat: I want you for the Goldwhite Crew – Tennisspielerin zeigt auf den Betrachter",
+        "plakat_hoehe": 509,
+        "attribute": []
+    }
+]
