@@ -140,11 +140,11 @@
         "datum": null,
         "bis": null,
         "uhrzeit": "",
-        "datum_text": "Ende 2026 – genaues Datum folgt",
-        "sortierung": "2026-12-31",
+        "datum_text": "Anfang 2027 – genaues Datum folgt",
+        "sortierung": "2027-02-28",
         "titel": "Jahreshauptversammlung",
-        "motto": "Tennisgesellschaft <span class=\"nw\">Gold-Weiß</span> Gelsenkirchen 1932 e.V.",
-        "text": "Das genaue Datum geben wir rechtzeitig bekannt.",
+        "motto": "Tennisgesellschaft Gold-Weiß Gelsenkirchen 1932 e.V.",
+        "text": "Das genaue Datum geben wir rechtzeitig bekannt.",
         "angaben": [
             [
                 "Wo",
@@ -153,7 +153,7 @@
         ],
         "knoepfe": [],
         "plakat": "jahreshauptversammlung",
-        "plakat_alt": "Plakat zur Jahreshauptversammlung der TG Gold-Weiß",
+        "plakat_alt": "Plakat zu Jahreshauptversammlung – Anfang 2027 – genaues Datum folgt",
         "plakat_hoehe": 509,
         "attribute": {
             "data-app-anmeldung": "e2"
