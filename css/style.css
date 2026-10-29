@@ -3410,6 +3410,76 @@ footer ul li:first-child {
 .ev-text {
   grid-template-columns: 1fr;
 }
+/* Datumskachel: ersetzt das Plakat, wenn keins hinterlegt ist */
+.ev-kal {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 360 / 509;
+  border-radius: 10px;
+  background: linear-gradient(160deg, var(--navy2), var(--navy) 55%, var(--navy3));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 16px 10px;
+  text-align: center;
+  box-shadow: 0 12px 28px -16px rgba(14, 26, 36, .55), inset 0 4px 0 var(--gold);
+}
+.ev-kal::before {                      /* dezente Tennisplatz-Linien */
+  content: "";
+  position: absolute;
+  inset: -10% -30%;
+  background: var(--court-w) center / contain no-repeat;
+  opacity: .07;
+  transform: rotate(-12deg);
+}
+.ev-kal > * {
+  position: relative;
+}
+.ev-kal .wt {
+  font-size: .72rem;
+  font-weight: 650;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold2);
+}
+.ev-kal b {
+  font-size: 3.6rem;
+  font-weight: 780;
+  font-stretch: 70%;
+  line-height: .95;
+  letter-spacing: -.02em;
+  margin: 4px 0 2px;
+}
+.ev-kal b.lang {
+  font-size: 2.2rem;
+  margin: 8px 0 4px;
+}
+.ev-kal .mon {
+  font-size: 1.02rem;
+  font-weight: 700;
+  font-stretch: 88%;
+}
+.ev-kal .jahr {
+  font-size: .82rem;
+  color: #B4C2CF;
+}
+.ev-kal .uhr {
+  margin-top: 10px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--gold);
+  color: var(--navy3);
+  font-size: .78rem;
+  font-weight: 700;
+}
+@media (max-width: 700px) {
+  .ev-poster .ev-kal {
+    width: 132px;
+  }
+}
 @media (max-width: 700px) {
   .ev-poster {
     grid-template-columns: 1fr;
@@ -3444,6 +3514,24 @@ footer ul li:first-child {
 .rb-list .poster {
   width: auto;
   filter: saturate(.75);
+}
+.rb-list .ev-kal {
+  padding: 10px 6px;
+  filter: saturate(.75);
+}
+.rb-list .ev-kal b {
+  font-size: 2.3rem;
+}
+.rb-list .ev-kal b.lang {
+  font-size: 1.4rem;
+}
+.rb-list .ev-kal .wt,
+.rb-list .ev-kal .jahr,
+.rb-list .ev-kal .uhr {
+  font-size: .62rem;
+}
+.rb-list .ev-kal .mon {
+  font-size: .8rem;
 }
 .rb-list .ev-date::before {
   content: "Vorbei";
