@@ -136,6 +136,28 @@
         }
     },
     {
+        "attribute": [],
+        "plakat": null,
+        "plakat_alt": "",
+        "plakat_hoehe": 509,
+        "id": "jugendversammlung-2026",
+        "titel": "Jugendversammlung",
+        "motto": "",
+        "text": "",
+        "datum": "2026-11-15",
+        "bis": null,
+        "uhrzeit": "17:00",
+        "datum_text": "",
+        "sortierung": "",
+        "angaben": [
+            [
+                "Wo",
+                "Clubanlage der TG <span class=\"nw\">Gold-Weiß</span>, Feldmarkstraße 200"
+            ]
+        ],
+        "knoepfe": []
+    },
+    {
         "id": "jahreshauptversammlung",
         "datum": null,
         "bis": null,
