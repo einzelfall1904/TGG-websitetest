@@ -1,11 +1,15 @@
-# Jeden Dienstag (Spielergebnisse stehen spätestens montags in nuLiga): Mannschaften, Tabellenstand und Links aus nuLiga in mannschaften.html übernehmen.
+# Jeden Dienstag um 14 Uhr deutscher Zeit (Spielergebnisse stehen spätestens montags in nuLiga):
+# Mannschaften, Tabellenstand und Links aus nuLiga in mannschaften.html übernehmen.
 # Gibt es eine Änderung, wird sie gespeichert – Netlify veröffentlicht die Website daraufhin neu.
 # Von Hand starten: GitHub → Actions → „Mannschaften aus nuLiga“ → „Run workflow“.
 name: Mannschaften aus nuLiga
 
 on:
   schedule:
-    - cron: "0 5 * * 2"   # dienstags ca. 6:00 Uhr (Winterzeit) / 7:00 Uhr (Sommerzeit)
+    # GitHub rechnet in UTC. Damit es sommers wie winters 14 Uhr deutscher Zeit ist,
+    # gibt es zwei Zeiten – der Lauf prüft unten, welche gerade passt.
+    - cron: "0 13 * * 2"   # 14 Uhr Winterzeit (MEZ)
+    - cron: "0 12 * * 2"   # 14 Uhr Sommerzeit (MESZ)
   workflow_dispatch:
 
 permissions:
@@ -15,13 +19,22 @@ jobs:
   abgleich:
     runs-on: ubuntu-latest
     steps:
+      - name: Passende Uhrzeit (Sommer-/Winterzeit)?
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then echo "LOS=1" >> "$GITHUB_ENV"; exit 0; fi
+          if [ "$(TZ=Europe/Berlin date +%z)" = "+0200" ]; then passend="0 12 * * 2"; else passend="0 13 * * 2"; fi
+          if [ "${{ github.event.schedule }}" = "$passend" ]; then echo "LOS=1" >> "$GITHUB_ENV"; else echo "Andere Jahreszeit – dieser Termin wird übersprungen."; fi
       - uses: actions/checkout@v4
+        if: env.LOS == '1'
       - uses: actions/setup-node@v4
+        if: env.LOS == '1'
         with:
           node-version: 22
       - name: nuLiga abgleichen
+        if: env.LOS == '1'
         run: node _bau/nuliga-stand.mjs
       - name: Änderung speichern
+        if: env.LOS == '1'
         run: |
           if git diff --quiet; then echo "Keine Änderung – nichts zu veröffentlichen."; exit 0; fi
           git config user.name "nuLiga-Abgleich"
