@@ -1,4 +1,4 @@
-/* Nächtlicher Abgleich (GitHub Action „Mannschaften aus nuLiga“):
+/* Wöchentlicher Abgleich (dienstags) (GitHub Action „Mannschaften aus nuLiga“):
    Schreibt den aktuellen nuLiga-Stand in mannschaften.html im Repository.
    So kennt die Seite immer die Mannschaften der letzten Saison – auch in der Winterpause –
    und der Tabellenstand bleibt während der Saison aktuell. Fotos bleiben wie sie sind

@@ -1,11 +1,11 @@
-# Jede Nacht: Mannschaften, Tabellenstand und Links aus nuLiga in mannschaften.html übernehmen.
+# Jeden Dienstag (Spielergebnisse stehen spätestens montags in nuLiga): Mannschaften, Tabellenstand und Links aus nuLiga in mannschaften.html übernehmen.
 # Gibt es eine Änderung, wird sie gespeichert – Netlify veröffentlicht die Website daraufhin neu.
 # Von Hand starten: GitHub → Actions → „Mannschaften aus nuLiga“ → „Run workflow“.
 name: Mannschaften aus nuLiga
 
 on:
   schedule:
-    - cron: "30 2 * * *"   # täglich ca. 3:30 / 4:30 Uhr deutscher Zeit
+    - cron: "0 5 * * 2"   # dienstags ca. 6:00 Uhr (Winterzeit) / 7:00 Uhr (Sommerzeit)
   workflow_dispatch:
 
 permissions:
