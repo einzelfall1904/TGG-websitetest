@@ -1,2 +1,5 @@
 __pycache__/
 *.zip
+
+_site/
+node_modules/

@@ -1,0 +1,9 @@
+{
+  "name": "tgg-website",
+  "private": true,
+  "description": "TG Gold-Weiß Gelsenkirchen – statische Website, Inhalte (Aktionen, Mannschaftsfotos) aus Sanity",
+  "type": "module",
+  "scripts": { "build": "node _bau/sanity-bauen.mjs" },
+  "engines": { "node": ">=20" },
+  "dependencies": { "sharp": "0.33.5" }
+}
