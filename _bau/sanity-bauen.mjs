@@ -17,7 +17,8 @@ import { fileURLToPath } from 'node:url';
 
 const PROJEKT = 'g6e90jq0';
 const DATENSATZ = 'production';
-const API = `https://${PROJEKT}.apicdn.sanity.io/v2025-02-19/data/query/${DATENSATZ}`;
+// Bewusst ohne CDN (api statt apicdn): Der Bau startet ca. 1 Sekunde nach dem Veröffentlichen – der CDN-Zwischenspeicher wäre da oft noch veraltet.
+const API = `https://${PROJEKT}.api.sanity.io/v2025-02-19/data/query/${DATENSATZ}`;
 
 const QUELLE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ZIEL = path.resolve(QUELLE, process.argv[2] || '_site');
