@@ -14,6 +14,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { mannschaftenAusNuliga, mannschaftsseite, namensSchluessel, kuerzel } from './nuliga.mjs';
 
 const PROJEKT = 'g6e90jq0';
 const DATENSATZ = 'production';
@@ -192,27 +193,45 @@ async function termineSchreiben(aktionen) {
   await fs.writeFile(datei, html.replace(MARKE, () => block));
 }
 
+/** Mannschaftsseite: Mannschaften aus nuLiga, Fotos aus Sanity.
+    Ist nuLiga nicht erreichbar, bleiben die Mannschaften wie im Repository und nur die Fotos werden eingesetzt. */
 async function mannschaftenSchreiben(teams) {
   const datei = path.join(ZIEL, 'mannschaften.html');
   let html = await fs.readFile(datei, 'utf8');
-  const ordner = path.join(ZIEL, 'img', 'teams');
-  await fs.mkdir(ordner, { recursive: true });
-  const nachName = new Map(teams.map((t) => [klartext(t.name), t]));
+  await fs.mkdir(path.join(ZIEL, 'img', 'teams'), { recursive: true });
+  const nachName = new Map(teams.map((t) => [namensSchluessel(t.name), t]));
   const offen = new Set(nachName.keys());
   const ersetzungen = [];
-  html = html.replace(/(<article class="team">\s*)<div class="ph[^"]*"[^>]*>[\s\S]*?<\/div>([\s\S]*?<h3>([\s\S]*?)<\/h3>)/g, (ganz, vor, nach, name) => {
-    const t = nachName.get(klartext(name.replace(/&nbsp;/g, ' ').replace(/<[^>]+>/g, '')));
-    if (!t) return ganz;
-    offen.delete(klartext(t.name));
-    if (t.foto) {
-      const datei = `img/teams/${t.kennung}-${String(t.foto.version).slice(0, 8)}.jpg`;
-      ersetzungen.push([t, datei]);
-      return `${vor}<div class="ph"><img src="${h(datei)}" alt="${h(t.foto.alt || 'Mannschaftsfoto ' + klartext(t.name))}" loading="lazy"></div>${nach}`;
-    }
-    const kz = entitaeten(h(String(t.kuerzel || klartext(t.name).slice(0, 1)).replace(/ /g, NB)));
-    return `${vor}<div class="ph mono" aria-hidden="true"><span>${kz}</span></div>${nach}`;
-  });
-  for (const n of offen) console.warn(`  Hinweis: Mannschaft „${n}“ steht in Sanity, aber nicht auf mannschaften.html – übersprungen.`);
+  const bildDatei = (t) => {
+    const kennung = t.kennung || namensSchluessel(t.name).replace(/[^a-z0-9]+/g, '-');
+    const d = `img/teams/${kennung}-${String(t.foto.version).slice(0, 8)}.jpg`;
+    ersetzungen.push([t, d]);
+    return d;
+  };
+
+  let daten = null;
+  try { daten = await mannschaftenAusNuliga(html); }
+  catch (err) { console.warn(`nuLiga nicht erreichbar (${err.message}) – Mannschaften bleiben wie im Repository.`); }
+
+  if (daten) {
+    html = mannschaftsseite(html, daten, (name) => {
+      const t = nachName.get(namensSchluessel(name));
+      if (!t) return null;
+      offen.delete(namensSchluessel(name));
+      return t.foto ? { src: bildDatei(t), alt: t.foto.alt || `Mannschaftsfoto ${name}` } : null;
+    });
+    console.log(`nuLiga: ${daten.teams.length} Mannschaften (${daten.saison}${daten.laufend ? '' : ', Winterpause – letzte Saison'}).`);
+  } else {
+    html = html.replace(/(<article class="team">\s*)<div class="ph[^"]*"[^>]*>[\s\S]*?<\/div>([\s\S]*?<h3>([\s\S]*?)<\/h3>)/g, (ganz, vor, nach, name) => {
+      const schluessel = namensSchluessel(name.replace(/<[^>]+>/g, ''));
+      const t = nachName.get(schluessel);
+      if (!t) return ganz;
+      offen.delete(schluessel);
+      if (t.foto) return `${vor}<div class="ph"><img src="${h(bildDatei(t))}" alt="${h(t.foto.alt || 'Mannschaftsfoto ' + klartext(t.name))}" loading="lazy"></div>${nach}`;
+      return `${vor}<div class="ph mono" aria-hidden="true"><span>${entitaeten(h(kuerzel(klartext(t.name)).replace(/ /g, NB)))}</span></div>${nach}`;
+    });
+  }
+  for (const n of offen) console.warn(`  Hinweis: Mannschaft „${nachName.get(n).name}“ steht in Sanity, aber nicht in nuLiga/auf der Seite – Foto nicht verwendet.`);
   for (const [t, d] of ersetzungen) await fs.writeFile(path.join(ZIEL, d), await laden(bildParameter(t.foto, 1200, 675)));
   await fs.writeFile(datei, html);
 }
